@@ -2,15 +2,20 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactBlocklyComponent from './index';
-
-const INITIAL_XML = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT"></field></block></xml>';
+import ReactBlocklyComponent from './components/ReactBlocklyComponent.js';
 
 const INITIAL_TOOLBOX_CATEGORIES = [
   {
-    name: 'Controls',
+    name: 'Logic',
+    type: 'logic',
     blocks: [
       { type: 'controls_if' },
+    ],
+  },
+  {
+    name: 'Loops',
+    type: 'loop',
+    blocks: [
       {
         type: 'controls_repeat_ext',
         values: {
@@ -18,30 +23,31 @@ const INITIAL_TOOLBOX_CATEGORIES = [
             type: 'math_number',
             shadow: true,
             fields: {
-              NUM: 10,
+              NUM: 5,
             },
           },
         },
         statements: {
           DO: {
             type: 'text_print',
-            shadow: true,
+            shadow: false,
             values: {
               TEXT: {
                 type: 'text',
                 shadow: true,
                 fields: {
-                  TEXT: 'abc',
+                  TEXT: 'Start game!',
                 },
               },
             },
           },
         },
       },
-    ],
+    ]
   },
   {
     name: 'Text',
+    type: 'text',
     blocks: [
       { type: 'text' },
       {
@@ -68,37 +74,46 @@ class TestEditor extends React.Component {
     };
   }
 
-  componentDidMount = () => {
-    window.setTimeout(() => {
-      this.setState({
-        toolboxCategories: this.state.toolboxCategories.concat([
-          {
-            name: 'Text2',
-            blocks: [
-              { type: 'text' },
-              {
-                type: 'text_print',
-                values: {
-                  TEXT: {
-                    type: 'text',
-                    shadow: true,
-                    fields: {
-                      TEXT: 'abc',
-                    },
-                  },
-                },
-              },
-            ],
-          },
-        ]),
-      });
-    }, 2000);
-  }
+  // componentWillMount = () => {
+  //   window.setTimeout(() => {
+  //     this.setState({
+  //       toolboxCategories: this.state.toolboxCategories.concat([
+  //         {
+  //           custom: 'action',
+  //           name: 'Actions',
+  //           type: 'Text',
+  //           message0: "move %1 %2 space",
+  //           blocks: [
+  //             {
+  //               name: 'moveOptions',
+  //               type: 'field_dropdown',
+  //               options: [
+  //                 [
+  //                   "forward",
+  //                   "moveForward"
+  //                 ],
+  //                 [
+  //                   "backward",
+  //                   "moveBackward"
+  //                 ]
+  //               ]
+  //             },
+  //             {
+  //               "type": "field_number",
+  //               "name": "spacesToMove",
+  //               "value": 1,
+  //               "min": 0,
+  //               "max": 20,
+  //               "precision": 1
+  //             }
+  //           ],
+  //         },
+  //       ]),
+  //     });
+  //   }, 2000);
+  // }
 
   workspaceDidChange = (workspace) => {
-    const newXml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace));
-    document.getElementById('generated-xml').innerText = newXml;
-
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     document.getElementById('code').value = code;
   }
@@ -114,7 +129,6 @@ class TestEditor extends React.Component {
           snap: true,
         },
       }}
-      initialXml={INITIAL_XML}
       wrapperDivClassName="fill-height"
       workspaceDidChange={this.workspaceDidChange}
     />

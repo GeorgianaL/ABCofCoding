@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: [
-    './src/dev-index.jsx'
+    './src/index.jsx'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,18 +15,34 @@ module.exports = {
   devtool: 'source-map',
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
-      }
-    ]
-  },
+        {
+          test: /\.jsx?$/,
+          loader: 'babel-loader',
+          exclude: /(node_modules|bower_components)/,
+          query: {
+              presets: ['es2015', 'react']
+          }
+        },
+        {
+          test: /\.(png|jpg)$/,
+          exclude: '/node_modules/',
+          loader: "file-loader"
+        },
+        {
+          test: /\.(css|sass|scss)$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader!sass-loader'
+          })
+        }
+      ]
+    },
   plugins: [
     new webpack.ProvidePlugin({
       React: 'react',
       ReactDOM: 'react-dom',
     }),
+    new ExtractTextPlugin("[name].css")
   ],
   resolve: {
     extensions: ['.js', '.jsx']
