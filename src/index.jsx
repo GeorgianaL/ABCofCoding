@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './containers/header/Header.jsx'
+import Header from './components/header/Header.jsx'
 
 import './style.scss';
 

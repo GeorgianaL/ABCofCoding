@@ -1,0 +1,36 @@
+@import '../../skins/mixins/index.scss';
+
+.level{
+  padding: setSize('normal');
+
+  span {
+    width: 35px;
+    height: 35px;
+
+    font-weight: setFontWeight('bold');
+    font-size: setFontSize('h3');
+    cursor: pointer;
+
+    @include flex(row);
+    justify-content: center;
+    align-items: center;
+    border-radius: setRadius('circle');
+
+    color: setColor('deep-purple');
+    background-color: setColor('white');
+
+    box-shadow: 0 5px 25px 0 rgba(0,0,0,.2);
+  }
+
+  @include modifier('achieved') {
+    span {
+      color: setColor('white');
+      background-color: setColor('deep-purple');
+
+      &:hover {
+        background-color: setColor('pink');
+        transition: background-color 2s ease-out;
+      }
+    }
+  }
+}

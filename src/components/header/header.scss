@@ -1,0 +1,25 @@
+@import '../../skins/mixins/index.scss';
+
+.header{
+  @include flex(row);
+  box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
+
+  @include modifier('horizontal') {
+    width: 100%;
+    height: 80px;
+  }
+
+  @include element('logo') {
+    width: 20%;
+    @include flex(row);
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @include element('levels') {
+    width: 80%;
+    @include flex(row);
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
