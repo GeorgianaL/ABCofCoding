@@ -6,11 +6,19 @@ import Levels from '../../components/levels/Levels.jsx'
 
 import './header.scss';
 
-const Header = () => (
+const Header = props => (
   <div className="header header--horizontal">
     <Logo />
-    <Levels levelsCount={10} levelsAchieved={4} />
+    <Levels levelsCount={10} levelsAchieved={props.levelActive} />
   </div>
 );
+
+Header.displayName = 'Header';
+Header.propTypes = {
+  'levelActive': PropTypes.number,
+};
+Header.defaultProps = {
+  'levelActive': 1,
+};
 
 export default Header;

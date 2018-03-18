@@ -25,10 +25,17 @@ class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toolboxCategories: INITIAL_TOOLBOX_CATEGORIES,
+      'toolboxCategories': INITIAL_TOOLBOX_CATEGORIES,
+      'code': '',
     };
 
-    this.workspaceDidChange= this.workspaceDidChange.bind(this);
+    this.workspaceDidChange = this.workspaceDidChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.startGame !== nextProps.startGame) {
+      this.props.getPlayerCode(this.state.code);
+    }
   }
 
   workspaceDidChange(workspace) {
@@ -36,9 +43,9 @@ class BlocklyWrapper extends React.Component {
 
     setTimeout(() => {
       if (typeof code === 'string') {
-        this.props.getPlayerCode(code);
+        this.setState({code});
       }
-    }, 5000);
+    }, 1000);
   }
 
   render() {
@@ -62,9 +69,11 @@ class BlocklyWrapper extends React.Component {
 
 BlocklyWrapper.displayName = 'BlocklyWrapper';
 BlocklyWrapper.propTypes = {
+  'startGame': PropTypes.bool,
   'getPlayerCode': PropTypes.func,
 };
 BlocklyWrapper.defaultProps = {
+  'startGame': false,
   'getPlayerCode': () => null,
 };
 

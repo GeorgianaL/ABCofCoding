@@ -10,24 +10,20 @@ import './playground.scss';
 class Playground extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      'gameHasStarted': false,
-    }
   }
 
   startGame() {
-    this.setState({ 'gameHasStarted': true });
+    this.props.setStartGame(true);
   }
 
   render() {
-    const { gameHasStarted } = this.state;
+    const { startGame, playerCode } = this.props;
     return (
         <div className="playground">
           <div className="visualization">
             <Level1
-              startGame={gameHasStarted}
-              playerCode={this.props.playerCode}
+              startGame={startGame}
+              playerCode={playerCode}
             />
           </div>
           <div className="control">
@@ -35,7 +31,7 @@ class Playground extends React.Component {
               className="button button--start"
               onClick={() => this.startGame()}
             >
-              {gameHasStarted ? 'Done' : 'Start'}
+              {startGame ? 'Done' : 'Start'}
           </Button>
           </div>
         </div>
@@ -46,9 +42,13 @@ class Playground extends React.Component {
 Playground.displayName = 'Playground';
 Playground.propTypes = {
   'playerCode': PropTypes.string,
+  'startGame': PropTypes.bool,
+  'setStartGame': PropTypes.func,
 };
 Playground.defaultProps = {
   'playerCode': '',
+  'startGame': false,
+  'setStartGame': () => null,
 };
 
 export default Playground;

@@ -7,10 +7,18 @@ import Workspace from './components/workspace/Workspace.jsx';
 import './style.scss';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      'levelActive': 1,
+    }
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header levelActive={this.state.levelActive} />
         <Workspace />
       </div>
     );

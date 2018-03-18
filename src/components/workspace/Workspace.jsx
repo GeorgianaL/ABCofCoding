@@ -12,9 +12,18 @@ class Workspace extends React.Component {
 
     this.state = {
       'code': '',
+      'startGame': false,
     }
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
+    this.setStartGame = this.setStartGame.bind(this);
+  }
+
+  shouldComponentUpdate(nextState) {
+    if (this.state.startGame !== nextState.startGame) {
+      return true;
+    }
+    return false;
   }
 
   setPlayerCode(generatedCode) {
@@ -23,14 +32,23 @@ class Workspace extends React.Component {
     });
   }
 
+  setStartGame(value) {
+    this.setState({
+      'startGame': value,
+    });
+  }
+
   render() {
     return (
       <div className="blockly">
         <BlocklyWrapper
+          startGame={this.state.startGame}
           getPlayerCode={this.setPlayerCode}
         />
         <Playground
           playerCode={this.state.code}
+          startGame={this.state.startGame}
+          setStartGame={this.setStartGame}
         />
       </div>
     );

@@ -2,6 +2,7 @@
 
 .header{
   @include flex(row);
+  z-index: 3;
   box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
 
   @include modifier('horizontal') {
