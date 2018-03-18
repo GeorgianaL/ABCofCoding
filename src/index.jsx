@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/header/Header.jsx'
+import Header from './components/header/Header.jsx';
+import Workspace from './components/workspace/Workspace.jsx';
 
 import './style.scss';
 
@@ -10,6 +11,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <Workspace />
       </div>
     );
   }

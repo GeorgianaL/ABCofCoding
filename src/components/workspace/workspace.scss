@@ -1,0 +1,17 @@
+@import '../../skins/mixins/index.scss';
+
+.blockly {
+    @include flex(row);
+
+    .fill-height {
+      width: 700px;
+      height: 600px;
+    }
+
+    .playground {
+      // width 50%;
+      width: 700px;
+      // height 100%;
+      height: 600px; 
+    }
+}
