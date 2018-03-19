@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div>
         <Header levelActive={this.state.levelActive} />
-        <Workspace />
+        <Workspace levelActive={this.state.levelActive} />
       </div>
     );
   }

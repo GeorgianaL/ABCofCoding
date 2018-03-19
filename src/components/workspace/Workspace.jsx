@@ -17,6 +17,7 @@ class Workspace extends React.Component {
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
     this.setStartGame = this.setStartGame.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   shouldComponentUpdate(nextState) {
@@ -38,7 +39,17 @@ class Workspace extends React.Component {
     });
   }
 
+  checkAnswer(code) {
+    if (typeof code === 'string') {
+      return true;
+    }
+    return false;
+  }
+
   render() {
+    const { code } = this.state;
+    const answerIsCorrect = this.checkAnswer(code);
+
     return (
       <div className="blockly">
         <BlocklyWrapper
@@ -46,9 +57,10 @@ class Workspace extends React.Component {
           getPlayerCode={this.setPlayerCode}
         />
         <Playground
-          playerCode={this.state.code}
+          playerCode={code}
           startGame={this.state.startGame}
           setStartGame={this.setStartGame}
+          correctAnswer={answerIsCorrect}
         />
       </div>
     );
