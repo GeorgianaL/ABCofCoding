@@ -10,17 +10,22 @@ import './playground.scss';
 class Playground extends React.Component {
   constructor(props) {
     super(props);
+
+    this.playGame = this.playGame.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.correctAnswer !== nextProps.correctAnswer) {
       return true;
     }
     return false;
   }
 
-  startGame(value) {
-    this.props.setStartGame(value);
+  playGame(startGame, nextLevel = false) {
+    this.props.setStartGame(startGame);
+    if (nextLevel) {
+      this.props.nextLevel();
+    }
   }
 
   render() {
@@ -30,19 +35,18 @@ class Playground extends React.Component {
     if (!startGame) {
       button = <Button
            className="button button--start"
-           onClick={() => this.startGame(true)}
+           onClick={() => this.playGame(true)}
          >Start</Button>;
-    } else {
-      if (correctAnswer) {
+    } else if (correctAnswer) {
         button = <Button
            className="button button--next"
-           onClick={() => this.startGame(false)}
+           onClick={() => this.playGame(false, true)}
          >Next Level</Button>;
-      }
-      button =<Button
-         className="button button--retry"
-         onClick={() => this.startGame(true)}
-       >Retry</Button>;
+      } else {
+        button =<Button
+           className="button button--retry"
+           onClick={() => this.playGame(false)}
+         >Retry</Button>;
     }
 
     return (
@@ -67,12 +71,14 @@ Playground.propTypes = {
   'startGame': PropTypes.bool,
   'setStartGame': PropTypes.func,
   'correctAnswer': PropTypes.bool,
+  'nextLevel': PropTypes.func,
 };
 Playground.defaultProps = {
   'playerCode': '',
   'startGame': false,
   'setStartGame': () => null,
   'correctAnswer': false,
+  'nextLevel': () => null,
 };
 
 export default Playground;

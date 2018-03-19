@@ -7,12 +7,12 @@ import './levels.scss';
 
 class Levels extends React.Component {
   render() {
-    const { levelsCount, levelsAchieved } = this.props;
+    const { levelsCount, levelAchieved } = this.props;
 
     const levelsArray = [];
     for (var i = 1; i <= levelsCount; i++) {
         levelsArray.push(
-          <Level key={i} levelNumber={i} isAchieved={i<=levelsAchieved} />
+          <Level key={i} levelNumber={i} isAchieved={i<=levelAchieved} />
           );
     }
     return (
@@ -26,11 +26,11 @@ class Levels extends React.Component {
 Levels.displayName = 'Levels';
 Levels.propTypes = {
   'levelsCount': PropTypes.number,
-  'levelsAchieved': PropTypes.number,
+  'levelAchieved': PropTypes.number,
 };
 Levels.defaultProps = {
   'levelsCount': 2,
-  'levelsAchieved': 0,
+  'levelAchieved': 0,
 };
 
 export default Levels;

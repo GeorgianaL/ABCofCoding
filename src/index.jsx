@@ -11,15 +11,27 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      'levelActive': 1,
+      'levelAchieved': 1,
     }
+    this.setNextLevel = this.setNextLevel.bind(this);
+  }
+
+  setNextLevel() {
+    console.log('bunica');
+    const { levelAchieved } = this.state;
+    this.setState({
+      'levelAchieved': levelAchieved + 1
+    });
   }
 
   render() {
     return (
       <div>
-        <Header levelActive={this.state.levelActive} />
-        <Workspace levelActive={this.state.levelActive} />
+        <Header levelActive={this.state.levelAchieved} />
+        <Workspace
+          levelActive={this.state.levelAchieved}
+          nextLevel={this.setNextLevel}
+        />
       </div>
     );
   }

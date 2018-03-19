@@ -9,16 +9,16 @@ import './header.scss';
 const Header = props => (
   <div className="header header--horizontal">
     <Logo />
-    <Levels levelsCount={10} levelsAchieved={props.levelActive} />
+    <Levels levelsCount={10} levelAchieved={props.levelAchieved} />
   </div>
 );
 
 Header.displayName = 'Header';
 Header.propTypes = {
-  'levelActive': PropTypes.number,
+  'levelAchieved': PropTypes.number,
 };
 Header.defaultProps = {
-  'levelActive': 1,
+  'levelAchieved': 1,
 };
 
 export default Header;

@@ -21,7 +21,8 @@ class Workspace extends React.Component {
   }
 
   shouldComponentUpdate(nextState) {
-    if (this.state.startGame !== nextState.startGame) {
+    if (this.state.startGame !== nextState.startGame
+     || this.state.code !== nextState.code) {
       return true;
     }
     return false;
@@ -61,10 +62,21 @@ class Workspace extends React.Component {
           startGame={this.state.startGame}
           setStartGame={this.setStartGame}
           correctAnswer={answerIsCorrect}
+          nextLevel={this.props.nextLevel}
         />
       </div>
     );
   }
 }
+
+Workspace.displayName = 'Workspace';
+Workspace.propTypes = {
+  'levelActive': PropTypes.number,
+  'nextLevel': PropTypes.func,
+};
+Workspace.defaultProps = {
+  'levelActive': 1,
+  'nextLevel': () => null,
+};
 
 export default Workspace;
