@@ -35,13 +35,15 @@ class Workspace extends React.Component {
   }
 
   setStartGame(value) {
+    // here code is not updated before this function is called
+    const check = this.checkAnswer(this.state.code);
     this.setState({
       'startGame': value,
     });
   }
 
   checkAnswer(code) {
-    if (typeof code === 'string') {
+    if (typeof code === "window.alert('');") {
       return true;
     }
     return false;
