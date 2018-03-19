@@ -16,7 +16,7 @@
     align-items: center;
     border-radius: setRadius('circle');
 
-    color: setColor('deep-purple');
+    color: setColor('blue-green');
     background-color: setColor('white');
 
     box-shadow: 0 5px 25px 0 rgba(0,0,0,.2);
@@ -25,9 +25,12 @@
   @include modifier('achieved') {
     span {
       color: setColor('white');
-      background-color: setColor('deep-purple');
+      background-color: setColor('blue-green');
 
       &:hover {
+        width: 36px;
+        height: 36px;
+
         background-color: setColor('pink');
         transition: background-color 2s ease-out;
       }

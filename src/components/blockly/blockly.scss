@@ -1,0 +1,55 @@
+@import '../../skins/mixins/index.scss';
+
+.blocklyToolboxDiv {
+  width: 15%;
+  background: linear-gradient(to right, setColor('blue-green') , setColor('blue-grey'));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  .blocklyTreeRoot {
+
+    .blocklyTreeRow {
+      color: setColor('white');
+    }
+
+    div[role="group"] {
+      width: 100%;
+
+      div[role="treeitem"] {
+        width: 100%;
+        height: 40px;
+
+        .blocklyTreeRow {
+          @include flex(row);
+          justify-content: center;
+          align-items: center;
+
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+
+          span[role="presentation"] {
+            display: none;
+          }
+
+          .blocklyTreeLabel {
+            font-weight: setFontWeight('bold');
+            font-size: setFontSize('h4');
+            text-transform: uppercase;
+          }
+
+          &:hover, &:active {
+            background-color: setColor('dirty-white');
+          }
+        }
+      }
+
+    }
+  }
+
+  .blocklyWorkspace {
+    rect {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+}

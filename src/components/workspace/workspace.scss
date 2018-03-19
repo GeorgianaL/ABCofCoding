@@ -2,6 +2,7 @@
 
 .blockly {
     @include flex(row);
+    justify-content: center;
 
     .fill-height {
       width: 700px;
@@ -15,4 +16,24 @@
       height: 580px;
       z-index: 2;
     }
+
+  @media only screen and (min-width: 1400px) {
+    .fill-height {
+      width: 900px;
+    }
+
+    .playground {
+      width: 900px;
+    }
+  }
+
+  @media only screen and (min-height: 800px) {
+    .fill-height {
+      height: 900px;
+    }
+
+    .playground {
+      height: 900px;
+    }
+  }
 }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import ReactBlocklyComponent from './ReactBlocklyComponent.js';
 
+import './blockly.scss';
+
 const INITIAL_TOOLBOX_CATEGORIES = [
   {
     name: 'Logic',
