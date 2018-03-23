@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header levelActive={this.state.levelAchieved} />
+        <Header levelAchieved={this.state.levelAchieved} />
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}

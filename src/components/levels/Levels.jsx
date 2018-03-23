@@ -6,6 +6,13 @@ import Level from './components/Level.jsx';
 import './levels.scss';
 
 class Levels extends React.Component {
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.levelAchieved !== nextProps.levelAchieved) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
   render() {
     const { levelsCount, levelAchieved } = this.props;
 
