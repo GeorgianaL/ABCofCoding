@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../button/Button.jsx';
 
-import Level1 from './components/Level1.jsx';
+import Level1 from '../workspace/components/Level1.jsx';
 
 import './playground.scss';
 

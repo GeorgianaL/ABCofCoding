@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BlocklyWrapper from '../blockly/Blockly.jsx';
-import Playground from '../playground/Playground.jsx';
+import Button from '../button/Button.jsx';
+
+import Level1 from './components/Level1.jsx';
 
 import './workspace.scss';
 
@@ -13,6 +15,7 @@ class Workspace extends React.Component {
     this.state = {
       'code': '',
       'startGame': false,
+      // 'answerIsCorrect': false,
     }
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
@@ -21,8 +24,7 @@ class Workspace extends React.Component {
   }
 
   shouldComponentUpdate(nextState) {
-    if (this.state.startGame !== nextState.startGame
-     || this.state.code !== nextState.code) {
+    if (this.state.code !== nextState.code) {
       return true;
     }
     return false;
@@ -34,24 +36,54 @@ class Workspace extends React.Component {
     });
   }
 
-  setStartGame(value) {
-    // here code is not updated before this function is called
-    const check = this.checkAnswer(this.state.code);
+  setStartGame(hasStart) {
     this.setState({
-      'startGame': value,
+      'startGame': hasStart,
     });
+    // }, () => {
+    //   const check = this.checkAnswer(this.state.code);
+    //   this.setState({
+    //     'answerIsCorrect': check,
+    //   });
+    // });
   }
 
   checkAnswer(code) {
-    if (typeof code === "window.alert('');") {
+    if (typeof code === 'string') {
       return true;
     }
     return false;
   }
 
+  playGame(startGame, nextLevel = false) {
+    this.setStartGame(startGame);
+    if (nextLevel) {
+      this.props.nextLevel();
+    }
+  }
+
   render() {
-    const { code } = this.state;
+    const { startGame, code } = this.state;
     const answerIsCorrect = this.checkAnswer(code);
+    console.log(this.state, answerIsCorrect);
+    let button;
+    if (startGame) {
+      if (answerIsCorrect) {
+        button = <Button
+            className="button button--next"
+            onClick={() => this.playGame(false, true)}
+        >Next Level</Button>;
+      }
+      button =<Button
+          className="button button--retry"
+          onClick={() => this.playGame(false)}
+      >Retry</Button>;
+    } else {
+      button =<Button
+          className="button button--start"
+          onClick={() => this.playGame(true)}
+      >Start</Button>;
+    }
 
     return (
       <div className="blockly">
@@ -59,13 +91,17 @@ class Workspace extends React.Component {
           startGame={this.state.startGame}
           getPlayerCode={this.setPlayerCode}
         />
-        <Playground
-          playerCode={code}
-          startGame={this.state.startGame}
-          setStartGame={this.setStartGame}
-          correctAnswer={answerIsCorrect}
-          nextLevel={this.props.nextLevel}
-        />
+        <div className="playground">
+          <div className="visualization">
+            <Level1
+              startGame={startGame}
+              playerCode={code}
+            />
+          </div>
+          <div className="control">
+              {button}
+          </div>
+        </div>
       </div>
     );
   }

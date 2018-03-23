@@ -37,3 +37,61 @@
     }
   }
 }
+
+.visualization {
+  width: 100%;
+  height: 85%;
+  // border: 1px solid setColor('purple');
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .character {
+    transform: translate(40%, 50%);
+  }
+
+  .character__quote {
+    transform: translate(20%, 30%);
+    fill: setColor('dirty-white');
+    path {
+      transform:
+              translate(20%, 10%)
+              rotate(-90deg);
+    }
+    text {
+      transform: translate(20%, 20%);
+      fill: setColor('cod-gray');
+      font-size: setFontSize('h2');
+    }
+  }
+
+  .player__quote {
+    transform: translate(10%, 15%);
+    fill: setColor('dirty-white');
+    path {
+      transform:
+              translate(20%, 10%)
+              rotate(-90deg);
+    }
+    text {
+      transform: translate(20%, 20%);
+      fill: setColor('cod-gray');
+      font-size: setFontSize('h2');
+    }
+  }
+}
+
+.control {
+  width: 100%;
+  height: 15%;
+
+  @include flex(row);
+  justify-content: center;
+  align-items: center;
+
+  // border: 1px solid setColor('red');
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

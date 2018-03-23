@@ -17,7 +17,6 @@ class App extends React.Component {
   }
 
   setNextLevel() {
-    console.log('bunica');
     const { levelAchieved } = this.state;
     this.setState({
       'levelAchieved': levelAchieved + 1
