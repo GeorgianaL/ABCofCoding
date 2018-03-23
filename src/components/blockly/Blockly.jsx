@@ -7,18 +7,15 @@ import './blockly.scss';
 
 const INITIAL_TOOLBOX_CATEGORIES = [
   {
-    name: 'Logic',
-    type: 'logic',
-    blocks: [
-      { type: 'controls_if' },
-    ],
-  },
-  {
-    name: 'Text',
+    name: 'Hello',
     type: 'text',
     blocks: [
-      { type: 'text' },
-      { type: 'text_print'},
+      { type: 'text',
+        fields: {
+          TEXT: 'Start game!',
+        },
+      },
+      { type: 'text_print' },
     ],
   },
 ];
@@ -73,10 +70,12 @@ BlocklyWrapper.displayName = 'BlocklyWrapper';
 BlocklyWrapper.propTypes = {
   'startGame': PropTypes.bool,
   'getPlayerCode': PropTypes.func,
+  'levelActive': PropTypes.number,
 };
 BlocklyWrapper.defaultProps = {
   'startGame': false,
   'getPlayerCode': () => null,
+  'levelActive': 1,
 };
 
 export default BlocklyWrapper;

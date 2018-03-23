@@ -86,6 +86,7 @@ class Workspace extends React.Component {
         <BlocklyWrapper
           startGame={this.state.startGame}
           getPlayerCode={this.setPlayerCode}
+          levelActive={this.props.levelActive}
         />
       <div className="blockly__playground">
           <div className="visualization">
