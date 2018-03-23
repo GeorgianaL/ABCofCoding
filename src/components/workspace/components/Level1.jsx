@@ -5,6 +5,8 @@ import * as d3 from 'd3';
 
 import ferdinand from '../../../../public/images/ferdinand_1.png';
 
+import './level1.scss';
+
 const config = {
   'character_width': 200,
   'character_height': 200,

@@ -24,7 +24,8 @@ class Workspace extends React.Component {
   }
 
   shouldComponentUpdate(nextState) {
-    if (this.state.code !== nextState.code) {
+    if (this.state.code !== nextState.code
+    || this.state.startGame !== nextState.startGame) {
       return true;
     }
     return false;
@@ -40,16 +41,10 @@ class Workspace extends React.Component {
     this.setState({
       'startGame': hasStart,
     });
-    // }, () => {
-    //   const check = this.checkAnswer(this.state.code);
-    //   this.setState({
-    //     'answerIsCorrect': check,
-    //   });
-    // });
   }
 
   checkAnswer(code) {
-    if (typeof code === 'string') {
+    if (code.split('.')[0] === "window") {
       return true;
     }
     return false;
@@ -65,7 +60,7 @@ class Workspace extends React.Component {
   render() {
     const { startGame, code } = this.state;
     const answerIsCorrect = this.checkAnswer(code);
-    console.log(this.state, answerIsCorrect);
+
     let button;
     if (startGame) {
       if (answerIsCorrect) {
@@ -73,11 +68,12 @@ class Workspace extends React.Component {
             className="button button--next"
             onClick={() => this.playGame(false, true)}
         >Next Level</Button>;
+      } else {
+        button =<Button
+            className="button button--retry"
+            onClick={() => this.playGame(false)}
+        >Retry</Button>;
       }
-      button =<Button
-          className="button button--retry"
-          onClick={() => this.playGame(false)}
-      >Retry</Button>;
     } else {
       button =<Button
           className="button button--start"
@@ -91,7 +87,7 @@ class Workspace extends React.Component {
           startGame={this.state.startGame}
           getPlayerCode={this.setPlayerCode}
         />
-        <div className="playground">
+      <div className="blockly__playground">
           <div className="visualization">
             <Level1
               startGame={startGame}

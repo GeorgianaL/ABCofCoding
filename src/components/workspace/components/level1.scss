@@ -1,0 +1,35 @@
+@import '../../../skins/mixins/index.scss';
+
+.character {
+  transform: translate(40%, 50%);
+}
+
+.character__quote {
+  transform: translate(20%, 30%);
+  fill: setColor('dirty-white');
+  path {
+    transform:
+            translate(20%, 10%)
+            rotate(-90deg);
+  }
+  text {
+    transform: translate(20%, 20%);
+    fill: setColor('cod-gray');
+    font-size: setFontSize('h2');
+  }
+}
+
+.player__quote {
+  transform: translate(10%, 15%);
+  fill: setColor('dirty-white');
+  path {
+    transform:
+            translate(20%, 10%)
+            rotate(-90deg);
+  }
+  text {
+    transform: translate(20%, 20%);
+    fill: setColor('cod-gray');
+    font-size: setFontSize('h2');
+  }
+}
