@@ -1,0 +1,26 @@
+@import '../../skins/mixins/index.scss';
+
+.popup{
+  @include flex(row);
+  padding: setSize('normal');
+
+  max-width: 400px;
+  border-radius: 4px;
+  margin-right: setSize('normal');
+
+  background: setColor('amber');
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  @include modifier('info') {
+    span {
+      font-size: setFontSize('h5');
+      padding: setSize('small');
+    }
+  }
+
+  @include modifier('close') {
+    font-size: setFontSize('h4');
+    padding: setSize('small');
+  }
+
+}

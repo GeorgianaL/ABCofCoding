@@ -12,7 +12,7 @@ const INITIAL_TOOLBOX_CATEGORIES = [
     blocks: [
       { type: 'text',
         fields: {
-          TEXT: 'Start game!',
+          TEXT: 'Hello!',
         },
       },
       { type: 'text_print' },

@@ -13,7 +13,6 @@
             rotate(-90deg);
   }
   text {
-    transform: translate(20%, 20%);
     fill: setColor('cod-gray');
     font-size: setFontSize('h2');
   }
@@ -24,11 +23,9 @@
   fill: setColor('dirty-white');
   path {
     transform:
-            translate(20%, 10%)
-            rotate(-90deg);
+            translate(0%, 1%);
   }
   text {
-    transform: translate(20%, 20%);
     fill: setColor('cod-gray');
     font-size: setFontSize('h2');
   }
