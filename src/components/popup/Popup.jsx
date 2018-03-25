@@ -7,6 +7,9 @@ import './popup.scss';
 const helpers = [
   {
     'text': 'Drag and drop the blocks from the left side to print a hello message!'
+  },
+  {
+    'text': 'Help the rabbit cross the garden to reach the destination.'
   }
 ];
 

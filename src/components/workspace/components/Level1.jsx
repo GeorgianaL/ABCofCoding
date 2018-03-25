@@ -36,7 +36,7 @@ class Level1 extends React.Component {
 
     const svgTag = d3.select(node);
 
-    const character = svgTag.select('.character')
+    const character = svgTag.select('.character__ferdinand')
      .append('svg:image')
      .attr('xlink:href', ferdinand)
      .attr('width', `${config.character_width}px`)
@@ -71,8 +71,8 @@ class Level1 extends React.Component {
     return (
         <svg ref={node => this.svgNode = node}>
           <g className="player__quote" />
-          <g className="character__quote" />
-          <g className="character" />
+          <g className="character character__quote" />
+          <g className="character character__ferdinand" />
         </svg>
     );
   }

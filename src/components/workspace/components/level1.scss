@@ -1,7 +1,9 @@
 @import '../../../skins/mixins/index.scss';
 
 .character {
-  transform: translate(40%, 50%);
+  @include element('ferdinand') {
+    transform: translate(40%, 50%);
+  }
 }
 
 .character__quote {

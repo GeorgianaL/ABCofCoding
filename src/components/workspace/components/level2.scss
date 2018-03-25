@@ -1,0 +1,8 @@
+@import '../../../skins/mixins/index.scss';
+
+.roadPiece {
+  width: 100px;
+  height: 100px;
+  fill: setColor('light-green');
+  stroke: setColor('silver');
+}

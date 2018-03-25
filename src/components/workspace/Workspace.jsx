@@ -5,6 +5,7 @@ import BlocklyWrapper from '../blockly/Blockly.jsx';
 import Button from '../button/Button.jsx';
 
 import Level1 from './components/Level1.jsx';
+import Level2 from './components/Level2.jsx';
 
 import './workspace.scss';
 
@@ -15,7 +16,6 @@ class Workspace extends React.Component {
     this.state = {
       'code': '',
       'startGame': false,
-      // 'answerIsCorrect': false,
     }
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
@@ -23,9 +23,10 @@ class Workspace extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
   }
 
-  shouldComponentUpdate(nextState) {
+  shouldComponentUpdate(nextState, nextProps) {
     if (this.state.code !== nextState.code
-    || this.state.startGame !== nextState.startGame) {
+    || this.state.startGame !== nextState.startGame
+    || this.props.levelActive !== nextProps.levelActive) {
       return true;
     }
     return false;
@@ -90,10 +91,19 @@ class Workspace extends React.Component {
         />
       <div className="blockly__playground">
           <div className="visualization">
-            <Level1
-              startGame={startGame}
-              playerCode={code}
-            />
+            {
+              this.props.levelActive === 1 ? (
+                <Level1
+                  startGame={startGame}
+                  playerCode={code}
+                />
+            ) : (
+              <Level2
+                startGame={startGame}
+                playerCode={code}
+              />
+            )
+            }
           </div>
           <div className="control">
               {button}

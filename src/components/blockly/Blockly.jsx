@@ -5,35 +5,57 @@ import ReactBlocklyComponent from './ReactBlocklyComponent.js';
 
 import './blockly.scss';
 
-const INITIAL_TOOLBOX_CATEGORIES = [
-  {
-    name: 'Hello',
-    type: 'text',
-    blocks: [
-      { type: 'text',
-        fields: {
-          TEXT: 'Hello!',
+const TOOLBOX_CATEGORIES = [
+  [
+    {
+      name: 'Hello',
+      type: 'text',
+      blocks: [
+        { type: 'text',
+          fields: {
+            TEXT: 'Hello!',
+          },
         },
-      },
-      { type: 'text_print' },
-    ],
-  },
+        { type: 'text_print' },
+      ],
+    },
+  ],
+  [
+    {
+      name: 'Actions',
+      type: 'procedures',
+      blocks: [
+        {
+          type: 'controls_list',
+          values: {
+            TEXT: {
+              type: 'text',
+            },
+          },
+        },
+      ],
+    },
+  ]
 ];
 
 class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'toolboxCategories': INITIAL_TOOLBOX_CATEGORIES,
+      'toolboxCategories': TOOLBOX_CATEGORIES[1],
       'code': '',
     };
 
     this.workspaceDidChange = this.workspaceDidChange.bind(this);
+    this.changeToolboxCategories = this.changeToolboxCategories.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.startGame !== nextProps.startGame) {
       this.props.getPlayerCode(this.state.code);
+    }
+    if (this.props.levelActive !== nextProps.levelActive) {
+      this.changeToolboxCategories(nextProps.levelActive);
     }
   }
 
@@ -45,6 +67,12 @@ class BlocklyWrapper extends React.Component {
         this.setState({code});
       }
     }, 1000);
+  }
+
+  changeToolboxCategories(level) {
+    this.setState({
+      'toolboxCategories': TOOLBOX_CATEGORIES[level - 1],
+    });
   }
 
   render() {
@@ -61,6 +89,7 @@ class BlocklyWrapper extends React.Component {
           }}
           wrapperDivClassName="fill-height"
           workspaceDidChange={this.workspaceDidChange}
+          levelActive={this.props.levelActive}
         />
     );
   }

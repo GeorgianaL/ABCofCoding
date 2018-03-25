@@ -42,6 +42,7 @@ class BlocklyEditor extends React.Component {
     workspaceDidChange: PropTypes.func,
     onImportXmlError: PropTypes.func,
     processToolboxCategory: PropTypes.func,
+    levelActive: PropTypes.number,
   };
 
   static defaultProps = {
@@ -54,11 +55,11 @@ class BlocklyEditor extends React.Component {
     workspaceDidChange: null,
     onImportXmlError: null,
     processToolboxCategory: null,
+    levelActive: '',
   };
 
   componentDidMount = () => {
     this.toolboxDidUpdate();
-
     if (this.props.xmlDidChange) {
       if (typeof console !== 'undefined') {
         // eslint-disable-next-line no-console
@@ -66,6 +67,12 @@ class BlocklyEditor extends React.Component {
       }
     }
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.levelActive !== nextProps.levelActive) {
+  //     this.clearBlocks();
+  //   }
+  // }
 
   componentDidUpdate = (prevProps) => {
     if (
