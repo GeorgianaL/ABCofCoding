@@ -19,8 +19,16 @@
   }
 
   @include modifier('close') {
+    cursor: pointer;
     font-size: setFontSize('h4');
     padding: setSize('small');
+  }
+
+  animation: fadein 3s;
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
 }

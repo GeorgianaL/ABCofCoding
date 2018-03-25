@@ -13,7 +13,7 @@ const helpers = [
 class Popup extends React.Component {
 
   render() {
-    const { level } = this.props;
+    const { level, closePopup } = this.props;
 
     const message = helpers[level-1].text;
 
@@ -24,6 +24,7 @@ class Popup extends React.Component {
         </div>
         <img
           className="popup--close"
+          onClick={closePopup}
           src={close}
           alt="close"
           style={{
@@ -39,9 +40,11 @@ class Popup extends React.Component {
 Popup.displayName = 'Popup';
 Popup.propTypes = {
   'level': PropTypes.number,
+  'closePopup': PropTypes.func,
 };
 Popup.defaultProps = {
   'level': 1,
+  'closePopup': () => null,
 };
 
 export default Popup;

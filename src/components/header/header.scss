@@ -20,7 +20,7 @@
   }
 
   @include element('levels') {
-    width: 80%;
+    width: 45%;
     @include flex(row);
     align-items: center;
     justify-content: flex-start;

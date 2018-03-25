@@ -7,13 +7,40 @@ import Popup from '../popup/Popup.jsx';
 
 import './header.scss';
 
-const Header = props => (
-  <div className="header header--horizontal">
-    <Logo />
-    <Levels levelsCount={10} levelAchieved={props.levelAchieved} />
-    <Popup level={props.levelAchieved} />
-  </div>
-);
+class Header extends React.Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      'showPopup': true,
+    };
+
+    this.closePopup = this.closePopup.bind(this);
+}
+
+  closePopup() {
+    this.setState({
+      'showPopup': false,
+    });
+  }
+
+  render() {
+    const { levelAchieved } = this.props;
+
+    return (
+      <div className="header header--horizontal">
+        <Logo />
+        <Levels levelsCount={10} levelAchieved={levelAchieved} />
+        { this.state.showPopup &&
+          <Popup
+            level={levelAchieved}
+            closePopup={this.closePopup}
+          />
+        }
+      </div>
+    );
+  }
+}
 
 Header.displayName = 'Header';
 Header.propTypes = {
