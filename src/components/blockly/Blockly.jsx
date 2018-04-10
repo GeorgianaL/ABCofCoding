@@ -13,7 +13,7 @@ const TOOLBOX_CATEGORIES = [
       blocks: [
         { type: 'text',
           fields: {
-            TEXT: 'Hello!',
+            TEXT: 'Hello',
           },
         },
         { type: 'text_print' },
@@ -22,19 +22,32 @@ const TOOLBOX_CATEGORIES = [
   ],
   [
     {
+      name: 'List',
+      type: 'lists_create_with',
+      blocks: [
+        {
+          type: 'lists_create_with',
+        },
+      ],
+    },
+    {
       name: 'Actions',
       type: 'procedures',
       blocks: [
         {
-          type: 'controls_list',
-          values: {
-            TEXT: {
-              type: 'text',
-            },
+          type: "text",
+          fields: {
+            TEXT: 'walk 3 spaces',
+          },
+        },
+        {
+          type: "text",
+          fields: {
+            TEXT: 'turn right',
           },
         },
       ],
-    },
+    }
   ]
 ];
 

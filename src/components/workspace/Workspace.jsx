@@ -4,10 +4,33 @@ import PropTypes from 'prop-types';
 import BlocklyWrapper from '../blockly/Blockly.jsx';
 import Button from '../button/Button.jsx';
 
-import Level1 from './components/Level1.jsx';
-import Level2 from './components/Level2.jsx';
+import { isEqual } from 'lodash';
+
+import Level1 from './components/level1/Level1.jsx';
+import Level2 from './components/level2/Level2.jsx';
 
 import './workspace.scss';
+
+const checkLevel1 = (code) => {
+  const helloMessages = ['hi', 'hello', 'hey'];
+  const playerHello = code.split(/'|'/)[1];
+  if (typeof code === 'string' && code.split('.')[0] === 'window'
+  && helloMessages.includes(playerHello.toLowerCase())) {
+    return true;
+  }
+  return false;
+};
+
+const checkLevel2 = (code) => {
+  const rightActions = ['walk 3 spaces', 'turn right', 'walk 3 spaces'];
+  if (typeof code === 'string') {
+    const playerActions = code.split("'").filter(item => item.length > 5);
+    if (isEqual(rightActions, playerActions)) {
+      return true;
+    }
+  }
+  return false;
+}
 
 class Workspace extends React.Component {
   constructor(props) {
@@ -44,11 +67,19 @@ class Workspace extends React.Component {
     });
   }
 
-  checkAnswer(code) {
-    if (code.split('.')[0] === "window") {
-      return true;
+  checkAnswer(code, level) {
+    let isCorrect = false;
+    switch (level) {
+      case 1:
+        isCorrect = checkLevel1(code);
+        break;
+      case 2:
+        isCorrect = checkLevel2(code);
+        break;
+      default:
+        return;
     }
-    return false;
+    return isCorrect;
   }
 
   playGame(startGame, nextLevel = false) {
@@ -60,7 +91,8 @@ class Workspace extends React.Component {
 
   render() {
     const { startGame, code } = this.state;
-    const answerIsCorrect = this.checkAnswer(code);
+    const { levelActive } = this.props;
+    const answerIsCorrect = this.checkAnswer(code, levelActive);
 
     let button;
     if (startGame) {

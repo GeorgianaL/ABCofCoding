@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import * as d3 from 'd3';
 
-import bunny from '../../../../public/images/bunny2.png';
+import bunny from '../../../../../public/images/bunny2.png';
+import bunny_finish from '../../../../../public/images/bunny1.png';
 
 import './level2.scss';
 
@@ -14,13 +15,13 @@ const config = {
   'character_y': 300,
 };
 
-const path = [
-  { x: 200, y: 100 },
-  { x: 200, y: 200 },
-  { x: 200, y: 300 },
-  { x: 300, y: 300 },
-  { x: 400, y: 300 },
-]
+const roadPath = [
+    { x: 400, y: 300 },
+    { x: 300, y: 300 },
+    { x: 200, y: 300 },
+    { x: 200, y: 200 },
+    { x: 200, y: 100 },
+];
 
 class Level2 extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class Level2 extends React.Component {
 
    const road = svgTag.select('.road')
    const roadPiece = road.selectAll('rect')
-     .data(path);
+     .data(roadPath);
    roadPiece.enter()
     .append('rect')
     .attr('class', 'roadPiece')
@@ -59,6 +60,20 @@ class Level2 extends React.Component {
      .attr('y', d => config.character_y)
      .attr('width', `${config.character_width}px`)
      .attr('height', `${config.character_height}px`);
+
+    if (startGame) {
+      roadPath.forEach((roadPiece) => {
+        character
+          .transition()
+          .delay(5)
+          .duration(3000)
+          .attr('x', (d, i) => roadPiece.x - i * 100)
+          .attr('y', (d, i) => roadPiece.y - i * 100);
+    });
+
+  }
+
+    character.exit().remove();
   }
 
   render() {
