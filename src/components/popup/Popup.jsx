@@ -10,6 +10,9 @@ const helpers = [
   },
   {
     'text': 'Help the rabbit cross the garden to reach the destination. Create a list and attach the right actions to it.'
+  },
+  {
+    'text': 'Help the rabbit cross the garden to reach the destination. Repetition is bad in coding, so you can try using repeat loop.'
   }
 ];
 
@@ -18,25 +21,28 @@ class Popup extends React.Component {
   render() {
     const { level, closePopup } = this.props;
 
-    const message = helpers[level-1].text;
+    const message = helpers[level-1] ? helpers[level-1].text : '';
 
-    return (
-      <div className="popup">
-        <div className="popup--info">
-          <span>{message}</span>
+    if (message !== '') {
+      return (
+        <div className="popup">
+          <div className="popup--info">
+            <span>{message}</span>
+          </div>
+          <img
+            className="popup--close"
+            onClick={closePopup}
+            src={close}
+            alt="close"
+            style={{
+              width: '10px',
+              height: '10px'
+            }}
+          />
         </div>
-        <img
-          className="popup--close"
-          onClick={closePopup}
-          src={close}
-          alt="close"
-          style={{
-            width: '10px',
-            height: '10px'
-          }}
-        />
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
 

@@ -48,6 +48,77 @@ const TOOLBOX_CATEGORIES = [
         },
       ],
     }
+  ],
+  [
+    {
+      name: 'Actions',
+      type: 'procedures',
+      blocks: [
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'walk 2 spaces',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'walk 1 space',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'turn left',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          message: 'text input: %1',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'turn right',
+              },
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'Loop',
+      type: 'loops',
+      blocks: [
+        {
+          type: 'controls_repeat_ext',
+          values: {
+            TIMES: {
+              type: 'math_number',
+              shadow: true,
+              fields: {
+                NUM: 0,
+              },
+            },
+          },
+        }
+      ]
+    }
   ]
 ];
 
@@ -55,7 +126,7 @@ class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'toolboxCategories': TOOLBOX_CATEGORIES[1],
+      'toolboxCategories': TOOLBOX_CATEGORIES[2],
       'code': '',
     };
 

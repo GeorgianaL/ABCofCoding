@@ -16,7 +16,7 @@ const config = {
   'character_height': 100,
 };
 
-const characterPos = { x: 100, y: 300 };
+const characterPos = { 'x': 100, 'y': 300 };
 
 const roadPath = [
     { x: 200, y: 300 },
@@ -46,7 +46,7 @@ class Level2 extends React.Component {
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
-    var defs = svgTag.append('svg:defs');
+    const defs = svgTag.append('svg:defs');
     defs.append("svg:pattern")
       .attr("id", "ground_template")
       .attr("width", config.character_width)
@@ -88,10 +88,7 @@ class Level2 extends React.Component {
           .duration(3000)
           .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`)
     });
-
   }
-
-    character.exit().remove();
   }
 
   render() {

@@ -8,6 +8,7 @@ import { isEqual } from 'lodash';
 
 import Level1 from './components/level1/Level1.jsx';
 import Level2 from './components/level2/Level2.jsx';
+import Level3 from './components/level3/Level3.jsx';
 
 import './workspace.scss';
 
@@ -122,17 +123,25 @@ class Workspace extends React.Component {
       <div className="blockly__playground">
           <div className="visualization">
             {
-              this.props.levelActive === 1 ? (
+              this.props.levelActive === 1 &&
                 <Level1
                   startGame={startGame}
                   playerCode={code}
                 />
-            ) : (
-              <Level2
-                startGame={startGame}
-                playerCode={code}
-              />
-            )
+            }
+            {
+              this.props.levelActive === 2 &&
+                <Level2
+                  startGame={startGame}
+                  playerCode={code}
+                />
+            }
+            {
+              this.props.levelActive === 3 &&
+                <Level3
+                  startGame={startGame}
+                  playerCode={code}
+                />
             }
           </div>
           <div className="control">
