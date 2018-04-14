@@ -7,6 +7,7 @@ import { getPath } from '../../../../lib/grid.js';
 
 import bunny from '../../../../../public/images/bunny2.png';
 import bunny_finish from '../../../../../public/images/bunny1.png';
+import ground_template from '../../../../../public/images/ground_template.jpg';
 
 import './level2.scss';
 
@@ -45,13 +46,25 @@ class Level2 extends React.Component {
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
+    var defs = svgTag.append('svg:defs');
+    defs.append("svg:pattern")
+      .attr("id", "ground_template")
+      .attr("width", config.character_width)
+      .attr("height", config.character_height)
+      .attr("patternUnits", "userSpaceOnUse")
+      .append("svg:image")
+      .attr("xlink:href", ground_template)
+      .attr("width", config.character_width)
+      .attr("height", config.character_height);
 
    const road = svgTag.select('.road')
    const roadPiece = road.selectAll('rect')
      .data(roadPath);
+
    roadPiece.enter()
     .append('rect')
     .attr('class', 'roadPiece')
+    .style('fill', 'url(#ground_template)')
     .attr('x', d => d.x)
     .attr('y', d => d.y);
 
