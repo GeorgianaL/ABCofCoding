@@ -22,12 +22,10 @@ const checkLevel1 = (code) => {
 };
 
 const checkLevel2 = (code) => {
-  const rightActions = ['walk 3 spaces', 'turn right', 'walk 3 spaces'];
-  if (typeof code === 'string') {
+  const rightActions = ['walk 3 spaces', 'turn left', 'walk 3 spaces'];
     const playerActions = code.split("'").filter(item => item.length > 5);
     if (isEqual(rightActions, playerActions)) {
       return true;
-    }
   }
   return false;
 }

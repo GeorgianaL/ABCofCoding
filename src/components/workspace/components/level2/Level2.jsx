@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import * as d3 from 'd3';
 
+import { getPath } from '../../../../lib/grid.js';
+
 import bunny from '../../../../../public/images/bunny2.png';
 import bunny_finish from '../../../../../public/images/bunny1.png';
 
@@ -11,16 +13,16 @@ import './level2.scss';
 const config = {
   'character_width': 100,
   'character_height': 100,
-  'character_x': 500,
-  'character_y': 300,
 };
 
+const characterPos = { x: 100, y: 300 };
+
 const roadPath = [
-    { x: 400, y: 300 },
-    { x: 300, y: 300 },
     { x: 200, y: 300 },
-    { x: 200, y: 200 },
-    { x: 200, y: 100 },
+    { x: 300, y: 300 },
+    { x: 400, y: 300 },
+    { x: 400, y: 200 },
+    { x: 400, y: 100 },
 ];
 
 class Level2 extends React.Component {
@@ -39,7 +41,7 @@ class Level2 extends React.Component {
   }
 
   renderD3() {
-    const { startGame } = this.props;
+    const { startGame, playerCode } = this.props;
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
@@ -53,22 +55,25 @@ class Level2 extends React.Component {
     .attr('x', d => d.x)
     .attr('y', d => d.y);
 
-  const character = svgTag.select('.character__rabbit')
+   const character = svgTag.select('.character__rabbit')
      .append('svg:image')
      .attr('xlink:href', bunny)
-     .attr('x', d => config.character_x)
-     .attr('y', d => config.character_y)
+     .attr('class', 'character__initial')
+     .attr('transform', `translate(${characterPos.x}, ${characterPos.y})`)
      .attr('width', `${config.character_width}px`)
      .attr('height', `${config.character_height}px`);
 
     if (startGame) {
-      roadPath.forEach((roadPiece) => {
+      svgTag.select('.character__rabbit').select('.character__initial').remove();
+      const playerPath = getPath(characterPos, playerCode);
+
+      playerPath.forEach((roadPiece) => {
+        console.log(roadPiece);
         character
           .transition()
           .delay(5)
           .duration(3000)
-          .attr('x', (d, i) => roadPiece.x - i * 100)
-          .attr('y', (d, i) => roadPiece.y - i * 100);
+          .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`)
     });
 
   }

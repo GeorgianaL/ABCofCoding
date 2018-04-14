@@ -43,7 +43,7 @@ const TOOLBOX_CATEGORIES = [
         {
           type: "text",
           fields: {
-            TEXT: 'turn right',
+            TEXT: 'turn left',
           },
         },
       ],
