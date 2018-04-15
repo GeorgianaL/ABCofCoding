@@ -122,17 +122,88 @@ const TOOLBOX_CATEGORIES = [
   ],
   [
     {
-      name: 'Hello',
+      name: 'Actions',
       type: 'text',
       blocks: [
-        { type: 'text',
-          fields: {
-            TEXT: 'Hello',
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'walk 1 space',
+              },
+            },
           },
         },
-        { type: 'text_print' },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'turn left',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'turn right',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'enter the barn',
+              },
+            },
+          },
+        },
       ],
     },
+    {
+      name: 'Loop',
+      type: 'loops',
+      blocks: [
+        {
+          type: 'controls_repeat_ext',
+          values: {
+            TIMES: {
+              type: 'math_number',
+              shadow: true,
+              fields: {
+                NUM: 0,
+              },
+            },
+          },
+        }
+      ],
+    },
+    {
+      name: 'Logic',
+      type: 'logic',
+      blocks: [
+        {
+          type: 'controls_if',
+          statements: {
+            IF0: {
+              type: 'variables_get',
+              variable: 'obstacle',
+            }
+          }
+        },
+      ]
+    }
   ],
 ];
 

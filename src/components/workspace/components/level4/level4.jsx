@@ -6,6 +6,7 @@ import { getPath } from '../../../../lib/grid.js';
 
 import hadgehog from '../../../../../public/images/hadgehog1.png';
 import cactus from '../../../../../public/images/cactus.png';
+import barn from '../../../../../public/images/barn.png'
 
 const config = {
   'character_width': 100,
@@ -22,9 +23,10 @@ const roadPath = [
     { x: 300, y: 400 },
 ];
 
-const obstaclesPosition = [
-  { x: 200, y: 200 },
-  { x: 300, y: 300 },
+const decoration = [
+  { type: 'obstacle', x: 200, y: 200 },
+  { type: 'obstacle', x: 300, y: 300 },
+  { type: 'finish', x: 350, y: 75 },
 ];
 
 class Level4 extends React.Component {
@@ -59,14 +61,24 @@ class Level4 extends React.Component {
     .attr('x', d => d.x)
     .attr('y', d => d.y);
 
-    const obstacleGroup = svgTag.select('.obstacles')
+    const obstacleGroup = svgTag.select('.decoration')
     const obstacles = obstacleGroup.selectAll('image')
-      .data(obstaclesPosition);
+      .data(decoration);
     obstacles.enter()
      .append('svg:image')
-     .attr('xlink:href', cactus)
-     .attr('width', `${config.character_width}px`)
-     .attr('height', `${config.character_height}px`)
+     .attr('xlink:href', (d) => d.type === 'obstacle' ? cactus : barn)
+     .attr('width', (d) => {
+       if (d.type === 'obstacle') {
+        return `${config.character_width}px`;
+       }
+       return 400;
+     })
+     .attr('height', (d) => {
+       if (d.type === 'obstacle') {
+        return `${config.character_height}px`;
+       }
+       return 450;
+     })
      .attr('x', d => d.x)
      .attr('y', d => d.y);
 
@@ -101,7 +113,7 @@ class Level4 extends React.Component {
        return (
            <svg ref={node => this.svgNode = node}>
              <g className="road" />
-             <g className="obstacles" />
+             <g className="decoration" />
              <g className="character character__hadgehog" />
            </svg>
        );
