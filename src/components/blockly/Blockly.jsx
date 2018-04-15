@@ -119,14 +119,28 @@ const TOOLBOX_CATEGORIES = [
         }
       ],
     }
-  ]
+  ],
+  [
+    {
+      name: 'Hello',
+      type: 'text',
+      blocks: [
+        { type: 'text',
+          fields: {
+            TEXT: 'Hello',
+          },
+        },
+        { type: 'text_print' },
+      ],
+    },
+  ],
 ];
 
 class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'toolboxCategories': TOOLBOX_CATEGORIES[2],
+      'toolboxCategories': TOOLBOX_CATEGORIES[3],
       'code': '',
     };
 

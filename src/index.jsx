@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      'levelAchieved': 3,
+      'levelAchieved': 4,
     }
     this.setNextLevel = this.setNextLevel.bind(this);
   }

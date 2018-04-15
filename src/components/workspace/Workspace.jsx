@@ -11,6 +11,7 @@ import { answers } from '../../lib/answers.js';
 import Level1 from './components/level1/Level1.jsx';
 import Level2 from './components/level2/Level2.jsx';
 import Level3 from './components/level3/Level3.jsx';
+import Level4 from './components/level4/Level4.jsx';
 
 import './workspace.scss';
 
@@ -173,6 +174,13 @@ class Workspace extends React.Component {
             {
               this.props.levelActive === 3 &&
                 <Level3
+                  startGame={startGame}
+                  playerCode={code}
+                />
+            },
+            {
+              this.props.levelActive === 4 &&
+                <Level4
                   startGame={startGame}
                   playerCode={code}
                 />
