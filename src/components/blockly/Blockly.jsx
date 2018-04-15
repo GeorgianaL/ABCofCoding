@@ -117,7 +117,7 @@ const TOOLBOX_CATEGORIES = [
             },
           },
         }
-      ]
+      ],
     }
   ]
 ];

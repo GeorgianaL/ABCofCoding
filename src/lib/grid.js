@@ -1,22 +1,16 @@
+const actionTypes = ['walk', 'turn', 'for'];
+
 const walk_n_spaces = (posInitial, directionIsHoriz) => ({
   'x': directionIsHoriz ? posInitial.x + 100 : posInitial.x,
   'y': directionIsHoriz ? posInitial.y : posInitial.y - 100,
 });
 
 const getActionType = (playerAction) => {
-  let actionType = '';
-  const action = playerAction.split(' ')[0];
-  switch (action) {
-    case 'walk':
-      actionType = 'walk';
-      break;
-    case 'turn':
-      actionType = 'turn';
-      break;
-    default:
-      actionType = 'walk';
+  const currentAction = playerAction.split(' ')[0];
+  if (actionTypes.includes(currentAction)) {
+    return currentAction;
   }
-  return actionType;
+  return null;
 }
 
 const getNumberOfPaths = (action) => {
@@ -38,8 +32,11 @@ export const getPath = (posInitial, playerCode) => {
   let directionIsHoriz = true;
   code.forEach((playerAction) => {
     const actionType = getActionType(playerAction);
+    let repeatTimes = 0;
 
-    if (actionType === 'walk') {
+    if (actionType === 'for') {
+      repeatTimes = playerAction.split(/< |;/)[2];
+    } else if (actionType === 'walk') {
       const nrOfPaths = getNumberOfPaths(playerAction);
 
       for (let i = 1; i <= nrOfPaths; i++) {

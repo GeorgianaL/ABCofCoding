@@ -31,7 +31,7 @@ class Level1 extends React.Component {
   }
 
   renderD3() {
-    const { startGame } = this.props;
+    const { startGame, playerCode } = this.props;
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
@@ -56,12 +56,12 @@ class Level1 extends React.Component {
     const playerQuote = svgTag.select('.player__quote');
     if (startGame) {
       playerQuote.append('rect')
-        .attr('width',  `${config.quote_width}px`)
+        .attr('width',  `${config.quote_width / 3}px`)
         .attr('height',  `${config.quote_height}px`)
       playerQuote.append('path')
         .attr('d', 'M -20 20 l 21 -10 0 20 z');
       playerQuote.append('text')
-        .text(this.props.playerCode)
+        .text(playerCode.split(/'|'/)[1])
         .attr('x', 10)
         .attr('y', config.quote_height - 20);
     }

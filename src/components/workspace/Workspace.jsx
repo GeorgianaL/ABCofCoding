@@ -6,6 +6,8 @@ import Button from '../button/Button.jsx';
 
 import { isEqual } from 'lodash';
 
+import { answers } from '../../lib/answers.js';
+
 import Level1 from './components/level1/Level1.jsx';
 import Level2 from './components/level2/Level2.jsx';
 import Level3 from './components/level3/Level3.jsx';
@@ -13,22 +15,47 @@ import Level3 from './components/level3/Level3.jsx';
 import './workspace.scss';
 
 const checkLevel1 = (code) => {
-  const helloMessages = ['hi', 'hello', 'hey'];
   const playerHello = code.split(/'|'/)[1];
   if (typeof code === 'string' && code.split('.')[0] === 'window'
-  && helloMessages.includes(playerHello.toLowerCase())) {
+  && answers.level1.actions.includes(playerHello.toLowerCase())) {
     return true;
   }
   return false;
 };
 
 const checkLevel2 = (code) => {
-  const rightActions = ['walk 3 spaces', 'turn left', 'walk 3 spaces'];
     const playerActions = code.split("'").filter(item => item.length > 5);
-    if (isEqual(rightActions, playerActions)) {
+    if (isEqual(answers.level2.actions, playerActions)) {
       return true;
   }
   return false;
+}
+
+const checkLevel3 = (code) => {
+  const playerAnswer = {
+    statement: '',
+    repeatTimes: 0,
+    actions: [],
+  };
+
+  code.split("\n").forEach((step, index) => {
+    if (index === 0 && step !== '') {
+      playerAnswer.statement = step.split(' ')[0];
+
+      const repeatCount = step.split(/< |;/)[2];
+      playerAnswer.repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
+    } else {
+      const instruction = step.split("'").filter(row => row.length > 5);
+      if (instruction.length > 1) {
+        // instruction[0] = windows.alert
+        playerAnswer.actions.push(instruction[1]);
+      }
+    }
+  });
+  if (isEqual(answers.level3, playerAnswer)) {
+    return true;
+}
+return false;
 }
 
 class Workspace extends React.Component {
@@ -75,6 +102,9 @@ class Workspace extends React.Component {
       case 2:
         isCorrect = checkLevel2(code);
         break;
+      case 3:
+        isCorrect = checkLevel3(code);
+        break;
       default:
         return;
     }
@@ -91,7 +121,11 @@ class Workspace extends React.Component {
   render() {
     const { startGame, code } = this.state;
     const { levelActive } = this.props;
-    const answerIsCorrect = this.checkAnswer(code, levelActive);
+
+    let answerIsCorrect = false;
+    if (code !== '') {
+      answerIsCorrect = this.checkAnswer(code, levelActive);
+    }
 
     let button;
     if (startGame) {
@@ -114,7 +148,7 @@ class Workspace extends React.Component {
     }
 
     return (
-      <div className="blockly">
+      <div className={`blockly blockly--level${levelActive}`}>
         <BlocklyWrapper
           startGame={this.state.startGame}
           getPlayerCode={this.setPlayerCode}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { getPath } from '../../../../lib/grid.js';
+
 import bunny from '../../../../../public/images/bunny2.png';
 import ground_template from '../../../../../public/images/ground_template.jpg';
 
@@ -40,6 +42,10 @@ class Level3 extends React.Component {
 
   renderD3() {
     const { startGame, playerCode } = this.props;
+    // const printMsg = d3.selectAll('.blocklyPath');
+    // printMsg
+    //   .attr('d', 'm 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 150 v 30 H 29.5 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z ');
+
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
@@ -77,9 +83,9 @@ class Level3 extends React.Component {
      if (startGame) {
        svgTag.select('.character__rabbit').select('.character__initial').remove();
        const playerPath = getPath(characterPos, playerCode);
+       console.log(playerPath);
 
        playerPath.forEach((roadPiece) => {
-         console.log(roadPiece);
          character
            .transition()
            .delay(5)
@@ -87,6 +93,7 @@ class Level3 extends React.Component {
            .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`)
      });
    }
+
   }
 
      render() {
