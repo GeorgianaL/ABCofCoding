@@ -22,33 +22,36 @@ const getNumberOfPaths = (action) => {
 }
 
 export const getPath = (posInitial, playerCode) => {
-  const finalPath = [];
   let code = [];
+  let repeatTimes = 1;
+  let directionIsHoriz = true;
+  const finalPath = [];
 
   if (typeof playerCode === 'string') {
-    code = playerCode.split("'").filter(item => item.length > 5);
+    code = playerCode.split("'").filter(item => item.length > 5 && actionTypes.includes(item.split(' ')[0]));
   }
 
-  let directionIsHoriz = true;
-  code.forEach((playerAction) => {
-    const actionType = getActionType(playerAction);
-    let repeatTimes = 0;
+  for (let playerAction=0, repetition = 0; playerAction<code.length && repetition < repeatTimes; playerAction++, repetition++) {
+    code.forEach((playerAction) => {
+      const actionType = getActionType(playerAction);
 
-    if (actionType === 'for') {
-      repeatTimes = playerAction.split(/< |;/)[2];
-    } else if (actionType === 'walk') {
-      const nrOfPaths = getNumberOfPaths(playerAction);
+      if (actionType === 'for') {
+        const repeatCount = playerAction.split(/< |;/)[2];
+        repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
+      } else if (actionType === 'walk') {
+        const nrOfPaths = getNumberOfPaths(playerAction);
 
-      for (let i = 1; i <= nrOfPaths; i++) {
-        if (finalPath.length === 0) {
-          finalPath.push(walk_n_spaces(posInitial, directionIsHoriz));
-        } else {
-          finalPath.push(walk_n_spaces(finalPath[finalPath.length - 1], directionIsHoriz));
+        for (let i = 1; i <= nrOfPaths; i++) {
+          if (finalPath.length === 0) {
+            finalPath.push(walk_n_spaces(posInitial, directionIsHoriz));
+          } else {
+            finalPath.push(walk_n_spaces(finalPath[finalPath.length - 1], directionIsHoriz));
+          }
         }
+      } else if (actionType === 'turn') {
+        directionIsHoriz = !directionIsHoriz;
       }
-    } else if (actionType === 'turn') {
-      directionIsHoriz = !directionIsHoriz;
-    }
-  });
+    });
+  }
   return finalPath;
 }

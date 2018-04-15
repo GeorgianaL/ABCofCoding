@@ -155,7 +155,7 @@ class Workspace extends React.Component {
           levelActive={this.props.levelActive}
         />
       <div className="blockly__playground">
-          <div className="visualization">
+          <div className={`visualization visualization--level${this.props.levelActive}`}>
             {
               this.props.levelActive === 1 &&
                 <Level1

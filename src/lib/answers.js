@@ -7,7 +7,7 @@ export const answers = {
   },
   level3: {
     statement: 'for',
-    repeatTimes: 2,
+    repeatTimes: 3,
     actions: ['walk 2 spaces', 'turn left', 'walk 1 space', 'turn right'],
   }
 };

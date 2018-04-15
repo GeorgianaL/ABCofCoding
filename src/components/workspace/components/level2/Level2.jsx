@@ -82,11 +82,13 @@ class Level2 extends React.Component {
 
       playerPath.forEach((roadPiece) => {
         console.log(roadPiece);
-        character
-          .transition()
-          .delay(5)
-          .duration(3000)
-          .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`)
+        if (roadPiece.x > 0 && roadPiece.y > 0) {
+          character
+            .transition()
+            .delay(5)
+            .duration(3000)
+            .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`);  
+        }
     });
   }
   }

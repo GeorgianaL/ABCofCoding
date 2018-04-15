@@ -16,6 +16,8 @@ const config = {
 const characterPos = { 'x': 0, 'y': 300 };
 
 const roadPath = [
+    { x: 600, y: 0 },
+    { x: 600, y: 100 },
     { x: 500, y: 100 },
     { x: 400, y: 100 },
     { x: 400, y: 200 },
@@ -23,6 +25,7 @@ const roadPath = [
     { x: 200, y: 200 },
     { x: 200, y: 300 },
     { x: 100, y: 300 },
+    { x: 0, y: 300 },
 ];
 
 class Level3 extends React.Component {
@@ -86,11 +89,13 @@ class Level3 extends React.Component {
        console.log(playerPath);
 
        playerPath.forEach((roadPiece) => {
-         character
-           .transition()
-           .delay(5)
-           .duration(3000)
-           .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`)
+         if (roadPiece.x > 0 && roadPiece.y > 0) {
+           character
+             .transition()
+             .delay(5)
+             .duration(3000)
+             .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`);
+         }
      });
    }
 
