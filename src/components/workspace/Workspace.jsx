@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import BlocklyWrapper from '../blockly/Blockly.jsx';
 import Button from '../button/Button.jsx';
 
-import { isEqual } from 'lodash';
-
 import { answers } from '../../lib/answers.js';
 import { checkLevel1, checkLevel2, checkLevel3, checkLevel4 } from '../../lib/check-functions.js';
 

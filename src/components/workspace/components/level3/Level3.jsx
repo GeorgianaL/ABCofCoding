@@ -86,17 +86,30 @@ class Level3 extends React.Component {
      if (startGame) {
        svgTag.select('.character__rabbit').select('.character__initial').remove();
        const playerPath = getPath(characterPos, playerCode);
-       console.log(playerPath);
 
-       playerPath.forEach((roadPiece) => {
-         if (roadPiece.x > 0 && roadPiece.y > 0) {
-           character
-             .transition()
-             .delay(5)
-             .duration(3000)
-             .attr('transform', `translate(${roadPiece.x}, ${roadPiece.y})`);
+         let index = 0;
+         const transition = {
+             'delay': 5,
+             'duration': 1000,
+         };
+
+         const move = () => {
+             if (playerPath[index].x >= 0 && playerPath[index].y >= 0) {
+                 character
+                     .transition()
+                     .delay(transition.delay)
+                     .duration(transition.duration)
+                     .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
+             }
+             index += 1;
+             if (index < playerPath.length) {
+                 setTimeout(move, transition.duration + transition.delay);
+             }
+         };
+
+         if (playerPath.length) {
+             move();
          }
-     });
    }
 
   }

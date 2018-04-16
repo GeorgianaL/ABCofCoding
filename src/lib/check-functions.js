@@ -1,3 +1,7 @@
+import { isEqual } from 'lodash';
+
+import { answers } from './answers.js';
+
 export const checkLevel1 = (code) => {
   const playerHello = code.split(/'|'/)[1];
   if (typeof code === 'string' && code.split('.')[0] === 'window'
