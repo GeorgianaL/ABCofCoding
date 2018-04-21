@@ -11,9 +11,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      'levelAchieved': 1,
+      'levelAchieved': 3,
     }
     this.setNextLevel = this.setNextLevel.bind(this);
+    this.changeLevel = this.changeLevel.bind(this);
   }
 
   setNextLevel() {
@@ -23,10 +24,21 @@ class App extends React.Component {
     });
   }
 
+  changeLevel(level) {
+    if (level <= this.state.levelAchieved) {
+      this.setState({
+        'levelAchieved': level,
+      });
+    }
+  }
+
   render() {
     return (
       <div>
-        <Header levelAchieved={this.state.levelAchieved} />
+        <Header
+          levelAchieved={this.state.levelAchieved}
+          changeLevel={this.changeLevel}
+        />
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}

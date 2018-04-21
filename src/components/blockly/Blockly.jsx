@@ -219,6 +219,14 @@ class BlocklyWrapper extends React.Component {
     this.changeToolboxCategories = this.changeToolboxCategories.bind(this);
   }
 
+  componentDidMount() {
+    const { levelActive } = this.props;
+
+    this.setState({
+      'toolboxCategories': TOOLBOX_CATEGORIES[levelActive - 1],
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.startGame !== nextProps.startGame) {
       this.props.getPlayerCode(this.state.code);

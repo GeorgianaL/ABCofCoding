@@ -30,7 +30,11 @@ class Header extends React.Component{
     return (
       <div className="header header--horizontal">
         <Logo />
-        <Levels levelsCount={10} levelAchieved={levelAchieved} />
+        <Levels
+          levelsCount={10}
+          levelAchieved={levelAchieved}
+          changeLevel={this.props.changeLevel}
+        />
         { this.state.showPopup &&
           <Popup
             level={levelAchieved}
@@ -45,9 +49,11 @@ class Header extends React.Component{
 Header.displayName = 'Header';
 Header.propTypes = {
   'levelAchieved': PropTypes.number,
+  'changeLevel': PropTypes.func,
 };
 Header.defaultProps = {
   'levelAchieved': 1,
+  'changeLevel': () => null,
 };
 
 export default Header;
