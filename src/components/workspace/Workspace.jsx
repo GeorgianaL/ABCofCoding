@@ -106,6 +106,11 @@ class Workspace extends React.Component {
       >Start</Button>;
     }
 
+    const levelParams = {
+      'startGame': startGame,
+      'playerCode': code,
+    };
+
     return (
       <div className={`blockly blockly--level${levelActive}`}>
         <BlocklyWrapper
@@ -117,31 +122,19 @@ class Workspace extends React.Component {
           <div className={`visualization visualization--level${this.props.levelActive}`}>
             {
               this.props.levelActive === 1 &&
-                <Level1
-                  startGame={startGame}
-                  playerCode={code}
-                />
+                <Level1 {...levelParams} />
             }
             {
               this.props.levelActive === 2 &&
-                <Level2
-                  startGame={startGame}
-                  playerCode={code}
-                />
+                  <Level2 {...levelParams} />
             }
             {
               this.props.levelActive === 3 &&
-                <Level3
-                  startGame={startGame}
-                  playerCode={code}
-                />
-            },
+                  <Level3 {...levelParams} />
+            }
             {
               this.props.levelActive === 4 &&
-                <Level4
-                  startGame={startGame}
-                  playerCode={code}
-                />
+                  <Level4 {...levelParams} />
             }
           </div>
           <div className="control">

@@ -68,17 +68,21 @@ class Level2 extends React.Component {
     .attr('x', d => d.x)
     .attr('y', d => d.y);
 
-   const character = svgTag.select('.character__rabbit')
+    const characterGroup = svgTag.select('.character__rabbit');
+    const character = characterGroup.selectAll('.main-character')
+      .data([characterPos]);
+    character.enter()
      .append('svg:image')
      .attr('xlink:href', bunny)
-     .attr('class', 'character__initial')
+     .attr('class', 'main-character')
      .attr('transform', `translate(${characterPos.x}, ${characterPos.y})`)
      .attr('width', `${config.character_width}px`)
      .attr('height', `${config.character_height}px`);
+    character.attr('transform', `translate(${characterPos.x}, ${characterPos.y})`);
+    character.exit().remove();
 
     if (startGame) {
-      svgTag.select('.character__rabbit').select('.character__initial').remove();
-      const playerPath = getPath(characterPos, playerCode);
+      const playerPath = getPath(characterPos, playerCode, 2);
 
       let index = 0;
       const transition = {

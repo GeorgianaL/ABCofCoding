@@ -9,10 +9,13 @@ const helpers = [
     'text': 'Drag and drop the blocks from the left side to print a hello message!'
   },
   {
-    'text': 'Help the rabbit cross the garden to reach the destination. Create a list and attach the right actions to it.'
+    'text': 'Help the rabbit to follow the path to reach the destination. Create a list and attach the right actions to it.'
   },
   {
     'text': 'Help the rabbit cross the garden to reach the destination. Repetition is bad in coding, so you can try using repeat loop.'
+  },
+  {
+    'text': 'Help the hadgehog to rich the barn. Pay attention to the cacti. You can avoid them by using an "if" statement.'
   }
 ];
 

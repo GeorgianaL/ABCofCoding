@@ -211,7 +211,7 @@ class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'toolboxCategories': TOOLBOX_CATEGORIES[1],
+      'toolboxCategories': TOOLBOX_CATEGORIES[0],
       'code': '',
     };
 

@@ -69,11 +69,9 @@
     }
   }
 
-  @include modifier('level3') {
-    .blocklyDraggable {
-      image {
-        display: none;
-      }
+  .blocklyDraggable {
+    image {
+      display: none;
     }
   }
 }

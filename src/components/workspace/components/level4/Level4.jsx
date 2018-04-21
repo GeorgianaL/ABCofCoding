@@ -82,18 +82,21 @@ class Level4 extends React.Component {
      .attr('x', d => d.x)
      .attr('y', d => d.y);
 
-
-    const character = svgTag.select('.character__hadgehog')
-       .append('svg:image')
-       .attr('xlink:href', hadgehog)
-       .attr('class', 'character__initial')
-       .attr('transform', `translate(${characterPos.x}, ${characterPos.y})`)
-       .attr('width', `${config.character_width}px`)
-       .attr('height', `${config.character_height}px`);
+     const characterGroup = svgTag.select('.character__hadgehog');
+     const character = characterGroup.selectAll('.main-character')
+       .data([characterPos]);
+     character.enter()
+      .append('svg:image')
+      .attr('xlink:href', hadgehog)
+      .attr('class', 'main-character')
+      .attr('transform', `translate(${characterPos.x}, ${characterPos.y})`)
+      .attr('width', `${config.character_width}px`)
+      .attr('height', `${config.character_height}px`);
+     character.attr('transform', `translate(${characterPos.x}, ${characterPos.y})`);
+     character.exit().remove();
 
      if (startGame) {
-       svgTag.select('.character__hadgehog').select('.character__initial').remove();
-       const playerPath = getPath(characterPos, playerCode);
+       const playerPath = getPath(characterPos, playerCode, 4);
        console.log(playerPath);
 
          let index = 0;
