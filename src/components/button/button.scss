@@ -39,4 +39,9 @@
     color: setColor('white');
     background: setColor('teal');
   }
+
+  @include modifier('close') {
+    color: setColor('white');
+    background: setColor('red');
+  }
 }

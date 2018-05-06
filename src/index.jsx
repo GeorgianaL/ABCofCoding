@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Header from './components/header/Header.jsx';
 import Workspace from './components/workspace/Workspace.jsx';
+import Modal from './components/modal/Modal.jsx';
 
 import './style.scss';
 
@@ -12,6 +13,7 @@ class App extends React.Component {
 
     this.state = {
       'levelAchieved': 3,
+      'showModal': true,
     }
     this.setNextLevel = this.setNextLevel.bind(this);
     this.changeLevel = this.changeLevel.bind(this);
@@ -20,7 +22,8 @@ class App extends React.Component {
   setNextLevel() {
     const { levelAchieved } = this.state;
     this.setState({
-      'levelAchieved': levelAchieved + 1
+      'levelAchieved': levelAchieved + 1,
+      'showModal': true,
     });
   }
 
@@ -39,6 +42,17 @@ class App extends React.Component {
           levelAchieved={this.state.levelAchieved}
           changeLevel={this.changeLevel}
         />
+      {
+        this.state.showModal && <Modal
+            open={this.state.showModal}
+            level={this.state.levelAchieved}
+            onClose={() =>
+              this.setState({
+                'showModal': false
+              })
+            }
+          />
+      }
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}

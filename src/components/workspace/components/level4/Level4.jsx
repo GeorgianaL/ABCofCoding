@@ -26,7 +26,7 @@ const roadPath = [
 const decoration = [
   { type: 'obstacle', x: 200, y: 200 },
   { type: 'obstacle', x: 300, y: 300 },
-  { type: 'finish', x: 350, y: 75 },
+  { type: 'barn', x: 350, y: 75 },
 ];
 
 class Level4 extends React.Component {
@@ -66,7 +66,19 @@ class Level4 extends React.Component {
       .data(decoration);
     obstacles.enter()
      .append('svg:image')
-     .attr('xlink:href', (d) => d.type === 'obstacle' ? cactus : barn)
+     .attr('xlink:href', (d) => {
+       switch (d.type) {
+         case 'obstacle':
+           return cactus
+           break;
+         case 'barn':
+           return barn
+           break;
+         default:
+         return null;
+
+       }
+     })
      .attr('width', (d) => {
        if (d.type === 'obstacle') {
         return `${config.character_width}px`;
@@ -97,7 +109,6 @@ class Level4 extends React.Component {
 
      if (startGame) {
        const playerPath = getPath(characterPos, playerCode, 4);
-       console.log(playerPath);
 
          let index = 0;
          const transition = {

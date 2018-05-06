@@ -12,6 +12,9 @@ import Level2 from './components/level2/Level2.jsx';
 import Level3 from './components/level3/Level3.jsx';
 import Level4 from './components/level4/Level4.jsx';
 
+
+import Modal from '../modal/Modal.jsx';
+
 import './workspace.scss';
 
 class Workspace extends React.Component {
@@ -21,6 +24,7 @@ class Workspace extends React.Component {
     this.state = {
       'code': '',
       'startGame': false,
+      'showModal': true,
     }
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
@@ -112,33 +116,47 @@ class Workspace extends React.Component {
     };
 
     return (
-      <div className={`blockly blockly--level${levelActive}`}>
-        <BlocklyWrapper
-          startGame={this.state.startGame}
-          getPlayerCode={this.setPlayerCode}
-          levelActive={this.props.levelActive}
-        />
-      <div className="blockly__playground">
-          <div className={`visualization visualization--level${this.props.levelActive}`}>
-            {
-              this.props.levelActive === 1 &&
-                <Level1 {...levelParams} />
-            }
-            {
-              this.props.levelActive === 2 &&
-                  <Level2 {...levelParams} />
-            }
-            {
-              this.props.levelActive === 3 &&
-                  <Level3 {...levelParams} />
-            }
-            {
-              this.props.levelActive === 4 &&
-                  <Level4 {...levelParams} />
-            }
-          </div>
-          <div className="control">
-              {button}
+      <div>
+        {
+          startGame && answerIsCorrect && <Modal
+              open={this.state.showModal}
+              level={levelActive}
+              code={code}
+              onClose={() =>
+                this.setState({
+                  'showModal': false
+                })
+              }
+            />
+        }
+        <div className={`blockly blockly--level${levelActive}`}>
+          <BlocklyWrapper
+            startGame={this.state.startGame}
+            getPlayerCode={this.setPlayerCode}
+            levelActive={this.props.levelActive}
+          />
+        <div className="blockly__playground">
+            <div className={`visualization visualization--level${this.props.levelActive}`}>
+              {
+                this.props.levelActive === 1 &&
+                  <Level1 {...levelParams} />
+              }
+              {
+                this.props.levelActive === 2 &&
+                    <Level2 {...levelParams} />
+              }
+              {
+                this.props.levelActive === 3 &&
+                    <Level3 {...levelParams} />
+              }
+              {
+                this.props.levelActive === 4 &&
+                    <Level4 {...levelParams} />
+              }
+            </div>
+            <div className="control">
+                {button}
+            </div>
           </div>
         </div>
       </div>
