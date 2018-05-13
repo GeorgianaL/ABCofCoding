@@ -5,31 +5,25 @@ import * as d3 from 'd3';
 
 import { getPath } from '../../../../lib/grid.js';
 
-import bunny from '../../../../../public/images/bunny2.png';
-import bunny_finish from '../../../../../public/images/bunny1.png';
+import bunny from '../../../../../public/images/bunny1.png';
 import ground_template from '../../../../../public/images/ground_template.jpg';
-
-import './level2.scss';
 
 const config = {
   'character_width': 100,
   'character_height': 100,
 };
 
-const characterPos = { 'x': 100, 'y': 300 };
+const characterPos = { 'x': 100, 'y': 200 };
 
 const roadPath = [
-    { x: 200, y: 300 },
-    { x: 300, y: 300 },
-    { x: 400, y: 300 },
+    { x: 200, y: 200 },
+    { x: 300, y: 200 },
     { x: 400, y: 200 },
-    { x: 400, y: 100 },
 ];
 
-class Level2 extends React.Component {
+class DemoLevel2 extends React.Component {
   constructor(props) {
     super(props);
-
     this.svgNode = null;
   }
 
@@ -101,10 +95,6 @@ class Level2 extends React.Component {
           index += 1;
           if (index < playerPath.length) {
               setTimeout(move, transition.duration + transition.delay);
-              if (index === playerPath.length - 1) {
-                character
-                  .attr('xlink:href', bunny_finish);
-              }
           }
       };
       if (playerPath.length) {
@@ -123,14 +113,14 @@ class Level2 extends React.Component {
   }
 }
 
-Level2.displayName = 'Level2';
-Level2.propTypes = {
+DemoLevel2.displayName = 'DemoLevel2';
+DemoLevel2.propTypes = {
   'startGame': PropTypes.bool,
   'playerCode': PropTypes.string,
 };
-Level2.defaultProps = {
+DemoLevel2.defaultProps = {
   'startGame': false,
   'playerCode': '',
 };
 
-export default Level2;
+export default DemoLevel2;

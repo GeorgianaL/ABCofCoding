@@ -7,7 +7,7 @@ export const helpers = [
   },
   {
     name: 'Level 2',
-    description: 'Help the rabbit to follow the path to reach the destination. Create a list and attach the right actions to it.',
+    description: 'Help the rabbit follow the path to reach the destination. Create a list and attach the right actions to it.',
     learn: ['sequences', 'lists'],
     code: `
       [

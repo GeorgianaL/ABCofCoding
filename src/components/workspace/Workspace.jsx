@@ -8,8 +8,12 @@ import { answers } from '../../lib/answers.js';
 import { checkLevel1, checkLevel2, checkLevel3, checkLevel4 } from '../../lib/check-functions.js';
 
 import Level1 from './components/level1/Level1.jsx';
+
 import Level2 from './components/level2/Level2.jsx';
+import DemoLevel2 from './components/level2/DemoLevel2.jsx';
+
 import Level3 from './components/level3/Level3.jsx';
+
 import Level4 from './components/level4/Level4.jsx';
 
 

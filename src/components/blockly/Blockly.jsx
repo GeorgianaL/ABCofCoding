@@ -37,15 +37,15 @@ const TOOLBOX_CATEGORIES = [
         {
           type: "text",
           fields: {
-            TEXT: 'walk 3 spaces',
+            TEXT: 'walk 1 space',
           },
         },
-        {
-          type: "text",
-          fields: {
-            TEXT: 'turn left',
-          },
-        },
+        // {
+        //   type: "text",
+        //   fields: {
+        //     TEXT: 'turn left',
+        //   },
+        // },
       ],
     }
   ],

@@ -14,9 +14,11 @@ class App extends React.Component {
     this.state = {
       'levelAchieved': 2,
       'showModal': true,
+      'openDemo': false,
     }
     this.setNextLevel = this.setNextLevel.bind(this);
     this.changeLevel = this.changeLevel.bind(this);
+    this.setDemoModal = this.setDemoModal.bind(this);
   }
 
   setNextLevel() {
@@ -35,22 +37,35 @@ class App extends React.Component {
     }
   }
 
+  setDemoModal() {
+    this.setState({
+      'openDemo': !this.state.openDemo,
+    })
+  }
+
   render() {
     return (
       <div>
         <Header
           levelAchieved={this.state.levelAchieved}
           changeLevel={this.changeLevel}
+          openDemo={this.setDemoModal}
         />
         <Modal
           open={this.state.showModal}
           level={this.state.levelAchieved}
           onClose={() =>
             this.setState({
-              'showStartModal': false
+              'showModal': false
             })
           }
         />
+      {
+        this.state.openDemo && <Modal
+          isVideoType
+          onClose={this.setDemoModal}
+          />
+      }
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}
