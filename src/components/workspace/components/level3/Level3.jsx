@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getPath } from '../../../../lib/grid.js';
 
 import bunny from '../../../../../public/images/bunny2.png';
+import bunny_finish from '../../../../../public/images/bunny1.png';
 import ground_template from '../../../../../public/images/ground_template.jpg';
 
 import * as d3 from 'd3';
@@ -108,6 +109,10 @@ class Level3 extends React.Component {
              index += 1;
              if (index < playerPath.length) {
                  setTimeout(move, transition.duration + transition.delay);
+                 if (index === playerPath.length - 1) {
+                   character
+                     .attr('xlink:href', bunny_finish);
+                 }
              }
          };
 

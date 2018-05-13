@@ -72,15 +72,6 @@ render() {
       </div>
     );
 
-    const modalEndContent = (
-      <div className="modal__content">
-        <span className="modal__content--title">You solved this with the following code:</span>
-        <div className="modal__content--code">
-          { helpers[level-1].code }
-        </div>
-      </div>
-    );
-
     return this.props.open ? (
       <div>
         <div className="modal modal__background" />
@@ -88,20 +79,18 @@ render() {
           <header className="modal__header">
             <div className="modal__level">
               <span>
-                {
-                  isStartGameModal ? helpers[level-1].name : 'Congrats!'
-                }
+                { helpers[level-1].name }
               </span>
             </div>
           </header>
-          { isStartGameModal ? modalStartContent : modalEndContent }
+          { modalStartContent }
           <div className="modal__footer">
             <Button
               className="button button--close"
               onClick={() => this.props.onClose()}
             >
-            { isStartGameModal ? 'Close and play' : 'Continue' }
-          </Button>
+            Close and play
+            </Button>
           </div>
         </div>
       </div>
@@ -111,12 +100,10 @@ render() {
 
 Modal.displayName = 'Modal';
 Modal.propTypes = {
-  'isStartGameModal': PropTypes.bool,
   'code': PropTypes.string,
   'onClose': PropTypes.func,
 };
 Modal.defaultProps = {
-  'isStartGameModal': false,
   'code': '',
   'onClose': () => null,
 };

@@ -127,6 +127,9 @@ class Level4 extends React.Component {
              index += 1;
              if (index < playerPath.length) {
                  setTimeout(move, transition.duration + transition.delay);
+                 if (index === playerPath.length) {
+                   setTimeout(d3.select('.character').remove(), (transition.duration + transition.delay) * 2);
+                 }
              }
          };
 

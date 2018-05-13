@@ -30,7 +30,11 @@ class Level2 extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      'finishedLevel': false,
+    };
     this.svgNode = null;
+    this.levelHasFinished = this.levelHasFinished.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +43,12 @@ class Level2 extends React.Component {
 
   componentDidUpdate() {
     this.renderD3();
+  }
+
+  levelHasFinished() {
+    this.setState({
+      'finishedLevel': true,
+    });
   }
 
   renderD3() {
@@ -101,6 +111,10 @@ class Level2 extends React.Component {
           index += 1;
           if (index < playerPath.length) {
               setTimeout(move, transition.duration + transition.delay);
+              if (index === playerPath.length - 1) {
+                character
+                  .attr('xlink:href', bunny_finish);
+              }
           }
       };
       if (playerPath.length) {
