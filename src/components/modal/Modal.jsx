@@ -37,8 +37,8 @@ const iconSrc = (itemName) => {
 }
 
 class Modal extends React.Component {
-  render() {
-    const { level, code } = this.props;
+render() {
+    const { level, code, isStartGameModal } = this.props;
     const toLearn = helpers[level-1].learn;
 
     const modalStartContent = (
@@ -76,7 +76,7 @@ class Modal extends React.Component {
       <div className="modal__content">
         <span className="modal__content--title">You solved this with the following code:</span>
         <div className="modal__content--code">
-          {code}
+          { helpers[level-1].code }
         </div>
       </div>
     );
@@ -89,18 +89,18 @@ class Modal extends React.Component {
             <div className="modal__level">
               <span>
                 {
-                  code !== '' ? 'Congrats!' : helpers[level-1].name
+                  isStartGameModal ? helpers[level-1].name : 'Congrats!'
                 }
               </span>
             </div>
           </header>
-          { code !== '' ? modalEndContent : modalStartContent }
+          { isStartGameModal ? modalStartContent : modalEndContent }
           <div className="modal__footer">
             <Button
               className="button button--close"
               onClick={() => this.props.onClose()}
             >
-            { code !== '' ? 'Continue' : 'Close and play' }
+            { isStartGameModal ? 'Close and play' : 'Continue' }
           </Button>
           </div>
         </div>
@@ -111,10 +111,12 @@ class Modal extends React.Component {
 
 Modal.displayName = 'Modal';
 Modal.propTypes = {
+  'isStartGameModal': PropTypes.bool,
   'code': PropTypes.string,
   'onClose': PropTypes.func,
 };
 Modal.defaultProps = {
+  'isStartGameModal': false,
   'code': '',
   'onClose': () => null,
 };

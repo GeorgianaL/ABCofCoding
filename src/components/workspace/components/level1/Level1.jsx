@@ -31,7 +31,7 @@ class Level1 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode } = this.props;
+    const { startGame, playerCode, setLevelIsFinished } = this.props;
     const node = this.svgNode;
 
     const svgTag = d3.select(node);

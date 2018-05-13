@@ -12,8 +12,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      'levelAchieved': 3,
-      'showModal': true,
+      'levelAchieved': 1,
+      'showStartModal': true,
+      'showEndModal': true,
     }
     this.setNextLevel = this.setNextLevel.bind(this);
     this.changeLevel = this.changeLevel.bind(this);
@@ -23,7 +24,8 @@ class App extends React.Component {
     const { levelAchieved } = this.state;
     this.setState({
       'levelAchieved': levelAchieved + 1,
-      'showModal': true,
+      'showStartModal': true,
+      'showEndModal': true,
     });
   }
 
@@ -43,12 +45,24 @@ class App extends React.Component {
           changeLevel={this.changeLevel}
         />
       {
-        this.state.showModal && <Modal
-            open={this.state.showModal}
+        this.state.levelAchieved > 1 && <Modal
+          open={this.state.showEndModal}
+          level={this.state.levelAchieved - 1}
+          onClose={() =>
+            this.setState({
+              'showEndModal': false
+            })
+          }
+        />
+       }
+      {
+        !this.state.showEndModal && <Modal
+            isStartGameModal
+            open={this.state.showStartModal}
             level={this.state.levelAchieved}
             onClose={() =>
               this.setState({
-                'showModal': false
+                'showStartModal': false
               })
             }
           />
@@ -56,6 +70,8 @@ class App extends React.Component {
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}
+          levelIsFinished={this.state.levelIsFinished}
+          setLevelIsFinished={this.setLevelIsFinished}
         />
       </div>
     );

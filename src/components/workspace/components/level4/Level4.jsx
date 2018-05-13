@@ -45,7 +45,7 @@ class Level4 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode } = this.props;
+    const { startGame, playerCode, setLevelIsFinished } = this.props;
 
     const node = this.svgNode;
 

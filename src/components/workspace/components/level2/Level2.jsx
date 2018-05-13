@@ -42,7 +42,7 @@ class Level2 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode } = this.props;
+    const { startGame, playerCode, setLevelIsFinished } = this.props;
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
@@ -103,7 +103,6 @@ class Level2 extends React.Component {
               setTimeout(move, transition.duration + transition.delay);
           }
       };
-
       if (playerPath.length) {
           move();
       }

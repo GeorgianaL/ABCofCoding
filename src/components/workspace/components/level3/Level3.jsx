@@ -44,7 +44,7 @@ class Level3 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode } = this.props;
+    const { startGame, playerCode, setLevelIsFinished } = this.props;
     // const printMsg = d3.selectAll('.blocklyPath');
     // printMsg
     //   .attr('d', 'm 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 150 v 30 H 29.5 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z ');

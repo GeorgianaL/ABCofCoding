@@ -32,15 +32,6 @@ class Workspace extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
   }
 
-  shouldComponentUpdate(nextState, nextProps) {
-    if (this.state.code !== nextState.code
-    || this.state.startGame !== nextState.startGame
-    || this.props.levelActive !== nextProps.levelActive) {
-      return true;
-    }
-    return false;
-  }
-
   setPlayerCode(generatedCode) {
     this.setState({
       'code': generatedCode,
@@ -117,18 +108,6 @@ class Workspace extends React.Component {
 
     return (
       <div>
-        {
-          startGame && answerIsCorrect && <Modal
-              open={this.state.showModal}
-              level={levelActive}
-              code={code}
-              onClose={() =>
-                this.setState({
-                  'showModal': false
-                })
-              }
-            />
-        }
         <div className={`blockly blockly--level${levelActive}`}>
           <BlocklyWrapper
             startGame={this.state.startGame}
@@ -168,10 +147,12 @@ Workspace.displayName = 'Workspace';
 Workspace.propTypes = {
   'levelActive': PropTypes.number,
   'nextLevel': PropTypes.func,
+  'setLevelIsFinished': PropTypes.func,
 };
 Workspace.defaultProps = {
   'levelActive': 1,
   'nextLevel': () => null,
+  'setLevelIsFinished': () => null,
 };
 
 export default Workspace;
