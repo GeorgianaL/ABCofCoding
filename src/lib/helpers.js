@@ -7,6 +7,15 @@ export const helpers = [
   },
   {
     name: 'Level 2',
+    description: 'Create a square with the width 100 and the color red.',
+    learn: ['variables'],
+    code: `
+        const color = red;
+        const width = 100;
+      `,
+  },
+  {
+    name: 'Level 3',
     description: 'Help the rabbit follow the path to reach the destination. Create a list and attach the right actions to it.',
     learn: ['sequences', 'lists'],
     code: `
@@ -18,7 +27,7 @@ export const helpers = [
       `,
   },
   {
-    name: 'Level 3',
+    name: 'Level 4',
     description: 'Help the rabbit cross the garden to reach the destination. Repetition is bad in coding, so you can try using repeat loop.',
     learn: ['loops', 'sequences'],
     code: `
@@ -31,7 +40,7 @@ export const helpers = [
       `,
   },
   {
-    name: 'Level 4',
+    name: 'Level 5',
     description: 'Help the hadgehog to rich the barn. Pay attention to the cacti. You can avoid them by using an "if" statement.',
     learn: ['loops', 'conditionals', 'sequences'],
     code: `
@@ -45,5 +54,5 @@ export const helpers = [
         walk_1_space();
         enter_the_barn();
       `,
-  }
+  },
 ];

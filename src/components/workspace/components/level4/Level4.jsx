@@ -1,32 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as d3 from 'd3';
 
 import { getPath } from '../../../../lib/grid.js';
 
-import hadgehog from '../../../../../public/images/hadgehog1.png';
-import cactus from '../../../../../public/images/cactus.png';
-import barn from '../../../../../public/images/barn.png'
+import bunny from '../../../../../public/images/bunny2.png';
+import bunny_finish from '../../../../../public/images/bunny1.png';
+import ground_template from '../../../../../public/images/ground_template.jpg';
+
+import * as d3 from 'd3';
 
 const config = {
-  'character_width': 100,
-  'character_height': 100,
+  character_width: 100,
+  character_height: 100,
 };
-const characterPos = { 'x': 0, 'y': 200 };
+
+const characterPos = { x: 0, y: 300 };
 
 const roadPath = [
-    { x: 0, y: 200 },
-    { x: 100, y: 200 },
-    { x: 100, y: 300 },
-    { x: 200, y: 300 },
-    { x: 200, y: 400 },
-    { x: 300, y: 400 },
-];
-
-const decoration = [
-  { type: 'obstacle', x: 200, y: 200 },
-  { type: 'obstacle', x: 300, y: 300 },
-  { type: 'barn', x: 350, y: 75 },
+  { x: 600, y: 0 },
+  { x: 600, y: 100 },
+  { x: 500, y: 100 },
+  { x: 400, y: 100 },
+  { x: 400, y: 200 },
+  { x: 300, y: 200 },
+  { x: 200, y: 200 },
+  { x: 200, y: 300 },
+  { x: 100, y: 300 },
+  { x: 0, y: 300 },
 ];
 
 class Level4 extends React.Component {
@@ -45,120 +45,101 @@ class Level4 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode, setLevelIsFinished } = this.props;
+    const { startGame, playerCode } = this.props;
+    // const printMsg = d3.selectAll('.blocklyPath');
+    // printMsg
+    //   .attr('d', 'm 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 150 v 30 H 29.5 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z ');
 
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
-
-   const road = svgTag.select('.road')
-   const roadPiece = road.selectAll('rect')
-     .data(roadPath);
-   roadPiece.enter()
-    .append('rect')
-    .attr('class', 'roadPiece')
-    .style('fill', '#00000029')
-    .attr('x', d => d.x)
-    .attr('y', d => d.y);
-
-    const obstacleGroup = svgTag.select('.decoration')
-    const obstacles = obstacleGroup.selectAll('image')
-      .data(decoration);
-    obstacles.enter()
-     .append('svg:image')
-     .attr('xlink:href', (d) => {
-       switch (d.type) {
-         case 'obstacle':
-           return cactus
-           break;
-         case 'barn':
-           return barn
-           break;
-         default:
-         return null;
-
-       }
-     })
-     .attr('width', (d) => {
-       if (d.type === 'obstacle') {
-        return `${config.character_width}px`;
-       }
-       return 400;
-     })
-     .attr('height', (d) => {
-       if (d.type === 'obstacle') {
-        return `${config.character_height}px`;
-       }
-       return 450;
-     })
-     .attr('x', d => d.x)
-     .attr('y', d => d.y);
-
-     const characterGroup = svgTag.select('.character__hadgehog');
-     const character = characterGroup.selectAll('.main-character')
-       .data([characterPos]);
-     character.enter()
+    const defs = svgTag.append('svg:defs');
+    defs.append('svg:pattern')
+      .attr('id', 'ground_template')
+      .attr('width', config.character_width)
+      .attr('height', config.character_height)
+      .attr('patternUnits', 'userSpaceOnUse')
       .append('svg:image')
-      .attr('xlink:href', hadgehog)
+      .attr('xlink:href', ground_template)
+      .attr('width', config.character_width)
+      .attr('height', config.character_height);
+
+
+    const road = svgTag.select('.road');
+    const roadPiece = road.selectAll('rect')
+      .data(roadPath);
+
+    roadPiece.enter()
+      .append('rect')
+      .attr('class', 'roadPiece')
+      .style('fill', 'url(#ground_template)')
+      .attr('x', d => d.x)
+      .attr('y', d => d.y);
+
+    const characterGroup = svgTag.select('.character__rabbit');
+    const character = characterGroup.selectAll('.main-character')
+      .data([characterPos]);
+    character.enter()
+      .append('svg:image')
+      .attr('xlink:href', bunny)
       .attr('class', 'main-character')
       .attr('transform', `translate(${characterPos.x}, ${characterPos.y})`)
       .attr('width', `${config.character_width}px`)
       .attr('height', `${config.character_height}px`);
-     character.attr('transform', `translate(${characterPos.x}, ${characterPos.y})`);
-     character.exit().remove();
+    character.attr('transform', `translate(${characterPos.x}, ${characterPos.y})`);
+    character.exit().remove();
 
-     if (startGame) {
-       const playerPath = getPath(characterPos, playerCode, 4);
+    if (startGame) {
+      const playerPath = getPath(characterPos, playerCode, 3);
 
-         let index = 0;
-         const transition = {
-             'delay': 5,
-             'duration': 1000,
-         };
+      let index = 0;
+      const transition = {
+        delay: 5,
+        duration: 1000,
+      };
 
-         const move = () => {
-             if (playerPath[index].x >= 0 && playerPath[index].y >= 0) {
-                 character
-                     .transition()
-                     .delay(transition.delay)
-                     .duration(transition.duration)
-                     .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
-             }
-             index += 1;
-             if (index < playerPath.length) {
-                 setTimeout(move, transition.duration + transition.delay);
-                 if (index === playerPath.length) {
-                   setTimeout(d3.select('.character').remove(), (transition.duration + transition.delay) * 2);
-                 }
-             }
-         };
+      const move = () => {
+        if (playerPath[index].x >= 0 && playerPath[index].y >= 0) {
+          character
+            .transition()
+            .delay(transition.delay)
+            .duration(transition.duration)
+            .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
+        }
+        index += 1;
+        if (index < playerPath.length) {
+          setTimeout(move, transition.duration + transition.delay);
+          if (index === playerPath.length - 1) {
+            character
+              .attr('xlink:href', bunny_finish);
+          }
+        }
+      };
 
-         if (playerPath.length) {
-             move();
-         }
-   }
-
+      if (playerPath.length) {
+        move();
+      }
+    }
   }
 
-     render() {
-       return (
-           <svg ref={node => this.svgNode = node}>
-             <g className="road" />
-             <g className="decoration" />
-             <g className="character character__hadgehog" />
-           </svg>
-       );
-     }
-   }
+  render() {
+    return (
+      <svg ref={node => this.svgNode = node}>
+        <g className="road" />
+        <g className="character character__rabbit" />
+      </svg>
+    );
+  }
+}
 
-   Level4.displayName = 'Level4';
-   Level4.propTypes = {
-     'startGame': PropTypes.bool,
-     'playerCode': PropTypes.string,
-   };
-   Level4.defaultProps = {
-     'startGame': false,
-     'playerCode': '',
-   };
+Level4.displayName = 'Level4';
+Level4.propTypes = {
+  startGame: PropTypes.bool,
+  playerCode: PropTypes.string,
+};
+Level4.defaultProps = {
+  startGame: false,
+  playerCode: '',
+};
 
-   export default Level4;
+export default Level4;

@@ -22,6 +22,35 @@ const TOOLBOX_CATEGORIES = [
   ],
   [
     {
+      name: 'Variables',
+      type: 'variables',
+      blocks: [
+        { type: 'variables_set' },
+      ],
+    },
+    {
+      name: 'Color',
+      type: 'colour_picker',
+      blocks: [
+        {
+          type: 'colour_picker',
+          colour: 'ff0000',
+        },
+      ],
+    },
+    {
+      name: 'Math',
+      type: 'math_number',
+      blocks: [
+        {
+          type: 'math_number',
+          value: '100',
+        },
+      ],
+    },
+  ],
+  [
+    {
       name: 'List',
       type: 'lists_create_with',
       blocks: [
@@ -37,15 +66,15 @@ const TOOLBOX_CATEGORIES = [
         {
           type: "text",
           fields: {
-            TEXT: 'walk 1 space',
+            TEXT: 'walk 3 spaces',
           },
         },
-        // {
-        //   type: "text",
-        //   fields: {
-        //     TEXT: 'turn left',
-        //   },
-        // },
+        {
+          type: "text",
+          fields: {
+            TEXT: 'turn left',
+          },
+        },
       ],
     }
   ],

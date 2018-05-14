@@ -1,72 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BlocklyWrapper from '../blockly/Blockly.jsx';
-import Button from '../button/Button.jsx';
+import BlocklyWrapper from '../blockly/Blockly';
+import Button from '../button/Button';
 
-import { answers } from '../../lib/answers.js';
-import { checkLevel1, checkLevel2, checkLevel3, checkLevel4 } from '../../lib/check-functions.js';
+import { checkLevel1, checkLevel3, checkLevel4, checkLevel5 } from '../../lib/check-functions';
 
-import Level1 from './components/level1/Level1.jsx';
+import Level1 from './components/level1/Level1';
+import Level2 from './components/level2/Level2';
+import Level3 from './components/level3/Level3';
+// import DemoLevel3 from './components/level3/DemoLevel3';
 
-import Level2 from './components/level2/Level2.jsx';
-import DemoLevel2 from './components/level2/DemoLevel2.jsx';
+import Level4 from './components/level4/Level4';
 
-import Level3 from './components/level3/Level3.jsx';
+import Level5 from './components/level5/Level5';
 
-import Level4 from './components/level4/Level4.jsx';
-
-
-import Modal from '../modal/Modal.jsx';
 
 import './workspace.scss';
+
+const checkAnswer = (code, level) => {
+  let isCorrect = false;
+  switch (level) {
+    case 1:
+      isCorrect = checkLevel1(code);
+      break;
+    case 2:
+      isCorrect = true;
+      break;
+    case 3:
+      isCorrect = checkLevel3(code);
+      break;
+    case 4:
+      isCorrect = checkLevel4(code);
+      break;
+    case 5:
+      isCorrect = checkLevel5(code);
+      break;
+    default:
+      return;
+  }
+  return isCorrect;
+};
 
 class Workspace extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      'code': '',
-      'startGame': false,
-      'showModal': true,
-    }
+      code: '',
+      startGame: false,
+    };
 
     this.setPlayerCode = this.setPlayerCode.bind(this);
     this.setStartGame = this.setStartGame.bind(this);
-    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   setPlayerCode(generatedCode) {
     this.setState({
-      'code': generatedCode,
+      code: generatedCode,
     });
   }
 
   setStartGame(hasStart) {
     this.setState({
-      'startGame': hasStart,
+      startGame: hasStart,
     });
-  }
-
-  checkAnswer(code, level) {
-    let isCorrect = false;
-    switch (level) {
-      case 1:
-        isCorrect = checkLevel1(code);
-        break;
-      case 2:
-        isCorrect = checkLevel2(code);
-        break;
-      case 3:
-        isCorrect = checkLevel3(code);
-        break;
-      case 4:
-        isCorrect = checkLevel4(code);
-        break;
-      default:
-        return;
-    }
-    return isCorrect;
   }
 
   playGame(startGame, nextLevel = false) {
@@ -82,32 +80,38 @@ class Workspace extends React.Component {
 
     let answerIsCorrect = false;
     if (code !== '') {
-      answerIsCorrect = this.checkAnswer(code, levelActive);
+      answerIsCorrect = checkAnswer(code, levelActive);
     }
 
     let button;
     if (startGame) {
       if (answerIsCorrect) {
-        button = <Button
+        button = (
+          <Button
             className="button button--next"
             onClick={() => this.playGame(false, true)}
-        >Next Level</Button>;
+          >Next Level
+          </Button>);
       } else {
-        button =<Button
+        button = (
+          <Button
             className="button button--retry"
             onClick={() => this.playGame(false)}
-        >Retry</Button>;
+          >Retry
+          </Button>);
       }
     } else {
-      button =<Button
+      button = (
+        <Button
           className="button button--start"
           onClick={() => this.playGame(true)}
-      >Start</Button>;
+        >Start
+        </Button>);
     }
 
     const levelParams = {
-      'startGame': startGame,
-      'playerCode': code,
+      startGame,
+      playerCode: code,
     };
 
     return (
@@ -118,27 +122,31 @@ class Workspace extends React.Component {
             getPlayerCode={this.setPlayerCode}
             levelActive={this.props.levelActive}
           />
-        <div className="blockly__playground">
+          <div className="blockly__playground">
             <div className={`visualization visualization--level${this.props.levelActive}`}>
               {
                 this.props.levelActive === 1 &&
-                  <Level1 {...levelParams} />
+                <Level1 {...levelParams} />
               }
               {
                 this.props.levelActive === 2 &&
-                    <Level2 {...levelParams} />
+                <Level2 {...levelParams} />
               }
               {
                 this.props.levelActive === 3 &&
-                    <Level3 {...levelParams} />
+                <Level3 {...levelParams} />
               }
               {
                 this.props.levelActive === 4 &&
-                    <Level4 {...levelParams} />
+                <Level4 {...levelParams} />
+              }
+              {
+                this.props.levelActive === 5 &&
+                <Level5 {...levelParams} />
               }
             </div>
             <div className="control">
-                {button}
+              {button}
             </div>
           </div>
         </div>
@@ -149,14 +157,14 @@ class Workspace extends React.Component {
 
 Workspace.displayName = 'Workspace';
 Workspace.propTypes = {
-  'levelActive': PropTypes.number,
-  'nextLevel': PropTypes.func,
-  'setLevelIsFinished': PropTypes.func,
+  levelActive: PropTypes.number,
+  nextLevel: PropTypes.func,
+  setLevelIsFinished: PropTypes.func,
 };
 Workspace.defaultProps = {
-  'levelActive': 1,
-  'nextLevel': () => null,
-  'setLevelIsFinished': () => null,
+  levelActive: 1,
+  nextLevel: () => null,
+  setLevelIsFinished: () => null,
 };
 
 export default Workspace;
