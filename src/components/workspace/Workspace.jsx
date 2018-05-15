@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import BlocklyWrapper from '../blockly/Blockly';
 import Button from '../button/Button';
 
-import { checkLevel1, checkLevel3, checkLevel4, checkLevel5 } from '../../lib/check-functions';
+import { checkLevel1, checkLevel2, checkLevel3, checkLevel4, checkLevel5 } from '../../lib/check-functions';
 
 import Level1 from './components/level1/Level1';
 import Level2 from './components/level2/Level2';
@@ -25,7 +25,7 @@ const checkAnswer = (code, level) => {
       isCorrect = checkLevel1(code);
       break;
     case 2:
-      isCorrect = true;
+      isCorrect = checkLevel2(code);
       break;
     case 3:
       isCorrect = checkLevel3(code);

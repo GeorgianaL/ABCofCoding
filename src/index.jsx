@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/header/Header.jsx';
-import Workspace from './components/workspace/Workspace.jsx';
-import Modal from './components/modal/Modal.jsx';
+import Header from './components/header/Header';
+import Workspace from './components/workspace/Workspace';
+import Modal from './components/modal/Modal';
 
 import './style.scss';
 
@@ -12,10 +12,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      'levelAchieved': 1,
-      'showModal': true,
-      'openDemo': false,
-    }
+      levelAchieved: 1,
+      showModal: true,
+      openDemo: false,
+    };
     this.setNextLevel = this.setNextLevel.bind(this);
     this.changeLevel = this.changeLevel.bind(this);
     this.setDemoModal = this.setDemoModal.bind(this);
@@ -24,23 +24,23 @@ class App extends React.Component {
   setNextLevel() {
     const { levelAchieved } = this.state;
     this.setState({
-      'levelAchieved': levelAchieved + 1,
-      'showModal': true,
+      levelAchieved: levelAchieved + 1,
+      showModal: true,
+    });
+  }
+
+  setDemoModal() {
+    this.setState({
+      openDemo: !this.state.openDemo,
     });
   }
 
   changeLevel(level) {
     if (level <= this.state.levelAchieved) {
       this.setState({
-        'levelAchieved': level,
+        levelAchieved: level,
       });
     }
-  }
-
-  setDemoModal() {
-    this.setState({
-      'openDemo': !this.state.openDemo,
-    })
   }
 
   render() {
@@ -56,15 +56,15 @@ class App extends React.Component {
           level={this.state.levelAchieved}
           onClose={() =>
             this.setState({
-              'showModal': false
+              showModal: false,
             })
           }
         />
-      {
+        {
         this.state.openDemo && <Modal
           isVideoType
           onClose={this.setDemoModal}
-          />
+        />
       }
         <Workspace
           levelActive={this.state.levelAchieved}

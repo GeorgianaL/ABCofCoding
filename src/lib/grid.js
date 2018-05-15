@@ -6,14 +6,14 @@ const walk = (posInitial, directionIsHoriz, level) => {
     case 2:
     case 3:
       newPos = {
-        'x': directionIsHoriz ? posInitial.x + 100 : posInitial.x,
-        'y': directionIsHoriz ? posInitial.y : posInitial.y - 100,
+        x: directionIsHoriz ? posInitial.x + 100 : posInitial.x,
+        y: directionIsHoriz ? posInitial.y : posInitial.y - 100,
       };
       break;
     case 4:
       newPos = {
-        'x': directionIsHoriz ? posInitial.x + 100 : posInitial.x,
-        'y': directionIsHoriz ? posInitial.y : posInitial.y + 100,
+        x: directionIsHoriz ? posInitial.x + 100 : posInitial.x,
+        y: directionIsHoriz ? posInitial.y : posInitial.y + 100,
       };
       break;
     default:
@@ -33,32 +33,32 @@ const getActionType = (playerAction) => {
     return actionType;
   }
   return null;
-}
+};
 
 const getNumberOfPaths = (action) => {
   const nr = action.split(' ')[1];
-  if (typeof nr === 'string' && !isNaN(nr) ) {
+  if (typeof nr === 'string' && !isNaN(nr)) {
     return Number(nr);
   }
   return nr;
-}
+};
 
 const getLoopInstr = (code) => {
-  let loopInstructions = {
-    'start': 0,
-    'end': code.length,
+  const loopInstructions = {
+    start: 0,
+    end: code.length,
   };
 
   code.forEach((instr, index) => {
-    if (instr.indexOf("count++) {") !== -1) {
+    if (instr.indexOf('count++) {') !== -1) {
       loopInstructions.start = index;
-    } else if (instr.indexOf("}") !== -1) {
+    } else if (instr.indexOf('}') !== -1) {
       loopInstructions.end = index;
     }
   });
 
   return loopInstructions;
-}
+};
 
 export const getPath = (posInitial, playerCode, level) => {
   let code = [];
@@ -75,7 +75,7 @@ export const getPath = (posInitial, playerCode, level) => {
   const handleAction = (action) => {
     const actionType = getActionType(action);
     if (actionType === 'for') {
-      const repeatCount = action.match(/\d+/g).map(Number).filter(i => i!==0)[0];
+      const repeatCount = action.match(/\d+/g).map(Number).filter(i => i !== 0)[0];
       repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
     } else if (actionType === 'walk') {
       const nrOfPaths = getNumberOfPaths(action);
@@ -92,10 +92,10 @@ export const getPath = (posInitial, playerCode, level) => {
     } else if (actionType === 'enter') {
       finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
     }
-  }
+  };
 
-// instructions inside repetition
-  for (let playerAction=0, repetition = 0; playerAction<code.length && repetition < repeatTimes; playerAction++, repetition++) {
+  // instructions inside repetition
+  for (let playerAction = 0, repetition = 0; playerAction < code.length && repetition < repeatTimes; playerAction++, repetition++) {
     code.forEach((playerAction, index) => {
       if (index >= loopInstr.start && index <= loopInstr.end) {
         handleAction(playerAction);
@@ -112,4 +112,4 @@ export const getPath = (posInitial, playerCode, level) => {
   }
 
   return finalPath;
-}
+};

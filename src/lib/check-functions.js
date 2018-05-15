@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 
-import { answers } from './answers.js';
+import answers from './answers';
 
 export const checkLevel1 = (code) => {
   const playerHello = code.split(/'|'/)[1];
@@ -9,6 +9,12 @@ export const checkLevel1 = (code) => {
     return true;
   }
   return false;
+};
+
+export const checkLevel2 = (code) => {
+  const instructions = code.split('\n').filter(instr => instr.length > 1);
+  return isEqual(instructions, answers.level2.actions[0])
+    || isEqual(instructions, answers.level2.actions[1]);
 };
 
 export const checkLevel3 = (code) => {

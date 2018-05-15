@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as d3 from 'd3';
 
-import { getPath } from '../../../../lib/grid.js';
+import { getPath } from '../../../../lib/grid';
 
 import bunny from '../../../../../public/images/bunny2.png';
 import bunny_finish from '../../../../../public/images/bunny1.png';

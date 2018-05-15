@@ -1,9 +1,12 @@
-export const answers = {
+export default {
   level1: {
     actions: ['hi', 'hello', 'hey'],
   },
   level2: {
-    actions: [],
+    actions: [
+      ['var width, color;', 'width = 100;', "color = '#ff0000';"],
+      ['var color, width;', "color = '#ff0000';", 'width = 100;'],
+    ],
   },
   level3: {
     actions: ['walk 3 spaces', 'turn left', 'walk 3 spaces'],
