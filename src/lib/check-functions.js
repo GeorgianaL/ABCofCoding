@@ -19,7 +19,7 @@ export const checkLevel2 = (code) => {
 
 export const checkLevel3 = (code) => {
   const playerActions = code.split("'").filter(item => item.length > 5);
-  if (isEqual(answers.level2.actions, playerActions)) {
+  if (isEqual(answers.level3.actions, playerActions)) {
     return true;
   }
   return false;
@@ -46,7 +46,7 @@ export const checkLevel4 = (code) => {
       }
     }
   });
-  if (isEqual(answers.level3, playerAnswer)) {
+  if (isEqual(answers.level4, playerAnswer)) {
     return true;
   }
   return false;
@@ -74,7 +74,7 @@ export const checkLevel5 = (code) => {
       }
     }
   });
-  if (isEqual(answers.level4, playerAnswer)) {
+  if (isEqual(answers.level5, playerAnswer)) {
     return true;
   }
   return false;

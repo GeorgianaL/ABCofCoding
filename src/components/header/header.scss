@@ -25,4 +25,15 @@
     align-items: center;
     justify-content: flex-start;
   }
+
+    @include element('helpers') {
+      width: 35%;
+      box-shadow: none;
+      @include flex(row);
+      justify-content: flex-end;
+
+      button {
+        padding: setSize('normal');
+      }
+    }
 }

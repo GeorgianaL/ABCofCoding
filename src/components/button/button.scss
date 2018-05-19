@@ -44,4 +44,19 @@
     color: setColor('white');
     background: setColor('red');
   }
+
+  @include modifier('help') {
+    color: setColor('blue-green');
+    box-shadow: none;
+    background-color: transparent;
+    font-size: setFontSize('h6');
+    padding: setSize('small') setSize('normal');
+    letter-spacing: 1px;
+
+    &:hover {
+      color: setColor('white');
+      background-color: setColor('pink');
+      transition: background-color 2s ease-out;
+    }
+  }
 }

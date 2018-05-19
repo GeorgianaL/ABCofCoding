@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import Logo from '../../components/logo/Logo.jsx';
 import Levels from '../../components/levels/Levels.jsx'
 import Popup from '../popup/Popup.jsx';
-
-import helpButton from '../../../public/images/question.png';
+import Button from '../button/Button';
 
 import './header.scss';
 
@@ -33,7 +32,7 @@ class Header extends React.Component{
       <div className="header header--horizontal">
         <Logo />
         <Levels
-          levelsCount={10}
+          levelsCount={5}
           levelAchieved={levelAchieved}
           changeLevel={this.props.changeLevel}
         />
@@ -43,16 +42,16 @@ class Header extends React.Component{
             closePopup={this.closePopup}
           />
         }
-        <img
-          src={helpButton}
-          alt="Help"
-          style={{
-            width: '32px',
-            height: '32px',
-            cursor: 'pointer'
-          }}
-          onClick={this.props.openDemo}
-        />
+        <div className="header__helpers">
+          <Button
+            className="button button--help"
+            onClick={this.props.openDemo}
+          >Help</Button>
+          <Button
+            className="button button--help"
+            onClick={() => null}
+          >Language</Button>
+        </div>
       </div>
     );
   }
