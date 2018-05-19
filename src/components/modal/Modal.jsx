@@ -9,6 +9,7 @@ import sequences from '../../../public/images/sequences.png';
 import loops from '../../../public/images/loops.png';
 import conditionals from '../../../public/images/conditionals.png';
 import lists from '../../../public/images/lists.png';
+import functions from '../../../public/images/function.png';
 
 import demoLevel2 from '../../../public/images/demo-level-2.mp4';
 
@@ -32,6 +33,9 @@ const iconSrc = (itemName) => {
       break;
     case 'lists':
       return lists;
+      break;
+    case 'functions':
+      return functions;
       break;
     default:
       return null;

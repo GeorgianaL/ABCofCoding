@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      levelAchieved: 2,
+      levelAchieved: 6,
       showModal: true,
       openDemo: false,
     };

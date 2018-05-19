@@ -44,7 +44,7 @@ const TOOLBOX_CATEGORIES = [
       blocks: [
         {
           type: 'math_number',
-          value: '100',
+          value: '0',
         },
       ],
     },
@@ -230,6 +230,110 @@ const TOOLBOX_CATEGORIES = [
               variable: 'obstacle',
             }
           }
+        },
+      ]
+    }
+  ],
+  [
+    {
+      name: 'Actions',
+      type: 'text',
+      blocks: [
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'walk 1 space',
+              },
+            },
+          },
+        },
+        {
+          type: 'text_print',
+          values: {
+            TEXT: {
+              type: 'text',
+              fields: {
+                TEXT: 'turn left',
+              },
+            },
+          },
+        },
+        {
+          type: 'text',
+            fields: {
+              TEXT: 'pick flowers',
+            },
+        },
+      ],
+    },
+    {
+      name: 'Variables',
+      type: 'variables',
+      blocks: [
+        {
+          type: 'variables_set',
+        },
+        {
+          type: 'variables_get',
+        }
+      ],
+    },
+    {
+      name: 'Math',
+      type: 'math_number',
+      blocks: [
+        {
+          type: 'math_number',
+        },
+        {
+          type: 'math_arithmetic',
+        },
+        {
+          type: 'math_number_property',
+        }
+      ],
+    },
+    {
+      name: 'Loop',
+      type: 'loops',
+      blocks: [
+        {
+          type: 'controls_repeat_ext',
+          values: {
+            TIMES: {
+              type: 'math_number',
+              shadow: true,
+              fields: {
+                NUM: 0,
+              },
+            },
+          },
+        }
+      ],
+    },
+    {
+      name: 'Logic',
+      type: 'logic',
+      blocks: [
+        {
+          type: 'controls_if',
+          statements: {
+            IF0: {
+              type: 'variables_get',
+            }
+          }
+        },
+      ]
+    },
+    {
+      name: 'Functions',
+      type: 'procedure',
+      blocks: [
+        {
+          type: 'procedures_defreturn',
         },
       ]
     }

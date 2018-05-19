@@ -14,7 +14,7 @@ import Level3 from './components/level3/Level3';
 import Level4 from './components/level4/Level4';
 
 import Level5 from './components/level5/Level5';
-
+import Level6 from './components/level6/Level6';
 
 import './workspace.scss';
 
@@ -143,6 +143,10 @@ class Workspace extends React.Component {
               {
                 this.props.levelActive === 5 &&
                 <Level5 {...levelParams} />
+              }
+              {
+                this.props.levelActive === 6 &&
+                <Level6 {...levelParams} />
               }
             </div>
             <div className="control">

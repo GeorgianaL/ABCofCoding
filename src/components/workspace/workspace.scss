@@ -35,6 +35,9 @@
         @include modifier('level5') {
           background-image: url('../../../public/images/sand_template.jpg');
         }
+        @include modifier('level6') {
+          background-image: url('../../../public/images/grass_template.jpg');
+        }
       }
 
       .control {

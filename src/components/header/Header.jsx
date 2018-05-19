@@ -32,7 +32,7 @@ class Header extends React.Component{
       <div className="header header--horizontal">
         <Logo />
         <Levels
-          levelsCount={5}
+          levelsCount={6}
           levelAchieved={levelAchieved}
           changeLevel={this.props.changeLevel}
         />

@@ -55,4 +55,32 @@ export const helpers = [
         enter_the_barn();
       `,
   },
+  // "var count, flowersToCollect, flowersNumber;\n\n
+  // /**\n * Describe this function...\n */\n
+  // function pick_flowers() {\n
+  //   flowersToCollect = 0;\n
+  //   if (flowersNumber % 2 == 0) {\n
+  //     flowersToCollect = flowersNumber - 1;\n
+  //   }\n
+  //   return flowersToCollect;\n}\n\n\n
+  //
+  //   count = 0;\n
+  //   for (var count2 = 0; count2 < 3; count2++) {\n
+  //     window.alert('walk 1 space');\n
+  //     count = 'pick flowers';\n
+  //   }\n"
+  {
+    name: 'Level 6',
+    description: `Lets pick some flowers! Define a function, pick_flowers, which checks if there is an even number of flowers and pick one flower if so.
+      Help the hedgehog follow the path and use the function above to collect some flowers.`,
+    learn: ['loops', 'conditionals', 'sequences', 'functions'],
+    code: `
+      for (let i = 0; i < 3; i += 1) {
+          walk_1_space();
+          pick_flowers();
+          walk_1_space();
+          turn_left();
+        }
+      `,
+  },
 ];
