@@ -1,4 +1,4 @@
-const actionTypes = ['walk', 'turn', 'for', 'enter'];
+const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te'];
 
 const walk = (posInitial, directionIsHoriz, level) => {
   let newPos = {};
@@ -77,7 +77,7 @@ export const getPath = (posInitial, playerCode, level) => {
     if (actionType === 'for') {
       const repeatCount = action.match(/\d+/g).map(Number).filter(i => i !== 0)[0];
       repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
-    } else if (actionType === 'walk') {
+    } else if (actionType === 'walk' || actionType === 'mergi') {
       const nrOfPaths = getNumberOfPaths(action);
 
       for (let i = 1; i <= nrOfPaths; i++) {
@@ -87,9 +87,9 @@ export const getPath = (posInitial, playerCode, level) => {
           finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
         }
       }
-    } else if (actionType === 'turn') {
+    } else if (actionType === 'turn' || actionType === 'intoarce-te') {
       directionIsHoriz = !directionIsHoriz;
-    } else if (actionType === 'enter') {
+    } else if (actionType === 'enter' || actionType === 'mergi') {
       finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
     }
   };
