@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as d3 from 'd3';
 
+import messages from '../../../../i18n/messages.js';
 import ferdinand from '../../../../../public/images/ferdinand_1.png';
 
 import './level1.scss';
@@ -10,7 +11,6 @@ import './level1.scss';
 const config = {
   character_width: 200,
   character_height: 200,
-  character_quote: "Hi, I'm Ferdinand! Let's start the coding game!",
   quote_width: 500,
   quote_height: 50,
 };
@@ -31,10 +31,11 @@ class Level1 extends React.Component {
   }
 
   renderD3() {
-    const { startGame, playerCode } = this.props;
+    const { startGame, playerCode, language } = this.props;
     const node = this.svgNode;
 
     const svgTag = d3.select(node);
+    svgTag.select("g.character").selectAll("*").remove();
 
     const character = svgTag.select('.character__ferdinand')
       .append('svg:image')
@@ -44,12 +45,17 @@ class Level1 extends React.Component {
 
     const characterQuote = svgTag.select('.character__quote');
     characterQuote.append('rect')
-      .attr('width', `${config.quote_width}px`)
+      .attr('width', () => {
+        if (language === 'en') {
+          return `${config.quote_width}px`;
+        }
+        return `${config.quote_width + 90}px`;
+      })
       .attr('height', `${config.quote_height}px`);
     characterQuote.append('path')
       .attr('d', 'M -20 20 l 21 -10 0 20 z');
     characterQuote.append('text')
-      .text(config.character_quote)
+      .text(messages[language].level1_character_quote)
       .attr('x', 10)
       .attr('y', config.quote_height - 20);
 
@@ -82,10 +88,12 @@ Level1.displayName = 'Level1';
 Level1.propTypes = {
   startGame: PropTypes.bool,
   playerCode: PropTypes.string,
+  language: PropTypes.string,
 };
 Level1.defaultProps = {
   startGame: false,
   playerCode: '',
+  language: 'en',
 };
 
 export default Level1;

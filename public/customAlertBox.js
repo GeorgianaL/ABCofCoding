@@ -2,7 +2,7 @@ var ALERT_TITLE = "Oops!";
 var ALERT_BUTTON_TEXT = "Ok";
 
 if(document.getElementById) {
-	window.alert = function(txt) {
+	window.promp = function(txt) {
 		createCustomAlert(txt);
 	}
 }
@@ -44,5 +44,5 @@ function removeCustomAlert() {
 	document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
 }
 function ful(){
-alert('Alert this pages');
+promp('Alert this pages');
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import close from '../../../public/images/close.png';
+import messages from '../../i18n/messages.js';
 import { helpers } from '../../lib/helpers.js';
 
+import close from '../../../public/images/close.png';
 import variables from '../../../public/images/variables.png';
-import sequences from '../../../public/images/sequences.png';
 import loops from '../../../public/images/loops.png';
 import conditionals from '../../../public/images/conditionals.png';
 import lists from '../../../public/images/lists.png';
@@ -21,9 +21,6 @@ const iconSrc = (itemName) => {
   switch (itemName) {
     case 'variables':
       return variables;
-      break;
-    case 'sequences':
-      return sequences;
       break;
     case 'loops':
       return loops;
@@ -44,7 +41,7 @@ const iconSrc = (itemName) => {
 
 class Modal extends React.Component {
 render() {
-    const { level, code, isVideoType } = this.props;
+    const { level, code, isVideoType, language } = this.props;
 
     if (isVideoType) {
       return (
@@ -59,15 +56,15 @@ render() {
       );
     } else {
       if (this.props.open) {
-        const toLearn = helpers[level-1].learn;
+        const toLearn = helpers[language][level-1].learn;
         const modalStartContent = (
           <div>
             <div className="modal__content">
-              <span className="modal__content--title">What you have to do</span>
-              <span>{ helpers[level-1].description }</span>
+              <span className="modal__content--title">{messages[language].modalHaveToDo}</span>
+              <span>{ helpers[language][level-1].description }</span>
             </div>
             <div className="modal__content">
-              <span className="modal__content--title">What you will learn</span>
+              <span className="modal__content--title">{messages[language].modalLearn}</span>
               <div className="modal__content--items">
                 {
                   toLearn.map(item => {
@@ -81,7 +78,7 @@ render() {
                             height: '20px'
                           }}
                         />
-                      <span className="modal__content--item-text">{item}</span>
+                      <span className="modal__content--item-text">{messages[language][item]}</span>
                       </div>
                     );
                   })
@@ -98,7 +95,7 @@ render() {
               <header className="modal__header">
                 <div className="modal__level">
                   <span>
-                    { helpers[level-1].name }
+                    { helpers[language][level-1].name }
                   </span>
                 </div>
               </header>
@@ -108,7 +105,7 @@ render() {
                   className="button button--close"
                   onClick={() => this.props.onClose()}
                 >
-                Close and play
+                {messages[language].closeModal}
                 </Button>
               </div>
             </div>
@@ -125,11 +122,13 @@ Modal.propTypes = {
   'isVideoType': PropTypes.bool,
   'code': PropTypes.string,
   'onClose': PropTypes.func,
+  'language': PropTypes.string,
 };
 Modal.defaultProps = {
   'isVideoType': false,
   'code': '',
   'onClose': () => null,
+  'language': 'en',
 };
 
 export default Modal;

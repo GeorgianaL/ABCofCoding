@@ -5,7 +5,8 @@ import answers from './answers';
 export const checkLevel1 = (code) => {
   const playerHello = code.split(/'|'/)[1];
   if (typeof code === 'string' && code.split('.')[0] === 'window'
-  && answers.level1.actions.includes(playerHello.toLowerCase())) {
+  && (answers.level1.actionsEn.includes(playerHello.toLowerCase())
+  || answers.level1.actionsRo.includes(playerHello.toLowerCase()))) {
     return true;
   }
   return false;
@@ -13,13 +14,16 @@ export const checkLevel1 = (code) => {
 
 export const checkLevel2 = (code) => {
   const instructions = code.split('\n').filter(instr => instr.length > 1);
-  return isEqual(instructions, answers.level2.actions[0])
-    || isEqual(instructions, answers.level2.actions[1]);
+  return isEqual(instructions, answers.level2.actionsEn[0])
+    || isEqual(instructions, answers.level2.actionsEn[1])
+    || isEqual(instructions, answers.level2.actionsRo[0])
+    || isEqual(instructions, answers.level2.actionsRo[1]);
 };
 
 export const checkLevel3 = (code) => {
   const playerActions = code.split("'").filter(item => item.length > 5);
-  if (isEqual(answers.level3.actions, playerActions)) {
+  if (isEqual(answers.level3.actionsEn, playerActions)
+    || isEqual(answers.level3.actionsRo, playerActions)) {
     return true;
   }
   return false;
@@ -46,7 +50,10 @@ export const checkLevel4 = (code) => {
       }
     }
   });
-  if (isEqual(answers.level4, playerAnswer)) {
+  if (isEqual(answers.level4.statement, playerAnswer.statement)
+  && isEqual(answers.level4.repeatTimes, playerAnswer.repeatTimes)
+  && (isEqual(answers.level4.actionsEn, playerAnswer.actions)
+  || isEqual(answers.level4.actionsRo, playerAnswer.actions))) {
     return true;
   }
   return false;
@@ -74,7 +81,10 @@ export const checkLevel5 = (code) => {
       }
     }
   });
-  if (isEqual(answers.level5, playerAnswer)) {
+  if (isEqual(answers.level5.statements, playerAnswer.statements)
+  && isEqual(answers.level5.repeatTimes, playerAnswer.repeatTimes)
+  && (isEqual(answers.level5.actionsEn, playerAnswer.actions)
+  || isEqual(answers.level5.actionsRo, playerAnswer.actions))) {
     return true;
   }
   return false;

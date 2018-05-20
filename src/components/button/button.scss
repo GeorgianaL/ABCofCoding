@@ -58,5 +58,10 @@
       background-color: setColor('pink');
       transition: background-color 2s ease-out;
     }
+
+    @include flex(row);
+    img {
+      padding: 0 setSize('small');
+    }
   }
 }

@@ -2,349 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReactBlocklyComponent from './ReactBlocklyComponent.js';
+import toolbox_categories from './toolboxCategories';
 
 import './blockly.scss';
 
-const TOOLBOX_CATEGORIES = [
-  [
-    {
-      name: 'Hello',
-      type: 'text',
-      blocks: [
-        { type: 'text',
-          fields: {
-            TEXT: 'Hello',
-          },
-        },
-        { type: 'text_print' },
-      ],
-    },
-  ],
-  [
-    {
-      name: 'Variables',
-      type: 'variables',
-      blocks: [
-        { type: 'variables_set' },
-      ],
-    },
-    {
-      name: 'Color',
-      type: 'colour_picker',
-      blocks: [
-        {
-          type: 'colour_picker',
-          colour: 'ff0000',
-        },
-      ],
-    },
-    {
-      name: 'Math',
-      type: 'math_number',
-      blocks: [
-        {
-          type: 'math_number',
-          value: '0',
-        },
-      ],
-    },
-  ],
-  [
-    {
-      name: 'List',
-      type: 'lists_create_with',
-      blocks: [
-        {
-          type: 'lists_create_with',
-        },
-      ],
-    },
-    {
-      name: 'Actions',
-      type: 'procedures',
-      blocks: [
-        {
-          type: "text",
-          fields: {
-            TEXT: 'walk 3 spaces',
-          },
-        },
-        {
-          type: "text",
-          fields: {
-            TEXT: 'turn left',
-          },
-        },
-      ],
-    }
-  ],
-  [
-    {
-      name: 'Actions',
-      type: 'procedures',
-      blocks: [
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'walk 2 spaces',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'walk 1 space',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'turn left',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          message: 'text input: %1',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'turn right',
-              },
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'Loop',
-      type: 'loops',
-      blocks: [
-        {
-          type: 'controls_repeat_ext',
-          values: {
-            TIMES: {
-              type: 'math_number',
-              shadow: true,
-              fields: {
-                NUM: 0,
-              },
-            },
-          },
-        }
-      ],
-    }
-  ],
-  [
-    {
-      name: 'Actions',
-      type: 'text',
-      blocks: [
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'walk 1 space',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'turn left',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'turn right',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'enter the barn',
-              },
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'Loop',
-      type: 'loops',
-      blocks: [
-        {
-          type: 'controls_repeat_ext',
-          values: {
-            TIMES: {
-              type: 'math_number',
-              shadow: true,
-              fields: {
-                NUM: 0,
-              },
-            },
-          },
-        }
-      ],
-    },
-    {
-      name: 'Logic',
-      type: 'logic',
-      blocks: [
-        {
-          type: 'controls_if',
-          statements: {
-            IF0: {
-              type: 'variables_get',
-              variable: 'obstacle',
-            }
-          }
-        },
-      ]
-    }
-  ],
-  [
-    {
-      name: 'Actions',
-      type: 'text',
-      blocks: [
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'walk 1 space',
-              },
-            },
-          },
-        },
-        {
-          type: 'text_print',
-          values: {
-            TEXT: {
-              type: 'text',
-              fields: {
-                TEXT: 'turn left',
-              },
-            },
-          },
-        },
-        {
-          type: 'text',
-            fields: {
-              TEXT: 'pick flowers',
-            },
-        },
-      ],
-    },
-    {
-      name: 'Variables',
-      type: 'variables',
-      blocks: [
-        {
-          type: 'variables_set',
-        },
-        {
-          type: 'variables_get',
-        }
-      ],
-    },
-    {
-      name: 'Math',
-      type: 'math_number',
-      blocks: [
-        {
-          type: 'math_number',
-        },
-        {
-          type: 'math_arithmetic',
-        },
-        {
-          type: 'math_number_property',
-        }
-      ],
-    },
-    {
-      name: 'Loop',
-      type: 'loops',
-      blocks: [
-        {
-          type: 'controls_repeat_ext',
-          values: {
-            TIMES: {
-              type: 'math_number',
-              shadow: true,
-              fields: {
-                NUM: 0,
-              },
-            },
-          },
-        }
-      ],
-    },
-    {
-      name: 'Logic',
-      type: 'logic',
-      blocks: [
-        {
-          type: 'controls_if',
-          statements: {
-            IF0: {
-              type: 'variables_get',
-            }
-          }
-        },
-      ]
-    },
-    {
-      name: 'Functions',
-      type: 'procedure',
-      blocks: [
-        {
-          type: 'procedures_defreturn',
-        },
-      ]
-    }
-  ],
-];
 
 class BlocklyWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'toolboxCategories': TOOLBOX_CATEGORIES[0],
+      'toolboxCategories': toolbox_categories['en'][0],
       'code': '',
     };
 
@@ -353,10 +20,10 @@ class BlocklyWrapper extends React.Component {
   }
 
   componentDidMount() {
-    const { levelActive } = this.props;
+    const { levelActive, language } = this.props;
 
     this.setState({
-      'toolboxCategories': TOOLBOX_CATEGORIES[levelActive - 1],
+      'toolboxCategories': toolbox_categories[language][levelActive - 1],
     });
   }
 
@@ -364,8 +31,9 @@ class BlocklyWrapper extends React.Component {
     if (this.props.startGame !== nextProps.startGame) {
       this.props.getPlayerCode(this.state.code);
     }
-    if (this.props.levelActive !== nextProps.levelActive) {
-      this.changeToolboxCategories(nextProps.levelActive);
+    if (this.props.levelActive !== nextProps.levelActive
+    || this.props.language !== nextProps.language) {
+      this.changeToolboxCategories(nextProps.levelActive, nextProps.language);
     }
   }
 
@@ -379,9 +47,9 @@ class BlocklyWrapper extends React.Component {
     }, 1000);
   }
 
-  changeToolboxCategories(level) {
+  changeToolboxCategories(level, language) {
     this.setState({
-      'toolboxCategories': TOOLBOX_CATEGORIES[level - 1],
+      'toolboxCategories': toolbox_categories[language][level - 1],
     });
   }
 
@@ -410,11 +78,13 @@ BlocklyWrapper.propTypes = {
   'startGame': PropTypes.bool,
   'getPlayerCode': PropTypes.func,
   'levelActive': PropTypes.number,
+  'language': PropTypes.string,
 };
 BlocklyWrapper.defaultProps = {
   'startGame': false,
   'getPlayerCode': () => null,
   'levelActive': 1,
+  'language': 'en',
 };
 
 export default BlocklyWrapper;

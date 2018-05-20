@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import BlocklyWrapper from '../blockly/Blockly';
 import Button from '../button/Button';
 
+import messages from '../../i18n/messages.js';
+
 import {
   checkLevel1,
   checkLevel2,
@@ -86,7 +88,7 @@ class Workspace extends React.Component {
 
   render() {
     const { startGame, code } = this.state;
-    const { levelActive } = this.props;
+    const { levelActive, language } = this.props;
 
     let answerIsCorrect = false;
     if (code !== '') {
@@ -100,14 +102,14 @@ class Workspace extends React.Component {
           <Button
             className="button button--next"
             onClick={() => this.playGame(false, true)}
-          >Next Level
+          >{messages[language].nextLevel}
           </Button>);
       } else {
         button = (
           <Button
             className="button button--retry"
             onClick={() => this.playGame(false)}
-          >Retry
+          >{messages[language].retry}
           </Button>);
       }
     } else {
@@ -115,13 +117,14 @@ class Workspace extends React.Component {
         <Button
           className="button button--start"
           onClick={() => this.playGame(true)}
-        >Start
+        >{messages[language].start}
         </Button>);
     }
 
     const levelParams = {
       startGame,
       playerCode: code,
+      language: language,
     };
 
     return (
@@ -131,6 +134,7 @@ class Workspace extends React.Component {
             startGame={this.state.startGame}
             getPlayerCode={this.setPlayerCode}
             levelActive={this.props.levelActive}
+            language={this.props.language}
           />
           <div className="blockly__playground">
             <div className={`visualization visualization--level${this.props.levelActive}`}>
@@ -174,11 +178,13 @@ Workspace.propTypes = {
   levelActive: PropTypes.number,
   nextLevel: PropTypes.func,
   setLevelIsFinished: PropTypes.func,
+  language: PropTypes.string,
 };
 Workspace.defaultProps = {
   levelActive: 1,
   nextLevel: () => null,
   setLevelIsFinished: () => null,
+  language: 'en',
 };
 
 export default Workspace;

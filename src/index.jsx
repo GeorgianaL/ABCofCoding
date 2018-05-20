@@ -12,13 +12,15 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      levelAchieved: 2,
+      levelAchieved: 4,
       showModal: true,
       openDemo: false,
+      language: 'ro',
     };
     this.setNextLevel = this.setNextLevel.bind(this);
     this.changeLevel = this.changeLevel.bind(this);
     this.setDemoModal = this.setDemoModal.bind(this);
+    this.changeLanguage = this.changeLanguage.bind(this);
   }
 
   setNextLevel() {
@@ -43,6 +45,13 @@ class App extends React.Component {
     }
   }
 
+  changeLanguage() {
+    const { language } = this.state;
+    this.setState({
+      'language': language === 'en' ? 'ro' : 'en',
+    });
+  }
+
   render() {
     return (
       <div>
@@ -50,10 +59,13 @@ class App extends React.Component {
           levelAchieved={this.state.levelAchieved}
           changeLevel={this.changeLevel}
           openDemo={this.setDemoModal}
+          language={this.state.language}
+          changeLanguage={this.changeLanguage}
         />
         <Modal
           open={this.state.showModal}
           level={this.state.levelAchieved}
+          language={this.state.language}
           onClose={() =>
             this.setState({
               showModal: false,
@@ -71,6 +83,7 @@ class App extends React.Component {
           nextLevel={this.setNextLevel}
           levelIsFinished={this.state.levelIsFinished}
           setLevelIsFinished={this.setLevelIsFinished}
+          language={this.state.language}
         />
       </div>
     );

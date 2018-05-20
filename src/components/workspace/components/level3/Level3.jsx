@@ -16,11 +16,13 @@ const config = {
   character_height: 100,
 };
 
-const characterPos = { x: 100, y: 300 };
+const characterPos = { x: 100, y: 400 };
 
 const roadPath = [
-  { x: 200, y: 300 },
-  { x: 300, y: 300 },
+  { x: 100, y: 400 },
+  { x: 200, y: 400 },
+  { x: 300, y: 400 },
+  { x: 400, y: 400 },
   { x: 400, y: 300 },
   { x: 400, y: 200 },
   { x: 400, y: 100 },
