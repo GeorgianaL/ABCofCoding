@@ -28,4 +28,18 @@ export default {
       'enter the barn',
     ],
   },
+  level6: {
+    statements: ['function', 'if', 'for'],
+    repeatTimes: 3,
+    functionActios: [
+      'flowersToCollect = 0;',
+      'if (flowersNumber % 2 == 0) {',
+      'flowersToCollect = flowersNumber - 1;',
+      'return flowersToCollect',
+    ],
+    actions: [
+      'walk 1 space',
+      'pick flowers'
+    ],
+  },
 };

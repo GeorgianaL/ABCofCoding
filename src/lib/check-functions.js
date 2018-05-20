@@ -79,3 +79,25 @@ export const checkLevel5 = (code) => {
   }
   return false;
 };
+
+export const checkLevel6 = (code) => {
+  const necessarySteps = [
+    "function pick_flowers()",
+    "flowersNumber % 2 == 0",
+    "flowersNumber - 1",
+    " return",
+    "for (var count = 0; count < 3; count++)",
+    "walk 1 space",
+    "pick flowers",
+    "turn left",
+  ];
+
+  let stepsAreCorrect = true;
+  necessarySteps.forEach((step) => {
+    if (!code.includes(step)) {
+      stepsAreCorrect = false;
+    }
+  });
+
+  return stepsAreCorrect;
+};
