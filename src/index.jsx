@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      levelAchieved: 4,
+      levelAchieved: 5,
       showModal: true,
       openDemo: false,
       language: 'ro',
@@ -75,9 +75,10 @@ class App extends React.Component {
         {
         this.state.openDemo && <Modal
           isVideoType
+          level={this.state.levelAchieved}
           onClose={this.setDemoModal}
         />
-      }
+        }
         <Workspace
           levelActive={this.state.levelAchieved}
           nextLevel={this.setNextLevel}

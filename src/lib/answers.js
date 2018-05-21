@@ -5,12 +5,12 @@ export default {
   },
   level2: {
     actionsEn: [
-      ['var width, color;', 'width = 100;', "color = '#ff0000';"],
-      ['var color, width;', "color = '#ff0000';", 'width = 100;'],
+      ['var radius, color;', 'radius = 100;', "color = '#663366';"],
+      ['var color, radius;', "color = '#663366';", 'radius = 100;'],
     ],
     actionsRo: [
-      ['var culoare, latura;', "culoare = '#ff0000';", 'latura = 100;'],
-      ['var latura, culoare;', "latura = 100;", "culoare = '#ff0000';"],
+      ['var culoare, raza;', "culoare = '#663366';", 'raza = 100;'],
+      ['var raza, culoare;', "raza = 100;", "culoare = '#663366';"],
     ],
   },
   level3: {
@@ -40,7 +40,7 @@ export default {
       'mergi 1 spatiu',
       'intoarce-te la stanga',
       'mergi 1 spatiu',
-      'mergi la hambar',
+      'intra in hambar',
     ],
   },
   level6: {

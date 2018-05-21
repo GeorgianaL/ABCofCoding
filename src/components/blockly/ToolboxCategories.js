@@ -38,7 +38,9 @@ export default {
         blocks: [
           {
             type: 'math_number',
-            value: '0',
+            fields: {
+              NUM: 100,
+            },
           },
         ],
       },
@@ -523,7 +525,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'mergi la hambar',
+                    TEXT: 'intra in hambar',
                   },
                 },
               },

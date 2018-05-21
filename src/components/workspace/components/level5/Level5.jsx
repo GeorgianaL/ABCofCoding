@@ -123,6 +123,11 @@ class Level5 extends React.Component {
                      .delay(transition.delay)
                      .duration(transition.duration)
                      .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
+             } else {
+               character
+                 .transition()
+                 .delay(transition.delay)
+                 .remove();
              }
              index += 1;
              if (index < playerPath.length) {

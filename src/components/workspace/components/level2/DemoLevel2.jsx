@@ -30,7 +30,7 @@ class Level2 extends React.Component {
     const { startGame, playerCode, language } = this.props;
     const node = this.svgNode;
 
-    const radius = getVariableValue(messages[language].radius, playerCode);
+    const width = getVariableValue(messages[language].width, playerCode);
     let color = getVariableValue(messages[language].color, playerCode);
     if (typeof color === 'string') {
       color = color.split("'")[1];
@@ -39,10 +39,11 @@ class Level2 extends React.Component {
     const svgTag = d3.select(node);
 
     if (startGame) {
-      svgTag.append('circle')
-        .attr('cx', 280)
-        .attr('cy', 180)
-        .attr('r', radius)
+      svgTag.append('rect')
+        .attr('x', 280)
+        .attr('y', 180)
+        .attr('width', width)
+        .attr('height', width)
         .attr('fill', color);
     }
   }

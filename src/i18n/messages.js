@@ -14,7 +14,7 @@ export default {
     'lists': 'lists',
     'functions': 'functions',
     'level1_character_quote': "Hi, I'm Ferdinand! Let's start the coding game!",
-    'width': 'width',
+    'radius': 'radius',
     'color': 'color',
   },
   'ro': {
@@ -32,7 +32,7 @@ export default {
     'lists': 'liste',
     'functions': 'functii',
     'level1_character_quote': "Salut, sunt Ferdinand! Sa incepem jocul de programare!",
-    'width': 'latura',
+    'radius': 'raza',
     'color': 'culoare',
   },
 };

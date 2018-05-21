@@ -8,11 +8,11 @@ export const helpers = {
     },
     {
       name: 'Level 2',
-      description: 'Create a square with the width 100 and the color red.',
+      description: 'Create a circle with radius 100 and color purple.',
       learn: ['variables'],
       code: `
-          const color = red;
-          const width = 100;
+          const color = purple;
+          const radius = 100;
         `,
     },
     {
@@ -94,11 +94,11 @@ export const helpers = {
     },
     {
       name: 'Nivelul 2',
-      description: 'Creeaza un patrat cu latura de 100 si culoarea rosie. Redenumeste variabilele adaugate apasand click-dreapta pe blocul corespunzator.',
+      description: 'Creeaza un cerc cu raza 100 si culoarea mov. Redenumeste variabilele adaugate apasand click-dreapta pe blocul corespunzator.',
       learn: ['variables'],
       code: `
-          const color = red;
-          const width = 100;
+          const color = purple;
+          const radius = 100;
         `,
     },
     {
@@ -159,7 +159,7 @@ export const helpers = {
     {
       name: 'Nivelul 6',
       description: `Defineste o functie, pick_flowers, care verifica daca numarul florilor este par si culege-le pe toate mai putin una. Daca numarul este impar nu culege nici o floare.
-        Ajuta ariciul sa urmareasca traseul contural si sa culeaga florile, utilizand functia definita mai sus.`,
+        Ajuta ariciul sa urmareasca traseul conturat si sa culeaga florile, utilizand functia definita mai sus.`,
       learn: ['loops', 'conditionals', 'functions'],
       code: `
         for (let i = 0; i < 3; i += 1) {

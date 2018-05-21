@@ -12,6 +12,7 @@ import lists from '../../../public/images/lists.png';
 import functions from '../../../public/images/function.png';
 
 import demoLevel2 from '../../../public/images/demo-level-2.mp4';
+import demoLevel3 from '../../../public/images/demo-level-3.mp4';
 
 import Button from '../button/Button.jsx';
 
@@ -49,7 +50,7 @@ render() {
           <div className="modal modal__background" onClick={this.props.onClose} />
           <div role="dialog" className="modal__dialog modal__dialog--video">
             <video width="750" height="480" controls>
-              <source src={demoLevel2} type="video/mp4"></source>
+              <source src={level < 3 ? demoLevel2 : demoLevel3} type="video/mp4"></source>
             </video>
           </div>
         </div>
@@ -120,12 +121,14 @@ render() {
 Modal.displayName = 'Modal';
 Modal.propTypes = {
   'isVideoType': PropTypes.bool,
+  'level': PropTypes.level,
   'code': PropTypes.string,
   'onClose': PropTypes.func,
   'language': PropTypes.string,
 };
 Modal.defaultProps = {
   'isVideoType': false,
+  'level': 1,
   'code': '',
   'onClose': () => null,
   'language': 'en',

@@ -1,4 +1,4 @@
-const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te'];
+const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te', 'intra'];
 
 const walk = (posInitial, directionIsHoriz, level) => {
   let newPos = {};
@@ -89,8 +89,9 @@ export const getPath = (posInitial, playerCode, level) => {
       }
     } else if (actionType === 'turn' || actionType === 'intoarce-te') {
       directionIsHoriz = !directionIsHoriz;
-    } else if (actionType === 'enter' || actionType === 'mergi') {
+    } else if (actionType === 'enter' || actionType === 'intra') {
       finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
+      finalPath.push({ x: -100, y: -100 });
     }
   };
 
