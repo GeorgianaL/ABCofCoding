@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
+import { getLevel6Path } from '../../../../lib/grid.js';
+
 import hadgehog from '../../../../../public/images/hadgehog1.png';
 import flower from '../../../../../public/images/flower.png';
 
@@ -28,22 +30,25 @@ const flowersParcelsPos = [
 ];
 
 const flowersPos = [
-  // first parcel with flowers
-  { x: 315, y: 320 },
-  { x: 355, y: 320 },
-  { x: 335, y: 350 },
-  // second
-  { x: 415, y: 220 },
-  { x: 455, y: 220 },
-  { x: 415, y: 250 },
-  { x: 455, y: 250 },
-  // third
-  { x: 315, y: 105 },
-  { x: 355, y: 105 },
-  { x: 315, y: 135 },
-  { x: 355, y: 135 },
-  { x: 315, y: 165 },
-  { x: 355, y: 165 },
+  [
+    { x: 315, y: 320 },
+    { x: 355, y: 320 },
+    { x: 335, y: 350 },
+  ],
+  [
+    { x: 415, y: 220 },
+    { x: 455, y: 220 },
+    { x: 415, y: 250 },
+    { x: 455, y: 250 },
+  ],
+  [
+    { x: 315, y: 105 },
+    { x: 355, y: 105 },
+    { x: 315, y: 135 },
+    { x: 355, y: 135 },
+    { x: 315, y: 165 },
+    { x: 355, y: 165 },
+  ],
 ];
 
 class Level6 extends React.Component {
@@ -101,14 +106,58 @@ class Level6 extends React.Component {
      .attr('height', 30)
      .attr('x', d => d.x)
      .attr('y', d => d.y);
+
+     if (startGame) {
+        // const playerPath = getLevel6Path(characterPos, playerCode, 6);
+        const playerPath = [
+          {x: 300, y: 300, pick: 3},
+          {x: 400, y: 300},
+          {x: 400, y: 200, pick: 4},
+          {x: 400, y: 100},
+          {x: 300, y: 100, pick: 6},
+          {x: 200, y: 100},
+        ];
+
+        let index = 0;
+        const transition = {
+            'delay': 5,
+            'duration': 1000,
+        };
+
+        const move = () => {
+            if (playerPath[index].x >= 0 && playerPath[index].y >= 0) {
+                character
+                    .transition()
+                    .delay(transition.delay)
+                    .duration(transition.duration)
+                    .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
+            } else {
+              character
+                .transition()
+                .delay(transition.delay)
+                .remove();
+            }
+            index += 1;
+            if (index < playerPath.length) {
+                setTimeout(move, transition.duration + transition.delay);
+                if (index === playerPath.length) {
+                  setTimeout(d3.select('.character').remove(), (transition.duration + transition.delay) * 2);
+                }
+            }
+        };
+
+        if (playerPath.length) {
+            move();
+        }
+     }
   }
 
   render() {
     return (
         <svg ref={node => this.svgNode = node}>
           <g className="road" />
-          <g className="character character__hadgehog" />
           <g className="flowers" />
+          <g className="character character__hadgehog" />
         </svg>
     );
   }

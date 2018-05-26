@@ -46,15 +46,23 @@ export default {
   level6: {
     statements: ['function', 'if', 'for'],
     repeatTimes: 3,
-    functionActios: [
-      'flowersToCollect = 0;',
-      'if (flowersNumber % 2 == 0) {',
-      'flowersToCollect = flowersNumber - 1;',
-      'return flowersToCollect',
+    functionActions: [
+      ' = 0;',
+      'if (x % 2 == 0) {',
+      'x - 1;',
+      'return',
     ],
-    actions: [
+    actionsEn: [
       'walk 1 space',
-      'pick flowers'
+      'pick_flowers(x)',
+      'walk 1 space',
+      'turn left',
+    ],
+    actionsRo: [
+      'mergi 1 spatiu',
+      'pick_flowers(x)',
+      'mergi 1 spatiu',
+      'intoarce-te la stanga',
     ],
   },
 };

@@ -121,7 +121,7 @@ render() {
 Modal.displayName = 'Modal';
 Modal.propTypes = {
   'isVideoType': PropTypes.bool,
-  'level': PropTypes.level,
+  'level': PropTypes.number,
   'code': PropTypes.string,
   'onClose': PropTypes.func,
   'language': PropTypes.string,

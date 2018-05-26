@@ -90,7 +90,7 @@ class Level4 extends React.Component {
     character.exit().remove();
 
     if (startGame) {
-      const playerPath = getPath(characterPos, playerCode, 3);
+      const playerPath = getPath(characterPos, playerCode, 4);
 
       let index = 0;
       const transition = {

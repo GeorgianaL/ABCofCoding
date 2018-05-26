@@ -108,7 +108,7 @@ class Level5 extends React.Component {
      character.exit().remove();
 
      if (startGame) {
-       const playerPath = getPath(characterPos, playerCode, 4);
+       const playerPath = getPath(characterPos, playerCode, 5);
 
          let index = 0;
          const transition = {

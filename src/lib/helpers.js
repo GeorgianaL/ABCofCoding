@@ -142,32 +142,29 @@ export const helpers = {
           enter_the_barn();
         `,
     },
-    // "var count, flowersToCollect, flowersNumber;\n\n
-    // /**\n * Describe this function...\n */\n
-    // function pick_flowers() {\n
-    //   flowersToCollect = 0;\n
-    //   if (flowersNumber % 2 == 0) {\n
-    //     flowersToCollect = flowersNumber - 1;\n
-    //   }\n
-    //   return flowersToCollect;\n}\n\n\n
-    //
-    //   count = 0;\n
-    //   for (var count2 = 0; count2 < 3; count2++) {\n
-    //     window.alert('walk 1 space');\n
-    //     count = 'pick flowers';\n
-    //   }\n"
+// const code = "var x, count, flowersToPick, i;\n\n/**\n * Describe this function...\n */\nfunction pick_flowers(x) {\n  flowersToPick = 0;\n  if (x % 2 == 0) {\n    flowersToPick = x - 1;\n  }\n  return flowersToPick;\n}\n\n\ncount = 0;\nvar i_list = [3, 4, 6];\nfor (var i_index in i_list) {\n  i = i_list[i_index];\n  window.alert('walk 1 space');\n  count = 'pick_flowers(x)';\n  window.alert('walk 1 space');\n  window.alert('turn left');\n}\n";
     {
       name: 'Nivelul 6',
       description: `Defineste o functie, pick_flowers, care verifica daca numarul florilor este par si culege-le pe toate mai putin una. Daca numarul este impar nu culege nici o floare.
         Ajuta ariciul sa urmareasca traseul conturat si sa culeaga florile, utilizand functia definita mai sus.`,
       learn: ['loops', 'conditionals', 'functions'],
       code: `
-        for (let i = 0; i < 3; i += 1) {
-            walk_1_space();
-            pick_flowers();
-            walk_1_space();
-            turn_left();
+        const code = "var x, count, flowersToPick, i;
+        function pick_flowers(x) {
+          flowersToPick = 0;
+          if (x % 2 == 0) {
+            flowersToPick = x - 1;
           }
+        return flowersToPick;
+        }
+        count = 0;
+        var i_list = [3, 4, 6];
+        for (var i_index in i_list) {
+          i = i_list[i_index];
+          walk_1_space();
+          count = 'pick_flowers(x)';
+          walk_1_space();
+          turn_left();
         `,
     },
   ]

@@ -260,7 +260,7 @@ export default {
           {
             type: 'text',
               fields: {
-                TEXT: 'pick flowers',
+                TEXT: 'pick_flowers',
               },
           },
         ],
@@ -293,20 +293,20 @@ export default {
         ],
       },
       {
+        name: 'List',
+        type: 'lists_create_with',
+        blocks: [
+          {
+            type: 'lists_create_with',
+          },
+        ],
+      },
+      {
         name: 'Loop',
         type: 'loops',
         blocks: [
           {
-            type: 'controls_repeat_ext',
-            values: {
-              TIMES: {
-                type: 'math_number',
-                shadow: true,
-                fields: {
-                  NUM: 0,
-                },
-              },
-            },
+            type: 'controls_forEach',
           }
         ],
       },
@@ -538,15 +538,6 @@ export default {
           blocks: [
             {
               type: 'controls_repeat_ext',
-              values: {
-                TIMES: {
-                  type: 'math_number',
-                  shadow: true,
-                  fields: {
-                    NUM: 0,
-                  },
-                },
-              },
             }
           ],
         },
@@ -596,7 +587,7 @@ export default {
             {
               type: 'text',
                 fields: {
-                  TEXT: 'culege flori',
+                  TEXT: 'pick_flowers',
                 },
             },
           ],
@@ -629,20 +620,20 @@ export default {
           ],
         },
         {
+          name: 'List',
+          type: 'lists_create_with',
+          blocks: [
+            {
+              type: 'lists_create_with',
+            },
+          ],
+        },
+        {
           name: 'Loop',
           type: 'loops',
           blocks: [
             {
-              type: 'controls_repeat_ext',
-              values: {
-                TIMES: {
-                  type: 'math_number',
-                  shadow: true,
-                  fields: {
-                    NUM: 0,
-                  },
-                },
-              },
+              type: 'controls_forEach',
             }
           ],
         },

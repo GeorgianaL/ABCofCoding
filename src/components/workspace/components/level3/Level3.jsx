@@ -84,7 +84,7 @@ class Level3 extends React.Component {
     character.exit().remove();
 
     if (startGame) {
-      const playerPath = getPath(characterPos, playerCode, 2);
+      const playerPath = getPath(characterPos, playerCode, 3);
 
       let index = 0;
       const transition = {

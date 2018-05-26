@@ -90,15 +90,42 @@ export const checkLevel5 = (code) => {
   return false;
 };
 
-export const checkLevel6 = (code) => {
+// return if all expected statements can be found in player's code
+const checkStatements = (level, code) => {
+  let allStatementsExists = true;
+  answers[level][statements].forEach((statement) => {
+    if (!code.includes(statement)) {
+      allStatementsExists = false;
+    }
+  });
+  return allStatementsExists;
+}
+
+// return if length of list containing flowers counts equals
+// expected number
+const checkRepeatTimes = (level, code) => {
+  if (level === 'level6') {
+    if (code.includes('i_list')) {
+      const flowerNumbersList = code.split('i_list = ')[1].split(';')[0];
+      return flowerNumbersList.length === answers[level][repeatTimes];
+    }
+    return null;
+  }
+  return null;
+};
+
+// check if necessary steps are all included in player's code
+const checkLevel6Steps = (code) => {
   const necessarySteps = [
-    "function pick_flowers()",
-    "flowersNumber % 2 == 0",
-    "flowersNumber - 1",
-    " return",
-    "for (var count = 0; count < 3; count++)",
+    "function pick_flowers(x)",
+    "if (x % 2 == 0)",
+    "x - 1",
+    " return ",
+    "var i_list = [3, 4, 6]",
+    "for (var i_index in i_list)",
     "walk 1 space",
-    "pick flowers",
+    "pick_flowers(x)",
+    "walk 1 space",
     "turn left",
   ];
 
@@ -110,4 +137,17 @@ export const checkLevel6 = (code) => {
   });
 
   return stepsAreCorrect;
+}
+
+// main check function for level 6
+export const checkLevel6 = (code) => {
+  const activeLevel = 'level6'
+  const statements = checkStatements(activeLevel, code);
+  const repeatTimes = checkRepeatTimes(activeLevel, code);
+
+  const necessarySteps = checkLevel6Steps(code);
+  if (statements && repeatTimes && necessarySteps) {
+    return true;
+  }
+  return false;
 };
