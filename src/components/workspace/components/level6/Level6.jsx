@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
+import { findIndex } from 'lodash';
+
 import { getLevel6Path } from '../../../../lib/grid.js';
 
 import hadgehog from '../../../../../public/images/hadgehog1.png';
@@ -29,27 +31,33 @@ const flowersParcelsPos = [
   { x: 300, y: 100 },
 ];
 
-const flowersPos = [
-  [
-    { x: 315, y: 320 },
-    { x: 355, y: 320 },
-    { x: 335, y: 350 },
-  ],
-  [
-    { x: 415, y: 220 },
-    { x: 455, y: 220 },
-    { x: 415, y: 250 },
-    { x: 455, y: 250 },
-  ],
-  [
-    { x: 315, y: 105 },
-    { x: 355, y: 105 },
-    { x: 315, y: 135 },
-    { x: 355, y: 135 },
-    { x: 315, y: 165 },
-    { x: 355, y: 165 },
-  ],
+let flowersPos = [
+    { x: 315, y: 320, flowerParcelIndex: 0 },
+    { x: 355, y: 320, flowerParcelIndex: 0 },
+    { x: 335, y: 350, flowerParcelIndex: 0 },
+    { x: 415, y: 220, flowerParcelIndex: 1 },
+    { x: 455, y: 220, flowerParcelIndex: 1 },
+    { x: 415, y: 250, flowerParcelIndex: 1 },
+    { x: 455, y: 250, flowerParcelIndex: 1 },
+    { x: 315, y: 105, flowerParcelIndex: 2 },
+    { x: 355, y: 105, flowerParcelIndex: 2 },
+    { x: 315, y: 135, flowerParcelIndex: 2 },
+    { x: 355, y: 135, flowerParcelIndex: 2 },
+    { x: 315, y: 165, flowerParcelIndex: 2 },
+    { x: 355, y: 165, flowerParcelIndex: 2 },
 ];
+
+// index = flowerParcelIndex; count = how many flowers to remove
+const removeFlowers = (index, count) => {
+  let removedFlowers = 0;
+  if (count > 0) {
+    let parcelFlowers = flowersPos.filter(el => el.flowerParcelIndex === index);
+    const otherParcels = flowersPos.filter(el => el.flowerParcelIndex !== index);
+    parcelFlowers = parcelFlowers.splice(parcelFlowers.length - 1, count);
+    // modify initial flowersPos array
+    flowersPos = otherParcels.concat(parcelFlowers);
+  }
+}
 
 class Level6 extends React.Component {
   constructor(props) {
@@ -63,6 +71,20 @@ class Level6 extends React.Component {
 
   componentDidUpdate() {
     this.renderD3();
+  }
+
+  renderFlowers(flowersGroup, data) {
+    d3.selectAll('.flower-img').remove();
+    const flowerPiece = flowersGroup.selectAll('.flower-img')
+      .data(data);
+    flowerPiece.enter()
+     .append('svg:image')
+     .attr('xlink:href', flower)
+     .attr('class', 'flower-img')
+     .attr('width', 30)
+     .attr('height', 30)
+     .attr('x', d => d.x)
+     .attr('y', d => d.y);
   }
 
   renderD3() {
@@ -110,11 +132,11 @@ class Level6 extends React.Component {
      if (startGame) {
         // const playerPath = getLevel6Path(characterPos, playerCode, 6);
         const playerPath = [
-          {x: 300, y: 300, pick: 3},
+          {x: 300, y: 300, pick: 0},
           {x: 400, y: 300},
-          {x: 400, y: 200, pick: 4},
+          {x: 400, y: 200, pick: 3},
           {x: 400, y: 100},
-          {x: 300, y: 100, pick: 6},
+          {x: 300, y: 100, pick: 5},
           {x: 200, y: 100},
         ];
 
@@ -131,18 +153,15 @@ class Level6 extends React.Component {
                     .delay(transition.delay)
                     .duration(transition.duration)
                     .attr('transform', `translate(${playerPath[index].x}, ${playerPath[index].y})`);
-            } else {
-              character
-                .transition()
-                .delay(transition.delay)
-                .remove();
+                if (Object.keys(playerPath[index]).includes('pick')) {
+                    const flowerParcelIndex = findIndex(flowersParcelsPos, {x: playerPath[index].x, y: playerPath[index].y});
+                    removeFlowers(flowerParcelIndex, playerPath[index].pick);
+                  }
             }
             index += 1;
             if (index < playerPath.length) {
                 setTimeout(move, transition.duration + transition.delay);
-                if (index === playerPath.length) {
-                  setTimeout(d3.select('.character').remove(), (transition.duration + transition.delay) * 2);
-                }
+                this.renderFlowers(flowersGroup, flowersPos);
             }
         };
 
