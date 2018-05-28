@@ -116,25 +116,19 @@ const checkRepeatTimes = (level, code) => {
 
 // check if necessary steps are all included in player's code
 const checkLevel6Steps = (code) => {
-  const necessarySteps = [
-    "function pick_flowers(x)",
-    "if (x % 2 == 0)",
-    "x - 1",
-    " return ",
-    "var i_list = [3, 4, 6]",
-    "for (var i_index in i_list)",
-    "walk 1 space",
-    "pick_flowers(x)",
-    "walk 1 space",
-    "turn left",
-  ];
-
   let stepsAreCorrect = true;
-  necessarySteps.forEach((step) => {
+  answers[6][actionsEn].forEach((step) => {
     if (!code.includes(step)) {
       stepsAreCorrect = false;
     }
   });
+  if (!stepsAreCorrect) {
+    answers[6][actionsRo].forEach((step) => {
+      if (!code.includes(step)) {
+        stepsAreCorrect = false;
+      }
+    });
+  }
 
   return stepsAreCorrect;
 }

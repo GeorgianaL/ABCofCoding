@@ -130,15 +130,7 @@ class Level6 extends React.Component {
      .attr('y', d => d.y);
 
      if (startGame) {
-        // const playerPath = getLevel6Path(characterPos, playerCode, 6);
-        const playerPath = [
-          {x: 300, y: 300, pick: 0},
-          {x: 400, y: 300},
-          {x: 400, y: 200, pick: 3},
-          {x: 400, y: 100},
-          {x: 300, y: 100, pick: 5},
-          {x: 200, y: 100},
-        ];
+        const playerPath = getLevel6Path(characterPos, playerCode, 6);
 
         let index = 0;
         const transition = {

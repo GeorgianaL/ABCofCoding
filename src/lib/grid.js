@@ -135,12 +135,26 @@ export const getPath = (posInitial, playerCode, level) => {
   return finalPath;
 };
 
+const getFlowersNumber = (code, count) => {
+  // function delimiters
+  const functionStartIndex = findIndex(code, el => el.includes('function ')) + 1;
+  const functionEndIndex = findIndex(code, el => el.includes('return '));
+  let functionStatements = [];
+  code.forEach((item, idx) => {
+    if (idx >= functionStartIndex && idx <= functionEndIndex) {
+      functionStatements.push(item);
+    }
+  });
+  const functionDef = new Function('x', functionStatements.join(''));
+  return functionDef(count);
+};
+
 export const getLevel6Path = (posInitial, playerCode) => {
   const level = 6;
   let directionIsHoriz = true;
   let turnArounds = 0;
   const finalPath = [];
-  const code = playerCode.split("\n").filter(item => item.length > 5);
+  const code = playerCode.split("\n");
 
   // list with flowers counters on svg
   let flowerCountsList = [];
@@ -148,10 +162,6 @@ export const getLevel6Path = (posInitial, playerCode) => {
   if (statementIndex > -1) {
     flowerCountsList = eval(code[statementIndex].split('i_list = ')[1].split(';')[0]);
   }
-
-  // function delimiters
-  const functionStartIndex = findIndex(code, el => el.includes('function '));
-  const functionEndIndex = findIndex(code, el => el.includes('return '));
 
   const loopInstr = getLoopInstr(code, level);
 
@@ -174,8 +184,7 @@ export const getLevel6Path = (posInitial, playerCode) => {
       directionIsHoriz = !directionIsHoriz;
       turnArounds += 1;
     } else if (actionType === 'pick') {
-      console.log('pick');
-      finalPath[finalPath.length - 1].pick = nrOfFlowers;
+      finalPath[finalPath.length - 1].pick = getFlowersNumber(code, nrOfFlowers) || 0;
     }
   };
 
