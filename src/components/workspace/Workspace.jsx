@@ -45,7 +45,7 @@ const checkAnswer = (code, level) => {
     case 5:
       isCorrect = checkLevel5(code);
       break;
-    case 5:
+    case 6:
       isCorrect = checkLevel6(code);
       break;
     default:

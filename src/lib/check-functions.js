@@ -93,7 +93,7 @@ export const checkLevel5 = (code) => {
 // return if all expected statements can be found in player's code
 const checkStatements = (level, code) => {
   let allStatementsExists = true;
-  answers[level][statements].forEach((statement) => {
+  answers[level].statements.forEach((statement) => {
     if (!code.includes(statement)) {
       allStatementsExists = false;
     }
@@ -107,7 +107,7 @@ const checkRepeatTimes = (level, code) => {
   if (level === 'level6') {
     if (code.includes('i_list')) {
       const flowerNumbersList = code.split('i_list = ')[1].split(';')[0];
-      return flowerNumbersList.length === answers[level][repeatTimes];
+      return flowerNumbersList.split(',').length === answers[level].repeatTimes;
     }
     return null;
   }
@@ -115,22 +115,19 @@ const checkRepeatTimes = (level, code) => {
 };
 
 // check if necessary steps are all included in player's code
-const checkLevel6Steps = (code) => {
-  let stepsAreCorrect = true;
-  answers[6][actionsEn].forEach((step) => {
-    if (!code.includes(step)) {
-      stepsAreCorrect = false;
-    }
-  });
-  if (!stepsAreCorrect) {
-    answers[6][actionsRo].forEach((step) => {
+const checkLevel6Steps = (level, code) => {
+
+  const checkActionsByLanguage = (lang) => {
+    let stepsAreCorrect = true;
+    answers[level][lang].forEach((step) => {
       if (!code.includes(step)) {
         stepsAreCorrect = false;
       }
     });
-  }
+    return stepsAreCorrect;
+  };
 
-  return stepsAreCorrect;
+  return checkActionsByLanguage('actionsEn') || checkActionsByLanguage('actionsRo');
 }
 
 // main check function for level 6
@@ -139,7 +136,7 @@ export const checkLevel6 = (code) => {
   const statements = checkStatements(activeLevel, code);
   const repeatTimes = checkRepeatTimes(activeLevel, code);
 
-  const necessarySteps = checkLevel6Steps(code);
+  const necessarySteps = checkLevel6Steps(activeLevel, code);
   if (statements && repeatTimes && necessarySteps) {
     return true;
   }

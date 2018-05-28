@@ -258,10 +258,15 @@ export default {
             },
           },
           {
-            type: 'text',
-              fields: {
-                TEXT: 'pick_flowers',
+            type: 'text_print',
+            values: {
+              TEXT: {
+                type: 'text',
+                fields: {
+                  TEXT: 'pick_flowers(x)',
+                },
               },
+            },
           },
         ],
       },
@@ -538,6 +543,15 @@ export default {
           blocks: [
             {
               type: 'controls_repeat_ext',
+              values: {
+                TIMES: {
+                  type: 'math_number',
+                  shadow: true,
+                  fields: {
+                    NUM: 0,
+                  },
+                },
+              },
             }
           ],
         },
@@ -585,10 +599,15 @@ export default {
               },
             },
             {
-              type: 'text',
-                fields: {
-                  TEXT: 'pick_flowers',
+              type: 'text_print',
+              values: {
+                TEXT: {
+                  type: 'text',
+                  fields: {
+                    TEXT: 'pick_flowers(x)',
+                  },
                 },
+              },
             },
           ],
         },

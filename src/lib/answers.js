@@ -46,12 +46,6 @@ export default {
   level6: {
     statements: ['function', 'if', 'for'],
     repeatTimes: 3,
-    functionActions: [
-      ' = 0;',
-      'if (x % 2 == 0) {',
-      'x - 1;',
-      'return',
-    ],
     actionsEn: [
       "function pick_flowers(x)",
       "if (x % 2 == 0)",

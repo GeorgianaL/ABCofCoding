@@ -12,8 +12,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      levelAchieved: 6,
-      showModal: false,
+      levelAchieved: 3,
+      showModal: true,
       openDemo: false,
       language: 'ro',
     };
@@ -48,6 +48,7 @@ class App extends React.Component {
   changeLanguage() {
     const { language } = this.state;
     this.setState({
+      'showModal': true,
       'language': language === 'en' ? 'ro' : 'en',
     });
   }

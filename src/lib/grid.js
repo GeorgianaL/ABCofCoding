@@ -9,15 +9,17 @@ const walk = (posInitial, directionIsHoriz, leftToRight = true, level) => {
     case 3:
     case 4:
     case 6:
-      leftToRight ?
-      newPos = {
-        x: directionIsHoriz ? posInitial.x + 100 : posInitial.x,
-        y: directionIsHoriz ? posInitial.y : posInitial.y - 100,
-      } :
-      newPos = {
-        x: directionIsHoriz ? posInitial.x - 100 : posInitial.x,
-        y: directionIsHoriz ? posInitial.y : posInitial.y - 100,
-      };
+      if (leftToRight) {
+        newPos = {
+          x: directionIsHoriz ? posInitial.x + 100 : posInitial.x,
+          y: directionIsHoriz ? posInitial.y : posInitial.y - 100,
+        };
+      } else {
+        newPos = {
+          x: directionIsHoriz ? posInitial.x - 100 : posInitial.x,
+          y: directionIsHoriz ? posInitial.y : posInitial.y - 100,
+        };
+      }
       break;
     case 5:
       // direction is from left to right and from top to bottom
@@ -85,6 +87,7 @@ export const getPath = (posInitial, playerCode, level) => {
   let repeatTimes = 1;
   let directionIsHoriz = true;
   const finalPath = [];
+  const leftToRight = true;
 
   if (typeof playerCode === 'string') {
     code = playerCode.split("'").filter(item => item.length > 5);
@@ -102,36 +105,36 @@ export const getPath = (posInitial, playerCode, level) => {
 
       for (let i = 1; i <= nrOfPaths; i++) {
         if (finalPath.length === 0) {
-          finalPath.push(walk(posInitial, directionIsHoriz, level));
+          finalPath.push(walk(posInitial, directionIsHoriz, leftToRight, level));
         } else {
-          finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
+          finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, leftToRight, level));
         }
       }
     } else if (actionType === 'turn' || actionType === 'intoarce-te') {
       directionIsHoriz = !directionIsHoriz;
     } else if (actionType === 'enter' || actionType === 'intra') {
-      finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, level));
+      finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, leftToRight, level));
       finalPath.push({ x: -100, y: -100 });
     }
   };
 
+  const codeInRepetition = code.filter((item, index) => index >= loopInstr.start && index <= loopInstr.end);
+  const codeOutsideOfRepetition = code.filter((item, index) => index > loopInstr.end);
+
   // instructions inside repetition
   for (let playerAction = 0, repetition = 0; playerAction < code.length && repetition < repeatTimes; playerAction++, repetition++) {
-    code.forEach((playerAction, index) => {
-      if (index >= loopInstr.start && index <= loopInstr.end) {
-        handleAction(playerAction);
-      }
-    });
-  }
-  // instructions outside of repetition
-  if (code.length > loopInstr.end) {
-    code.forEach((playerAction, index) => {
-      if (index > loopInstr.end) {
-        handleAction(playerAction);
-      }
+    codeInRepetition.forEach((playerAction) => {
+
+      handleAction(playerAction);
     });
   }
 
+  // instructions outside of repetition
+  if (code.length > loopInstr.end) {
+    codeOutsideOfRepetition.forEach((playerAction) => {
+      handleAction(playerAction);
+    });
+  }
   return finalPath;
 };
 
