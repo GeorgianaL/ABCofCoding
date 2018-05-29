@@ -34,6 +34,8 @@
         }
         @include modifier('level5') {
           background-image: url('../../../public/images/sand_template.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
         }
         @include modifier('level6') {
           background-image: url('../../../public/images/grass_template.jpg');
@@ -57,7 +59,7 @@
       width: 900px;
     }
 
-    .playground {
+    @include element('playground') {
       width: 900px;
     }
   }
@@ -67,8 +69,28 @@
       height: 900px;
     }
 
-    .playground {
+    @include element('playground') {
       height: 900px;
+    }
+  }
+
+  @media only screen and (max-height: 880px) {
+    .fill-height {
+      height: 685px;
+    }
+
+    @include element('playground') {
+      height: 685px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .fill-height {
+      width: 404px;
+    }
+
+    @include element('playground') {
+      width: 620px;
     }
   }
 
