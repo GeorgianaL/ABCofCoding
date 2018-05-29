@@ -1,6 +1,6 @@
 import { findIndex } from 'lodash';
 
-const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te', 'intra', 'pick'];
+export const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te', 'intra', 'pick'];
 
 const walk = (posInitial, directionIsHoriz, leftToRight = true, level) => {
   let newPos = {};
@@ -57,25 +57,36 @@ const getNumberOfPaths = (action) => {
   return pathsCount;
 };
 
-const getLoopInstr = (code, level) => {
+export const getLoopInstr = (code, level) => {
   const loopInstructions = {
     start: 0,
     end: code.length,
   };
 
   code.forEach((instr, index) => {
-    if (level === 6) {
-      if (instr.indexOf('in i_list) {') !== -1) {
-        loopInstructions.start = index;
-      } else if (instr.indexOf('}') !== -1) {
-        loopInstructions.end = index;
-      }
-    } else {
-      if (instr.indexOf('count++) {') !== -1) {
-        loopInstructions.start = index;
-      } else if (instr.indexOf('}') !== -1) {
-        loopInstructions.end = index;
-      }
+    switch (level) {
+      case 6:
+      case 'level6':
+        if (instr.indexOf('in i_list) {') !== -1) {
+          loopInstructions.start = index;
+        } else if (instr.indexOf('}') !== -1) {
+          loopInstructions.end = index;
+        }
+        break;
+      case 3:
+      case 'level3':
+      case 4:
+      case 'level4':
+      case 5:
+      case 'level5':
+        if (instr.indexOf('count++) {') !== -1) {
+          loopInstructions.start = index;
+        } else if (instr.indexOf('}') !== -1) {
+          loopInstructions.end = index;
+        }
+        break;
+      default:
+        break;
     }
   });
 

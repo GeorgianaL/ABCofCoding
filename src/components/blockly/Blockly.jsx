@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReactBlocklyComponent from './ReactBlocklyComponent.js';
-import toolbox_categories from './toolboxCategories';
+import toolbox_categories from './ToolboxCategories';
 
 import './blockly.scss';
 

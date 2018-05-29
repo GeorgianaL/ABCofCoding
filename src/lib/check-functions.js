@@ -1,6 +1,7 @@
 import { isEqual } from 'lodash';
 
 import answers from './answers';
+import { getLoopInstr, actionTypes } from './grid';
 
 export const checkLevel1 = (code) => {
   const playerHello = code.split(/'|'/)[1];
@@ -18,6 +19,27 @@ export const checkLevel2 = (code) => {
     || isEqual(instructions, answers.level2.actionsEn[1])
     || isEqual(instructions, answers.level2.actionsRo[0])
     || isEqual(instructions, answers.level2.actionsRo[1]);
+};
+
+const getRepeatTimes = (level, code) => {
+  let loopIdentifier;
+  if (level === 'level6') {
+    loopIdentifier = 'i_list = ';
+    if (code.includes(loopIdentifier)) {
+      const flowerNumbersList = code.split(loopIdentifier)[1].split(';')[0];
+      return flowerNumbersList.split(',').length === answers[level].repeatTimes;
+    }
+    return null;
+  } else {
+    loopIdentifier = 'for (var count = 0; count < ';
+    if (code.includes(loopIdentifier)) {
+      const repeatTimes = code.split(loopIdentifier)[1].split(';')[0];
+      if (Number(repeatTimes) !== NaN) {
+        return Number(repeatTimes);
+      }
+      return null;
+    }
+  }
 };
 
 export const checkLevel3 = (code) => {
@@ -60,27 +82,36 @@ export const checkLevel4 = (code) => {
 };
 
 export const checkLevel5 = (code) => {
-  const playerAnswer = {
+  const activeLevel = 'level5';
+  let playerAnswer = {
     statements: [],
     repeatTimes: 0,
     actions: [],
   };
 
-  code.split('\n').filter(item => item.length > 9).forEach((step, index) => {
-    if (index === 0 && step !== '') {
-      playerAnswer.statements.push(step.split(' ')[0]);
-      const repeatCount = step.split(/< |;/)[2];
-      playerAnswer.repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
-    } else if (index === 2) {
-      playerAnswer.statements.push(step.split(' ')[2]);
-    } else {
-      const instruction = step.split("'").filter(row => row.length > 5);
-      if (instruction.length > 1) {
-        // instruction[0] = windows.alert
-        playerAnswer.actions.push(instruction[1]);
-      }
+  // check statements 'for' and 'if'
+  answers[activeLevel].statements.forEach((stat) => {
+    if (code.includes(stat)) {
+      playerAnswer.statements.push(stat);
     }
   });
+
+  playerAnswer = {
+    ...playerAnswer,
+    repeatTimes: getRepeatTimes(activeLevel, code),
+  };
+
+  const arrCode = code.split("'").filter(item => item.length > 5);
+
+  arrCode.forEach((piece) => {
+    if (actionTypes.includes(piece.split(' ')[0])) {
+      playerAnswer = {
+        ...playerAnswer,
+        actions: [...playerAnswer.actions, piece],
+      };
+    }
+  });
+
   if (isEqual(answers.level5.statements, playerAnswer.statements)
   && isEqual(answers.level5.repeatTimes, playerAnswer.repeatTimes)
   && (isEqual(answers.level5.actionsEn, playerAnswer.actions)
@@ -90,6 +121,8 @@ export const checkLevel5 = (code) => {
   return false;
 };
 
+
+// level 6
 // return if all expected statements can be found in player's code
 const checkStatements = (level, code) => {
   let allStatementsExists = true;
@@ -99,19 +132,6 @@ const checkStatements = (level, code) => {
     }
   });
   return allStatementsExists;
-}
-
-// return if length of list containing flowers counts equals
-// expected number
-const checkRepeatTimes = (level, code) => {
-  if (level === 'level6') {
-    if (code.includes('i_list')) {
-      const flowerNumbersList = code.split('i_list = ')[1].split(';')[0];
-      return flowerNumbersList.split(',').length === answers[level].repeatTimes;
-    }
-    return null;
-  }
-  return null;
 };
 
 // check if necessary steps are all included in player's code
@@ -132,9 +152,9 @@ const checkLevel6Steps = (level, code) => {
 
 // main check function for level 6
 export const checkLevel6 = (code) => {
-  const activeLevel = 'level6'
+  const activeLevel = 'level6';
   const statements = checkStatements(activeLevel, code);
-  const repeatTimes = checkRepeatTimes(activeLevel, code);
+  const repeatTimes = getRepeatTimes(activeLevel, code);
 
   const necessarySteps = checkLevel6Steps(activeLevel, code);
   if (statements && repeatTimes && necessarySteps) {
