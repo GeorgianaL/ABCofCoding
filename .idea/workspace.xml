@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="511b1e90-92c3-4733-8a52-88440fefae95" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/blockly/blockly.scss" afterPath="$PROJECT_DIR$/src/components/blockly/blockly.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/modal/modal.scss" afterPath="$PROJECT_DIR$/src/components/modal/modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workspace/workspace.scss" afterPath="$PROJECT_DIR$/src/components/workspace/workspace.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/blockly/ToolboxCategories.js" afterPath="$PROJECT_DIR$/src/components/blockly/ToolboxCategories.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx" afterPath="$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.jsx" afterPath="$PROJECT_DIR$/src/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/answers.js" afterPath="$PROJECT_DIR$/src/lib/answers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/check-functions.js" afterPath="$PROJECT_DIR$/src/lib/check-functions.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,41 +33,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modal.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/modal/modal.scss">
+      <file leaf-file-name="Workspace.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/workspace/Workspace.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="16" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="-1962">
+              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.scss" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/workspace/workspace.scss">
+      <file leaf-file-name="grid.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/grid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="88" column="19" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="36">
+              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blockly.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/blockly/blockly.scss">
+      <file leaf-file-name="Level4.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="46" column="43" lean-forward="false" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="468">
+              <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="react-blockly-component.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/react-blockly-component.js">
+      <file leaf-file-name="answers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/answers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="37172" column="30" lean-forward="false" selection-start-line="37172" selection-start-column="30" selection-end-line="37172" selection-end-column="30" />
+            <state relative-caret-position="360">
+              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -100,16 +104,17 @@
         <option value="$PROJECT_DIR$/src/components/workspace/Workspace.jsx" />
         <option value="$PROJECT_DIR$/src/components/workspace/components/level2/Level2.jsx" />
         <option value="$PROJECT_DIR$/src/components/workspace/components/level3/Level3.jsx" />
-        <option value="$PROJECT_DIR$/src/lib/answers.js" />
-        <option value="$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx" />
         <option value="$PROJECT_DIR$/src/components/workspace/components/level5/Level5.jsx" />
         <option value="$PROJECT_DIR$/src/components/blockly/Blockly.jsx" />
         <option value="$PROJECT_DIR$/src/lib/grid.js" />
-        <option value="$PROJECT_DIR$/src/lib/check-functions.js" />
         <option value="$PROJECT_DIR$/src/components/modal/modal.scss" />
         <option value="$PROJECT_DIR$/src/components/blockly/blockly.scss" />
-        <option value="$PROJECT_DIR$/src/index.jsx" />
         <option value="$PROJECT_DIR$/src/components/workspace/workspace.scss" />
+        <option value="$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx" />
+        <option value="$PROJECT_DIR$/src/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/blockly/ToolboxCategories.js" />
+        <option value="$PROJECT_DIR$/src/lib/answers.js" />
+        <option value="$PROJECT_DIR$/src/lib/check-functions.js" />
       </list>
     </option>
   </component>
@@ -220,7 +225,7 @@
               <item name="ABCofCoding" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="modal" type="462c0819:PsiDirectoryNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ABCofCoding" type="b2602c69:ProjectViewProjectNode" />
@@ -228,12 +233,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ABCofCoding" type="b2602c69:ProjectViewProjectNode" />
               <item name="ABCofCoding" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="skins" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="level4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCofCoding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCofCoding" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,12 +300,12 @@
       <workItem from="1523862712848" duration="1894000" />
       <workItem from="1523879590737" duration="2148000" />
       <workItem from="1526299223106" duration="2657000" />
-      <workItem from="1527582122214" duration="7514000" />
+      <workItem from="1527582122214" duration="10280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29160000" />
+    <option name="totallyTimeSpent" value="31926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="796" y="24" width="1765" height="1056" extended-state="4" />
@@ -326,33 +341,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level2/Level2.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-            <marker date="1527582078664" expanded="true" signature="345:1188" ph="{...}" />
-            <marker date="1527582078664" expanded="true" signature="533:1058" ph="{...}" />
-            <marker date="1527582078664" expanded="true" signature="1017:1054" ph="{...}" />
-            <marker date="1527582078664" expanded="true" signature="1071:1186" ph="{...}" />
-            <marker date="1527582078664" expanded="true" signature="1092:1175" ph="&lt;svg/&gt;" />
-            <marker date="1527582078664" expanded="true" signature="1240:1334" ph="{&quot;startGame&quot;: PropTypes.bool...}" />
-            <marker date="1527582078664" expanded="true" signature="1358:1417" ph="{&quot;playerCode&quot;: ''...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level3/Level3.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1494">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="114" selection-start-column="5" selection-end-line="120" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level5/Level5.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -645,16 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/workspace/Workspace.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level5/Level5.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -678,32 +656,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/grid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/answers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/check-functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2556">
-          <caret line="142" column="33" lean-forward="false" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,13 +693,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/workspace/workspace.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="538">
+          <caret line="88" column="19" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,10 +709,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/workspace/workspace.scss">
+    <entry file="file://$PROJECT_DIR$/src/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="88" column="19" lean-forward="false" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="250">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/blockly/ToolboxCategories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="410" column="19" lean-forward="false" selection-start-line="410" selection-start-column="19" selection-end-line="410" selection-end-column="19" />
+          <folding>
+            <element signature="e#31#268#0" expanded="false" />
+            <element signature="e#274#824#0" expanded="false" />
+            <element signature="e#830#1348#0" expanded="false" />
+            <element signature="e#1354#2608#0" expanded="false" />
+            <element signature="e#2614#4376#0" expanded="false" />
+            <element signature="e#4382#6478#0" expanded="false" />
+            <element signature="e#6501#6764#0" expanded="false" />
+            <element signature="e#6772#7382#0" expanded="false" />
+            <element signature="e#7390#7977#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/workspace/components/level4/Level4.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/answers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/grid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/check-functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/workspace/Workspace.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1962">
+          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding />
         </state>
       </provider>

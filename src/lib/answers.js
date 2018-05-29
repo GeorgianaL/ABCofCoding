@@ -20,8 +20,8 @@ export default {
   level4: {
     statement: 'for',
     repeatTimes: 3,
-    actionsEn: ['walk 2 spaces', 'turn left', 'walk 2 space', 'turn right'],
-    actionsRo: ['mergi 2 spatii', 'intoarce-te la stanga', 'mergi 1 spatiu', 'intoarce-te la dreapta'],
+    actionsEn: ['walk 1 space', 'turn left', 'walk 1 space', 'turn right'],
+    actionsRo: ['mergi 1 spatiu', 'intoarce-te la stanga', 'mergi 1 spatiu', 'intoarce-te la dreapta'],
   },
   level5: {
     statements: ['for', 'if'],

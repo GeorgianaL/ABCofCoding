@@ -85,17 +85,6 @@ export default {
               TEXT: {
                 type: 'text',
                 fields: {
-                  TEXT: 'walk 2 spaces',
-                },
-              },
-            },
-          },
-          {
-            type: 'text_print',
-            values: {
-              TEXT: {
-                type: 'text',
-                fields: {
                   TEXT: 'walk 1 space',
                 },
               },
@@ -420,17 +409,6 @@ export default {
           name: 'Actions',
           type: 'procedures',
           blocks: [
-            {
-              type: 'text_print',
-              values: {
-                TEXT: {
-                  type: 'text',
-                  fields: {
-                    TEXT: 'mergi 2 spatii',
-                  },
-                },
-              },
-            },
             {
               type: 'text_print',
               values: {

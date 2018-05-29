@@ -52,26 +52,37 @@ export const checkLevel3 = (code) => {
 };
 
 export const checkLevel4 = (code) => {
-  const playerAnswer = {
+  const activeLevel = 'level4';
+  let playerAnswer = {
     statement: '',
     repeatTimes: 0,
     actions: [],
   };
 
-  code.split('\n').forEach((step, index) => {
-    if (index === 0 && step !== '') {
-      playerAnswer.statement = step.split(' ')[0];
+  if (code.includes(answers[activeLevel].statement)) {
+    playerAnswer = {
+      ...playerAnswer,
+      statement: answers[activeLevel].statement,
+    };
+  }
 
-      const repeatCount = step.split(/< |;/)[2];
-      playerAnswer.repeatTimes = !isNaN(repeatCount) ? Number(repeatCount) : 0;
-    } else {
-      const instruction = step.split("'").filter(row => row.length > 5);
-      if (instruction.length > 1) {
-        // instruction[0] = windows.alert
-        playerAnswer.actions.push(instruction[1]);
-      }
+  playerAnswer = {
+    ...playerAnswer,
+    repeatTimes: getRepeatTimes(activeLevel, code),
+  };
+
+  const arrCode = code.split("'").filter(item => item.length > 5);
+
+  arrCode.forEach((piece) => {
+    const actionIdentifier = piece.split(' ')[0];
+    if (actionIdentifier !== 'for' && actionTypes.includes(actionIdentifier)) {
+      playerAnswer = {
+        ...playerAnswer,
+        actions: [...playerAnswer.actions, piece],
+      };
     }
   });
+
   if (isEqual(answers.level4.statement, playerAnswer.statement)
   && isEqual(answers.level4.repeatTimes, playerAnswer.repeatTimes)
   && (isEqual(answers.level4.actionsEn, playerAnswer.actions)
