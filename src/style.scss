@@ -1,4 +1,60 @@
+@import './skins/mixins/index.scss';
+
 body {
   font-size: 10px;
   margin: 0;
+}
+
+#app {
+  // heights
+  @media only screen and (min-height: 800px) {
+    .fill-height {
+      height: 900px;
+    }
+
+    .blockly__playground {
+      height: 900px;
+    }
+  }
+
+  @media only screen and (max-height: 660px) {
+    .fill-height {
+      height: 580px;
+    }
+
+    .blockly__playground {
+      height: 580px;
+    }
+  }
+
+  @media only screen and (min-height: 670px) {
+    .fill-height {
+      height: 685px;
+    }
+
+    .blockly__playground {
+      height: 685px;
+    }
+  }
+
+  // widths
+  @media only screen and (min-width: 1400px) {
+    .fill-height {
+      width: 900px;
+    }
+
+    .blockly__playground {
+      width: 900px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .fill-height {
+      width: 404px;
+    }
+
+    .blockly__playground {
+      width: 620px;
+    }
+  }
 }

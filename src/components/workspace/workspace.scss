@@ -54,45 +54,6 @@
       }
     }
 
-  @media only screen and (min-width: 1400px) {
-    .fill-height {
-      width: 900px;
-    }
-
-    @include element('playground') {
-      width: 900px;
-    }
-  }
-
-  @media only screen and (min-height: 800px) {
-    .fill-height {
-      height: 900px;
-    }
-
-    @include element('playground') {
-      height: 900px;
-    }
-  }
-
-  @media only screen and (max-height: 880px) {
-    .fill-height {
-      height: 685px;
-    }
-
-    @include element('playground') {
-      height: 685px;
-    }
-  }
-
-  @media only screen and (max-width: 1024px) {
-    .fill-height {
-      width: 404px;
-    }
-
-    @include element('playground') {
-      width: 620px;
-    }
-  }
 
   .blocklyDraggable {
     image {
