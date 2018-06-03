@@ -58,10 +58,11 @@
   }
 
     @include element('content') {
+
       @include flex(column);
       align-items: center;
       padding: setSize('medium') setSize('normal2') setSize('normal2') setSize('normal');
-      font-size: setFontSize('h5');
+      font-size: setFontSize('h4');
 
       @include modifier('title') {
         text-transform: uppercase;

@@ -83,10 +83,10 @@ export const checkLevel4 = (code) => {
     }
   });
 
-  if (isEqual(answers.level4.statement, playerAnswer.statement)
-  && isEqual(answers.level4.repeatTimes, playerAnswer.repeatTimes)
-  && (isEqual(answers.level4.actionsEn, playerAnswer.actions)
-  || isEqual(answers.level4.actionsRo, playerAnswer.actions))) {
+  if (isEqual(answers[activeLevel].statement, playerAnswer.statement)
+  && isEqual(answers[activeLevel].repeatTimes, playerAnswer.repeatTimes)
+  && (isEqual(answers[activeLevel].actionsEn, playerAnswer.actions)
+  || isEqual(answers[activeLevel].actionsRo, playerAnswer.actions))) {
     return true;
   }
   return false;

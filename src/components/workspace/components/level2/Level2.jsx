@@ -49,9 +49,7 @@ class Level2 extends React.Component {
 
   render() {
     return (
-      <svg ref={node => this.svgNode = node}>
-        <g className="road" />
-      </svg>
+      <svg ref={node => this.svgNode = node} />
     );
   }
 }

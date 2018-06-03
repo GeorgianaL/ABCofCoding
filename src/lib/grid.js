@@ -1,8 +1,8 @@
 import { findIndex } from 'lodash';
 
-export const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'intoarce-te', 'intra', 'pick'];
+export const actionTypes = ['walk', 'turn', 'for', 'enter', 'mergi', 'întoarce-te', 'intră', 'pick'];
 
-const walk = (posInitial, directionIsHoriz, leftToRight = true, level) => {
+const walk = (posInitial, directionIsHoriz, leftToRight, level) => {
   let newPos = {};
   switch (level) {
     // direction is from left to right and from bottom to top
@@ -121,9 +121,9 @@ export const getPath = (posInitial, playerCode, level) => {
           finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, leftToRight, level));
         }
       }
-    } else if (actionType === 'turn' || actionType === 'intoarce-te') {
+    } else if (actionType === 'turn' || actionType === 'întoarce-te') {
       directionIsHoriz = !directionIsHoriz;
-    } else if (actionType === 'enter' || actionType === 'intra') {
+    } else if (actionType === 'enter' || actionType === 'intră') {
       finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, leftToRight, level));
       finalPath.push({ x: -100, y: -100 });
     }
@@ -153,12 +153,14 @@ const getFlowersNumber = (code, count) => {
   // function delimiters
   const functionStartIndex = findIndex(code, el => el.includes('function ')) + 1;
   const functionEndIndex = findIndex(code, el => el.includes('return '));
+
   let functionStatements = [];
   code.forEach((item, idx) => {
     if (idx >= functionStartIndex && idx <= functionEndIndex) {
       functionStatements.push(item);
     }
   });
+
   const functionDef = new Function('x', functionStatements.join(''));
   return functionDef(count);
 };
@@ -194,7 +196,7 @@ export const getLevel6Path = (posInitial, playerCode) => {
           finalPath.push(walk(finalPath[finalPath.length - 1], directionIsHoriz, leftToRight, level));
         }
       }
-    } else if (actionType === 'turn' || actionType === 'intoarce-te') {
+    } else if (actionType === 'turn' || actionType === 'întoarce-te') {
       directionIsHoriz = !directionIsHoriz;
       turnArounds += 1;
     } else if (actionType === 'pick') {

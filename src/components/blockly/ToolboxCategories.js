@@ -392,13 +392,13 @@ export default {
             {
               type: "text",
               fields: {
-                TEXT: 'mergi 3 spatii',
+                TEXT: 'mergi 3 spații',
               },
             },
             {
               type: "text",
               fields: {
-                TEXT: 'intoarce-te la stanga',
+                TEXT: 'întoarce-te la stânga',
               },
             },
           ],
@@ -415,7 +415,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'mergi 1 spatiu',
+                    TEXT: 'mergi 1 spațiu',
                   },
                 },
               },
@@ -426,7 +426,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intoarce-te la stanga',
+                    TEXT: 'întoarce-te la stânga',
                   },
                 },
               },
@@ -438,7 +438,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intoarce-te la dreapta',
+                    TEXT: 'întoarce-te la dreapta',
                   },
                 },
               },
@@ -475,7 +475,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'mergi 1 spatiu',
+                    TEXT: 'mergi 1 spațiu',
                   },
                 },
               },
@@ -486,7 +486,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intoarce-te la stanga',
+                    TEXT: 'întoarce-te la stânga',
                   },
                 },
               },
@@ -497,7 +497,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intoarce-te la dreapta',
+                    TEXT: 'întoarce-te la dreapta',
                   },
                 },
               },
@@ -508,7 +508,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intra in hambar',
+                    TEXT: 'intră în hambar',
                   },
                 },
               },
@@ -560,7 +560,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'mergi 1 spatiu',
+                    TEXT: 'mergi 1 spațiu',
                   },
                 },
               },
@@ -571,7 +571,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'intoarce-te la stanga',
+                    TEXT: 'întoarce-te la stânga',
                   },
                 },
               },

@@ -15,13 +15,13 @@ export default {
   },
   level3: {
     actionsEn: ['walk 3 spaces', 'turn left', 'walk 3 spaces'],
-    actionsRo: ['mergi 3 spatii', 'intoarce-te la stanga', 'mergi 3 spatii'],
+    actionsRo: ['mergi 3 spații', 'întoarce-te la stânga', 'mergi 3 spații'],
   },
   level4: {
     statement: 'for',
     repeatTimes: 3,
     actionsEn: ['walk 1 space', 'turn left', 'walk 1 space', 'turn right'],
-    actionsRo: ['mergi 1 spatiu', 'intoarce-te la stanga', 'mergi 1 spatiu', 'intoarce-te la dreapta'],
+    actionsRo: ['mergi 1 spațiu', 'întoarce-te la stânga', 'mergi 1 spațiu', 'întoarce-te la dreapta'],
   },
   level5: {
     statements: ['for', 'if'],
@@ -35,12 +35,12 @@ export default {
       'enter the barn',
     ],
     actionsRo: [
-      'mergi 1 spatiu',
-      'intoarce-te la dreapta',
-      'mergi 1 spatiu',
-      'intoarce-te la stanga',
-      'mergi 1 spatiu',
-      'intra in hambar',
+      'mergi 1 spațiu',
+      'întoarce-te la dreapta',
+      'mergi 1 spațiu',
+      'întoarce-te la stânga',
+      'mergi 1 spațiu',
+      'intră în hambar',
     ],
   },
   level6: {
@@ -65,10 +65,10 @@ export default {
       " return ",
       "var i_list = [3, 4, 6]",
       "for (var i_index in i_list)",
-      "mergi 1 spatiu",
+      "mergi 1 spațiu",
       "pick_flowers(x)",
-      "mergi 1 spatiu",
-      "intoarce-te la stanga",
+      "mergi 1 spațiu",
+      "întoarce-te la stânga",
     ],
   },
 };

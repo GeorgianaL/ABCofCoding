@@ -74,13 +74,13 @@ export const helpers = {
   'ro': [
     {
       name: 'Nivelul 1',
-      description: 'Selecteaza blocurile de cod aflate in partea stanga pentru a afisa un mesaj de salut.',
+      description: 'Selectează blocurile de cod aflate în partea stânga pentru a afișa un mesaj de salut.',
       learn: ['variables'],
       code: "window.alert('Hello');",
     },
     {
       name: 'Nivelul 2',
-      description: 'Creeaza un cerc cu raza 100 si culoarea mov. Redenumeste variabilele adaugate apasand click-dreapta pe blocul corespunzator.',
+      description: 'Creează un cerc cu raza 100 și culoarea mov. Redenumește variabilele adăugate apăsând click-dreapta pe blocul corespunzător.',
       learn: ['variables'],
       code: `
           const color = purple;
@@ -89,7 +89,7 @@ export const helpers = {
     },
     {
       name: 'Nivelul 3',
-      description: 'Ajuta iepurasul sa urmareasca traseul conturat. Creaza o lista de care sa atasezi actiunile corecte pentru a ajunge la destinatie.',
+      description: 'Ajută iepurașul să urmărească traseul conturat. Crează o listă de care să atașezi acțiunile corecte pentru a ajunge la destinație.',
       learn: ['lists'],
       code: `
         [
@@ -101,7 +101,7 @@ export const helpers = {
     },
     {
       name: 'Nivelul 4',
-      description: 'Ajuta iepurasul sa urmareasca traseul conturat. Pentru ca repetitia este de evitat in programare, foloseste o structura de tip "bucla"/"loop".',
+      description: 'Ajută iepurașul să urmărească traseul conturat. Pentru că repetiția este de evitat în programare, folosește o structură de tip "buclă"/"loop".',
       learn: ['loops'],
       code: `
         for (let i = 0; i < 3; i += 1) {
@@ -114,7 +114,7 @@ export const helpers = {
     },
     {
       name: 'Nivelul 5',
-      description: 'Ajuta ariciul sa urmareasca traseul conturat. Fii atent la cactusi. Evita-i folosind structuri de tip "daca"/"if".',
+      description: 'Ajută ariciul să urmărească traseul conturat și să ajungă la destinație. Fii atent la cactuși. Evită-i folosind structuri de tip "dacă"/"if".',
       learn: ['loops', 'conditionals'],
       code: `
         for (let i = 0; i < 2; i += 1) {
@@ -131,8 +131,8 @@ export const helpers = {
 // const code = "var x, count, flowersToPick, i;\n\n/**\n * Describe this function...\n */\nfunction pick_flowers(x) {\n  flowersToPick = 0;\n  if (x % 2 == 0) {\n    flowersToPick = x - 1;\n  }\n  return flowersToPick;\n}\n\n\ncount = 0;\nvar i_list = [3, 4, 6];\nfor (var i_index in i_list) {\n  i = i_list[i_index];\n  window.alert('walk 1 space');\n  count = 'pick_flowers(x)';\n  window.alert('walk 1 space');\n  window.alert('turn left');\n}\n";
     {
       name: 'Nivelul 6',
-      description: `Defineste o functie, pick_flowers, care verifica daca numarul florilor este par si culege-le pe toate mai putin una. Daca numarul este impar nu culege nici o floare.
-        Ajuta ariciul sa urmareasca traseul conturat si sa culeaga florile, utilizand functia definita mai sus.`,
+      description: `Definește o funcție, pick_flowers, care verifică dacă numărul florilor este par și culege-le pe toate mai puțin una. Dacă numărul este impar nu culege nici o floare.
+        Ajută ariciul să urmărească traseul conturat și să culeagă florile, utilizând funcția definită mai sus.`,
       learn: ['loops', 'conditionals', 'functions'],
       code: `
         const code = "var x, count, flowersToPick, i;
