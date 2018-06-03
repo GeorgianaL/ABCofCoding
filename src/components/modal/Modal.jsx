@@ -13,6 +13,7 @@ import functions from '../../../public/images/function.png';
 
 import demoLevel2 from '../../../public/images/demo-level-2.mp4';
 import demoLevel3 from '../../../public/images/demo-level-3.mp4';
+import demoLevel6 from '../../../public/images/demo-level-6.mp4';
 
 import Button from '../button/Button.jsx';
 
@@ -40,6 +41,23 @@ const iconSrc = (itemName) => {
   }
 }
 
+const showDemo = (level) => {
+  switch (level) {
+    case 1:
+    case 2:
+      return demoLevel2;
+    case 3:
+    case 4:
+    case 5:
+      return demoLevel3;
+    case 6:
+      return demoLevel6;
+      break;
+    default:
+
+  }
+}
+
 class Modal extends React.Component {
 render() {
     const { level, code, isVideoType, language } = this.props;
@@ -50,7 +68,7 @@ render() {
           <div className="modal modal__background" onClick={this.props.onClose} />
           <div role="dialog" className="modal__dialog modal__dialog--video">
             <video width="750" height="480" controls>
-              <source src={level < 3 ? demoLevel2 : demoLevel3} type="video/mp4"></source>
+              <source src={showDemo(level)} type="video/mp4"></source>
             </video>
           </div>
         </div>

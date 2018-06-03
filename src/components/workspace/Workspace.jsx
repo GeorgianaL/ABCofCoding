@@ -24,6 +24,7 @@ import Level4 from './components/level4/Level4';
 
 import Level5 from './components/level5/Level5';
 import Level6 from './components/level6/Level6';
+// import DemoLevel6 from './components/level6/DemoLevel6';
 
 import './workspace.scss';
 
