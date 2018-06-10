@@ -82,28 +82,32 @@ render() {
               <span className="modal__content--title">{messages[language].modalHaveToDo}</span>
               <span>{ helpers[language][level-1].description }</span>
             </div>
-            <div className="modal__content">
-              <span className="modal__content--title">{messages[language].modalLearn}</span>
-              <div className="modal__content--items">
-                {
-                  toLearn.map(item => {
-                    return (
-                      <div key={`${item}`} className="modal__content--item">
-                        <img
-                          className="item--icon"
-                          src={iconSrc(item)}
-                          style={{
-                            width: '20px',
-                            height: '20px'
-                          }}
-                        />
-                      <span className="modal__content--item-text">{messages[language][item]}</span>
-                      </div>
-                    );
-                  })
-                }
-              </div>
-            </div>
+              {
+                toLearn.length > 0 && (
+                <div className="modal__content">
+                  <span className="modal__content--title">{messages[language].modalLearn}</span>
+                  <div className="modal__content--items">
+                    {
+                      toLearn.map(item => {
+                        return (
+                          <div key={`${item}`} className="modal__content--item">
+                            <img
+                              className="item--icon"
+                              src={iconSrc(item)}
+                              style={{
+                                width: '20px',
+                                height: '20px'
+                              }}
+                            />
+                          <span className="modal__content--item-text">{messages[language][item]}</span>
+                          </div>
+                        );
+                      })
+                    }
+                  </div>
+                </div>
+                )
+              }
           </div>
         );
 

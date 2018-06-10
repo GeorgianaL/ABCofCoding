@@ -3,7 +3,7 @@ export const helpers = {
     {
       name: 'Level 1',
       description: 'Drag and drop the blocks from the left side to print a hello message!',
-      learn: ['variables'],
+      learn: [],
       code: "window.alert('Hello');",
     },
     {
@@ -75,7 +75,7 @@ export const helpers = {
     {
       name: 'Nivelul 1',
       description: 'Selectează blocurile de cod aflate în partea stânga pentru a afișa un mesaj de salut.',
-      learn: ['variables'],
+      learn: [],
       code: "window.alert('Hello');",
     },
     {

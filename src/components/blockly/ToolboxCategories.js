@@ -252,7 +252,7 @@ export default {
               TEXT: {
                 type: 'text',
                 fields: {
-                  TEXT: 'pick_flowers(x)',
+                  TEXT: 'pick_flowers(i)',
                 },
               },
             },
@@ -332,7 +332,7 @@ export default {
   'ro': [
       [
         {
-          name: 'Hello',
+          name: 'Salut',
           type: 'text',
           blocks: [
             { type: 'text',
@@ -346,14 +346,14 @@ export default {
       ],
       [
         {
-          name: 'Variables',
+          name: 'Variabile',
           type: 'variables',
           blocks: [
             { type: 'variables_set' },
           ],
         },
         {
-          name: 'Color',
+          name: 'Culori',
           type: 'colour_picker',
           blocks: [
             {
@@ -363,7 +363,7 @@ export default {
           ],
         },
         {
-          name: 'Math',
+          name: 'Numere',
           type: 'math_number',
           blocks: [
             {
@@ -377,7 +377,7 @@ export default {
       ],
       [
         {
-          name: 'List',
+          name: 'Listă',
           type: 'lists_create_with',
           blocks: [
             {
@@ -386,7 +386,7 @@ export default {
           ],
         },
         {
-          name: 'Actions',
+          name: 'Acțiuni',
           type: 'procedures',
           blocks: [
             {
@@ -406,7 +406,7 @@ export default {
       ],
       [
         {
-          name: 'Actions',
+          name: 'Acțiuni',
           type: 'procedures',
           blocks: [
             {
@@ -446,7 +446,7 @@ export default {
           ],
         },
         {
-          name: 'Loop',
+          name: 'Bucle',
           type: 'loops',
           blocks: [
             {
@@ -466,7 +466,7 @@ export default {
       ],
       [
         {
-          name: 'Actions',
+          name: 'Acțiuni',
           type: 'text',
           blocks: [
             {
@@ -516,7 +516,7 @@ export default {
           ],
         },
         {
-          name: 'Loop',
+          name: 'Bucle',
           type: 'loops',
           blocks: [
             {
@@ -534,7 +534,7 @@ export default {
           ],
         },
         {
-          name: 'Logic',
+          name: 'Logică',
           type: 'logic',
           blocks: [
             {
@@ -551,7 +551,7 @@ export default {
       ],
       [
         {
-          name: 'Actions',
+          name: 'Acțiuni',
           type: 'text',
           blocks: [
             {
@@ -582,7 +582,7 @@ export default {
                 TEXT: {
                   type: 'text',
                   fields: {
-                    TEXT: 'pick_flowers(x)',
+                    TEXT: 'pick_flowers(i)',
                   },
                 },
               },
@@ -590,7 +590,7 @@ export default {
           ],
         },
         {
-          name: 'Variables',
+          name: 'Variabile',
           type: 'variables',
           blocks: [
             {
@@ -602,7 +602,7 @@ export default {
           ],
         },
         {
-          name: 'Math',
+          name: 'Numere',
           type: 'math_number',
           blocks: [
             {
@@ -617,7 +617,7 @@ export default {
           ],
         },
         {
-          name: 'List',
+          name: 'Listă',
           type: 'lists_create_with',
           blocks: [
             {
@@ -635,7 +635,7 @@ export default {
           ],
         },
         {
-          name: 'Logic',
+          name: 'Logică',
           type: 'logic',
           blocks: [
             {
@@ -649,7 +649,7 @@ export default {
           ]
         },
         {
-          name: 'Functions',
+          name: 'Funcții',
           type: 'procedure',
           blocks: [
             {

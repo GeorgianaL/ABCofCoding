@@ -24,7 +24,7 @@ export default {
      'retry': 'Reîncearca',
      'start': 'Start',
      'modalHaveToDo': 'Ce trebuie să faci',
-     'modalLearn': 'Ce vei învață',
+     'modalLearn': 'Ce vei învața',
      'closeModal': 'Începe jocul',
      'variables': 'variabile',
      'loops': 'bucle',
